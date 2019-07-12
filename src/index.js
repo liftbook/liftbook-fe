@@ -1,28 +1,19 @@
-/*!
 
-=========================================================
-* Material Kit PRO React - v1.7.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-kit-pro-react
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-import React from "react";
-import ReactDOM from "react-dom";
-import { createBrowserHistory } from "history";
-import { Router, Route, Switch } from "react-router";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
 import App from './App';
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import reducer from './reducer';
+
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
 
 import "assets/scss/material-kit-pro-react.scss?v=1.7.0";
 
-// pages for this product
 import AboutUsPage from "views/AboutUsPage/AboutUsPage.jsx";
 import BlogPostPage from "views/BlogPostPage/BlogPostPage.jsx";
 import BlogPostsPage from "views/BlogPostsPage/BlogPostsPage.jsx";
@@ -39,11 +30,8 @@ import SectionsPage from "views/SectionsPage/SectionsPage.jsx";
 import ShoppingCartPage from "views/ShoppingCartPage/ShoppingCartPage.jsx";
 import SignupPage from "views/SignupPage/SignupPage.jsx";
 import ErrorPage from "views/ErrorPage/ErrorPage.jsx";
-import thunk from 'redux-thunk';
-import logger from 'redux-logger';
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import reducer from './reducer';
+
+import { createBrowserHistory } from "history";
 
 var hist = createBrowserHistory();
 
@@ -53,7 +41,8 @@ const store = createStore(
 );
 
 ReactDOM.render(
-  <Router history={hist}>
+  <Router >
+
     <Provider store={store}>
       <App />
     </Provider>
@@ -62,8 +51,8 @@ ReactDOM.render(
 );
 
 
-// <Switch>
-// <Route path="/about-us" component={AboutUsPage} />
+
+
 // <Route path="/blog-post" component={BlogPostPage} />
 // <Route path="/blog-posts" component={BlogPostsPage} />
 // <Route path="/components" component={ComponentsPage} />
@@ -79,4 +68,3 @@ ReactDOM.render(
 // <Route path="/signup-page" component={SignupPage} />
 // <Route path="/error-page" component={ErrorPage} />
 // <Route path="/" component={PresentationPage} />
-// </Switch>
