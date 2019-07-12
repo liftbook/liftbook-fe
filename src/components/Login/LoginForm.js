@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+import './LoginForm.css'
+
 class LoginForm extends React.Component {
     state = {
         username: "",
@@ -18,7 +20,7 @@ class LoginForm extends React.Component {
         e.preventDefault();
         const credentials = this.state;
         axios
-            .post("", credentials)
+            .post("https://lift-book.herokuap.com/users/login", credentials)
             .then(res => {
                 const username = res.data.username;
                 const token = res.data.token;
@@ -57,7 +59,7 @@ class LoginForm extends React.Component {
                     </form>
                     <div className='newAccountLink'>
                         <p>Don't have an account yet?</p>
-                        <Link to='/signup' className='signupLink'>Sign Up</Link>
+                        <Link to='/users/register' className='registerLink'>Sign Up</Link>
                     </div>
                 </div>
             </div>
