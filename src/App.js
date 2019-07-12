@@ -1,26 +1,28 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+// import History from './components/History'
+import { BrowserRouter as Route } from "react-router-dom";
 
-function App() {
+// material-ui components
+import withStyles from "@material-ui/core/styles/withStyles";
+// core components
+import Card from "components/Card/Card.jsx";
+import CardBody from "components/Card/CardBody.jsx";
+import Button from 'components/CustomButtons/Button.jsx';
+
+
+export default class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+
+    }
+  }  
+  render() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Button type="button" color="primary">Primary</Button>
     </div>
   );
 }
-
-export default App;
+}
