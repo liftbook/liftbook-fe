@@ -1,30 +1,35 @@
 import React from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import './SignupForm.css';
 
 class SignupForm extends React.Component {
-    state = {
-        username: "",
-        password: ""
-    };
+    constructor(props) {
+        super(props)
+        this.state = {
+            credentials: {
+                firstName: "",
+                lastName: "",
+                email: "",
+                username: "",
+                password: ""
+            }
+        }
+    }
+    
 
     handleChange = e => {
         this.setState({
-            [e.target.name]: e.target.value
+            credentials: {
+                [e.target.name]: e.target.value
+            }
         });
     };
 
     handleSubmit = e => {
         e.preventDefault();
-        const log = this.state;
-        axios
-            .post("https://lift-book.herokuapp.com/users/register", log)
-            .then(res => {
-                this.props.history.push('/users/login')
-            })
-            .catch(err => console.log(err.response));
+        this.props.signupRequest(this.state.credentials)
     };
 
     render() {
@@ -36,17 +41,38 @@ class SignupForm extends React.Component {
                     <form className='signupForm' onSubmit={this.handleSubmit}>
                         <div className='inputs'>
                             <input
+                                type='text'
+                                name='firstName'
+                                placeholder='First Name'
+                                value={this.state.credentials.firstName}
+                                onChange={this.handleChange}
+                            />
+                            <input
+                                type='text'
+                                name='lastName'
+                                placeholder='Last Name'
+                                value={this.state.credentials.lastName}
+                                onChange={this.handleChange}
+                            />
+                            <input
+                                type='email'
+                                name='email'
+                                placeholder='Email'
+                                value={this.state.credentials.email}
+                                onChange={this.handleChange}
+                            />
+                            <input
                                 type='username'
                                 name='username'
                                 placeholder='Username'
-                                value={this.state.username}
+                                value={this.state.credentials.username}
                                 onChange={this.handleChange}
                             />
                             <input
                                 type='password'
                                 name='password'
                                 placeholder='Password'
-                                value={this.state.password}
+                                value={this.state.credentials.password}
                                 onChange={this.handleChange}
                             />
                         </div>

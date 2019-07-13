@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       {/* <header className="App-header" /> */}
-      <Route exact path="/" render={props => <LoginForm {...props} />} />
+      <Route exact path='/' render={props => <LoginForm {...props} />} />
       <Route path='/users/register' render={props => <SignupForm {...props} />} />
     </div>
   );

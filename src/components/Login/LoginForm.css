@@ -4,9 +4,11 @@ h1 {
 
 .login {
     text-align: center;
+    margin-left: 29%;
     width: 40%;
     padding: 10px;
     border: 2px solid gray;
+    border-radius: 15px;
 }
 
 input {

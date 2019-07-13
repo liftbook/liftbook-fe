@@ -3,14 +3,22 @@ h1 {
 }
 
 .signup {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     text-align: center;
+    margin-left: 29%;
     width: 40%;
     padding: 10px;
     border: 2px solid gray;
+    border-radius: 15px;
 }
 
 input {
     border-radius: 5px;
+    width: 50%;
+    padding: 5px;
+    margin-top: 8px;
     height: 30px;
     margin-left: 5px;
 }

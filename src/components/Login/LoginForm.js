@@ -1,35 +1,37 @@
 import React from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { login } from '../../actions'
 import { Link } from 'react-router-dom';
 
 import './LoginForm.css'
 
 class LoginForm extends React.Component {
-    state = {
-        username: "",
-        password: ""
-    };
+    constructor(props) {
+        super(props)
+        this.state = {
+            credentials: {
+                username: "",
+                password: ""
+            }   
+        };
+
+    }
+    
 
     handleChange = e => {
         this.setState({
-            [e.target.name]: e.target.value
+            credentials: {
+                ...this.state.credentials,
+                [e.target.name]: e.target.value
+            }
         });
     };
 
     handleSubmit = e => {
         e.preventDefault();
-        const credentials = this.state;
-        axios
-            .post("https://lift-book.herokuap.com/users/login", credentials)
-            .then(res => {
-                const username = res.data.username;
-                const token = res.data.token;
-                localStorage.setItem("token", token);
-                localStorage.setItem("username", username);
-                this.props.history.push("/home");
-                console.log("Logged In");
-            })
-            .catch(err => console.log(err.response))
+        this.props
+            .login(this.state.credentials)
+            .then(() => this.props.history.push('/'))
     };
 
     render() {
@@ -44,14 +46,14 @@ class LoginForm extends React.Component {
                                 type='username'
                                 name='username'
                                 placeholder='Username'
-                                value={this.state.username}
+                                value={this.state.credentials.username}
                                 onChange={this.handleChange}
                             />
                             <input
                                 type='password'
                                 name='password'
                                 placeholder='Password'
-                                value={this.state.password}
+                                value={this.state.credentials.password}
                                 onChange={this.handleChange}
                             />
                         </div>
@@ -67,4 +69,11 @@ class LoginForm extends React.Component {
     }
 }
 
-export default LoginForm;
+const mapStateToProps = ({ isLoggedIn }) => ({
+    isLoggedIn
+});
+
+export default connect(
+    mapStateToProps,
+    { login }
+)(LoginForm)
