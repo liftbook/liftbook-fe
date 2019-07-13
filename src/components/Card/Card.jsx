@@ -1,11 +1,12 @@
 /*!
 
 =========================================================
-* Material Kit PRO React - v1.7.0
+* Material Dashboard React - v1.7.0
 =========================================================
 
-* Product Page: https://www.creative-tim.com/product/material-kit-pro-react
+* Product Page: https://www.creative-tim.com/product/material-dashboard-react
 * Copyright 2019 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://github.com/creativetimofficial/material-dashboard-react/blob/master/LICENSE.md)
 
 * Coded by Creative Tim
 
@@ -24,7 +25,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 // @material-ui/icons
 
 // core components
-import cardStyle from "assets/jss/material-kit-pro-react/components/cardStyle.jsx";
+import cardStyle from "assets/jss/material-dashboard-react/components/cardStyle.jsx";
 
 function Card({ ...props }) {
   const {
@@ -33,27 +34,14 @@ function Card({ ...props }) {
     children,
     plain,
     profile,
-    blog,
-    raised,
-    background,
-    pricing,
-    color,
-    product,
-    testimonial,
+    chart,
     ...rest
   } = props;
   const cardClasses = classNames({
     [classes.card]: true,
     [classes.cardPlain]: plain,
-    [classes.cardProfile]: profile || testimonial,
-    [classes.cardBlog]: blog,
-    [classes.cardRaised]: raised,
-    [classes.cardBackground]: background,
-    [classes.cardPricingColor]:
-      (pricing && color !== undefined) || (pricing && background !== undefined),
-    [classes[color]]: color,
-    [classes.cardPricing]: pricing,
-    [classes.cardProduct]: product,
+    [classes.cardProfile]: profile,
+    [classes.cardChart]: chart,
     [className]: className !== undefined
   });
   return (
@@ -68,20 +56,7 @@ Card.propTypes = {
   className: PropTypes.string,
   plain: PropTypes.bool,
   profile: PropTypes.bool,
-  blog: PropTypes.bool,
-  raised: PropTypes.bool,
-  background: PropTypes.bool,
-  pricing: PropTypes.bool,
-  testimonial: PropTypes.bool,
-  color: PropTypes.oneOf([
-    "primary",
-    "info",
-    "success",
-    "warning",
-    "danger",
-    "rose"
-  ]),
-  product: PropTypes.bool,
+  chart: PropTypes.bool,
   children: PropTypes.node
 };
 

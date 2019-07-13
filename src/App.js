@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import Log from './Log'
+import Summary from './Summary'
 import './App.css';
 
-import { BrowserRouter as Route, Switch, Link } from "react-router-dom";
+import { Route, Switch, Link } from "react-router-dom";
 
 // material-ui components
 // core components
@@ -39,7 +39,7 @@ const style = {
 
 
 
-class App extends React.Component {
+export default class App extends React.Component {
   constructor(props) {
     super();
     this.state = {
@@ -54,58 +54,18 @@ class App extends React.Component {
   render() {
     console.log('something')
   return (<div className="App">
-          <Fab color="primary" aria-label="Add" className={this.state.classes.fab}>
-        <AddIcon />
-      </Fab>
-    <Card style={{ width: "20rem" }}>
-      <CardBody>
-        <h4 className={this.state.classes.cardTitle}>Card Title</h4>
-        <h6 className={this.state.classes.cardSubtitle}>Card Subtitle</h6>
-        <p>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-        <a
-          href="#pablo"
-          className={this.state.classes.cardLink}
-          onClick={e => e.preventDefault()}
-        >
-          Card link
-        </a>
-        <a
-          href="#pablo"
-          className={this.state.classes.cardLink}
-          onClick={e => e.preventDefault()}
-        >
-          Another link
-        </a>
-      </CardBody>
-    </Card>
+
+   
 
 
 
+      <Link to="/Summary">LINK</Link>
 
-    <div>
-      hi
-      <Link to="/History">Hi</Link>
-      <Switch>
-      <Route exact path="/History" exact component={Log} />
-      </Switch>
+      <Route exact path="/Summary" component={Summary} />
 
- </div>
- <div>
- <Route exact path="/"  component={App} />
 
-      </div>
     </div>
  
   );
 }
 }
-
-const mapState = state => {
-  return {something: state.something,}
-
-}
-
-export default withRouter(connect(mapState, null)(App))

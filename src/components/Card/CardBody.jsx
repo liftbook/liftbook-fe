@@ -1,11 +1,12 @@
 /*!
 
 =========================================================
-* Material Kit PRO React - v1.7.0
+* Material Dashboard React - v1.7.0
 =========================================================
 
-* Product Page: https://www.creative-tim.com/product/material-kit-pro-react
+* Product Page: https://www.creative-tim.com/product/material-dashboard-react
 * Copyright 2019 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://github.com/creativetimofficial/material-dashboard-react/blob/master/LICENSE.md)
 
 * Coded by Creative Tim
 
@@ -24,29 +25,14 @@ import withStyles from "@material-ui/core/styles/withStyles";
 // @material-ui/icons
 
 // core components
-import cardBodyStyle from "assets/jss/material-kit-pro-react/components/cardBodyStyle.jsx";
+import cardBodyStyle from "assets/jss/material-dashboard-react/components/cardBodyStyle.jsx";
 
 function CardBody({ ...props }) {
-  const {
-    classes,
-    className,
-    children,
-    background,
-    plain,
-    formHorizontal,
-    pricing,
-    signup,
-    color,
-    ...rest
-  } = props;
+  const { classes, className, children, plain, profile, ...rest } = props;
   const cardBodyClasses = classNames({
     [classes.cardBody]: true,
-    [classes.cardBodyBackground]: background,
     [classes.cardBodyPlain]: plain,
-    [classes.cardBodyFormHorizontal]: formHorizontal,
-    [classes.cardPricing]: pricing,
-    [classes.cardSignup]: signup,
-    [classes.cardBodyColor]: color,
+    [classes.cardBodyProfile]: profile,
     [className]: className !== undefined
   });
   return (
@@ -59,12 +45,8 @@ function CardBody({ ...props }) {
 CardBody.propTypes = {
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
-  background: PropTypes.bool,
   plain: PropTypes.bool,
-  formHorizontal: PropTypes.bool,
-  pricing: PropTypes.bool,
-  signup: PropTypes.bool,
-  color: PropTypes.bool,
+  profile: PropTypes.bool,
   children: PropTypes.node
 };
 

@@ -1,11 +1,12 @@
 /*!
 
 =========================================================
-* Material Kit PRO React - v1.7.0
+* Material Dashboard React - v1.7.0
 =========================================================
 
-* Product Page: https://www.creative-tim.com/product/material-kit-pro-react
+* Product Page: https://www.creative-tim.com/product/material-dashboard-react
 * Copyright 2019 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://github.com/creativetimofficial/material-dashboard-react/blob/master/LICENSE.md)
 
 * Coded by Creative Tim
 
@@ -15,11 +16,8 @@
 
 */
 import React from "react";
-// nodejs library to set properties for components
-import PropTypes from "prop-types";
-// nodejs library that concatenates classes
 import classNames from "classnames";
-
+import PropTypes from "prop-types";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import FormControl from "@material-ui/core/FormControl";
@@ -29,8 +27,7 @@ import Input from "@material-ui/core/Input";
 import Clear from "@material-ui/icons/Clear";
 import Check from "@material-ui/icons/Check";
 // core components
-
-import customInputStyle from "assets/jss/material-kit-pro-react/components/customInputStyle.jsx";
+import customInputStyle from "assets/jss/material-dashboard-react/components/customInputStyle.jsx";
 
 function CustomInput({ ...props }) {
   const {
@@ -41,8 +38,6 @@ function CustomInput({ ...props }) {
     labelProps,
     inputProps,
     error,
-    white,
-    inputRootCustomClasses,
     success
   } = props;
 
@@ -53,30 +48,19 @@ function CustomInput({ ...props }) {
   const underlineClasses = classNames({
     [classes.underlineError]: error,
     [classes.underlineSuccess]: success && !error,
-    [classes.underline]: true,
-    [classes.whiteUnderline]: white
+    [classes.underline]: true
   });
   const marginTop = classNames({
-    [inputRootCustomClasses]: inputRootCustomClasses !== undefined
+    [classes.marginTop]: labelText === undefined
   });
-  const inputClasses = classNames({
-    [classes.input]: true,
-    [classes.whiteInput]: white
-  });
-  var formControlClasses;
-  if (formControlProps !== undefined) {
-    formControlClasses = classNames(
-      formControlProps.className,
-      classes.formControl
-    );
-  } else {
-    formControlClasses = classes.formControl;
-  }
   return (
-    <FormControl {...formControlProps} className={formControlClasses}>
+    <FormControl
+      {...formControlProps}
+      className={formControlProps.className + " " + classes.formControl}
+    >
       {labelText !== undefined ? (
         <InputLabel
-          className={classes.labelRoot + " " + labelClasses}
+          className={classes.labelRoot + labelClasses}
           htmlFor={id}
           {...labelProps}
         >
@@ -85,7 +69,6 @@ function CustomInput({ ...props }) {
       ) : null}
       <Input
         classes={{
-          input: inputClasses,
           root: marginTop,
           disabled: classes.disabled,
           underline: underlineClasses
@@ -109,10 +92,8 @@ CustomInput.propTypes = {
   id: PropTypes.string,
   inputProps: PropTypes.object,
   formControlProps: PropTypes.object,
-  inputRootCustomClasses: PropTypes.string,
   error: PropTypes.bool,
-  success: PropTypes.bool,
-  white: PropTypes.bool
+  success: PropTypes.bool
 };
 
 export default withStyles(customInputStyle)(CustomInput);

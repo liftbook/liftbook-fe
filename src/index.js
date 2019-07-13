@@ -9,7 +9,8 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducer';
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import {  BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { withRouter } from "react-router";
 
 
 import "assets/scss/material-kit-pro-react.scss?v=1.7.0";
@@ -41,12 +42,17 @@ const store = createStore(
 );
 
 ReactDOM.render(
+  <div>
   <Router >
 
     <Provider store={store}>
+
       <App />
+
     </Provider>
-  </Router>,
+  </Router>
+  </div>
+,
   document.getElementById("root")
 );
 
