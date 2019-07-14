@@ -2,17 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { withRouter } from "react-router";
 
-import withStyles from "@material-ui/core/styles/withStyles";
-// core components
 import Card from "components/Card/Card.jsx";
 import CardBody from "components/Card/CardBody.jsx";
-import { makeStyles } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-import Dashboard from "views/Dashboard/Dashboard.jsx"
+// import Dashboard from "views/Dashboard/Dashboard.jsx"
 
 import { getUsers } from './actions'
-
 
 import {
   cardTitle,
@@ -26,10 +22,6 @@ const style = {
   cardSubtitle
 };
 
-
-
-
-
 var moment = require('moment');
 moment().format();
 
@@ -37,15 +29,12 @@ class Summary extends React.Component {
   constructor(props) {
     super();
     this.state = {
-      test: '',
       classes: props,
-
     }
 }
 componentDidMount() {
   this.props.getUsers()
 }
-
 
   render() {
     console.log('something2')
