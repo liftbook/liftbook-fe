@@ -3,9 +3,12 @@ import React, { Component } from "react";
 export default class Add extends Component {
   render() {
     return (
-      <div>
-        <h1>test</h1>
-      </div>
+      <form>
+        <div className="form-group">
+          <label>Name of Exercise</label>
+          <input type="text" className="form-control" />
+        </div>
+      </form>
     );
   }
 }

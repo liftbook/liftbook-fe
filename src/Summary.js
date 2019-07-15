@@ -44,17 +44,16 @@ class Summary extends React.Component {
     return (
       <div className="App">
         {/* <Dashboard /> */}
-        <Fab
-          color="primary"
-          aria-label="Add"
-          className={this.state.classes.fab}
-        >
-          <Link to="/add">
-            {" "}
-            <AddIcon />{" "}
-          </Link>
-          <Route exact path="/add" component={Add} />
-        </Fab>
+        <Link to="/add">
+          <Fab
+            color="primary"
+            aria-label="Add"
+            className={this.state.classes.fab}
+          >
+            <AddIcon />
+          </Fab>
+        </Link>
+
         <Card style={{ width: "20rem" }}>
           <CardBody>
             <h4 className={this.state.classes.cardTitle}>Card Title</h4>

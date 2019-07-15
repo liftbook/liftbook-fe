@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Summary from "./Summary";
 import "./App.css";
 import { Route, Switch, Link } from "react-router-dom";
+import Add from "Add";
 
 // material-ui components
 // core components
@@ -44,6 +45,7 @@ export default class App extends React.Component {
       <div className="App">
         <Link to="/Summary">LINK</Link>
         <Route exact path="/Summary" component={Summary} />
+        <Route exact path="/add" component={Add} />
       </div>
     );
   }
