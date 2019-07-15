@@ -43,8 +43,27 @@ export default class App extends React.Component {
     console.log('something')
   return (
     <div className="App">
+<<<<<<< HEAD
       <Link to="/Summary">LINK</Link>
       <Route exact path="/Summary" component={Summary} />
+||||||| merged common ancestors
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+=======
+      <header className="App-header" />
+>>>>>>> develop
     </div>
   );
 }
