@@ -11,7 +11,7 @@ import EcommercePage from 'views/EcommercePage/EcommercePage.jsx'
 // import Dashboard from "views/Dashboard/Dashboard.jsx"
 import Drawer from '@material-ui/core/Drawer';
 
-import { getUsers } from './actions'
+import { getUser } from './actions'
 
 import {
   cardTitle,
@@ -28,7 +28,7 @@ const style = {
 var moment = require('moment');
 moment().format();
 
-class Summary extends React.Component {
+class User extends React.Component {
   constructor(props) {
     super();
     this.state = {
@@ -36,14 +36,14 @@ class Summary extends React.Component {
     }
 }
 componentDidMount() {
-  this.props.getUsers()
+  this.props.getUser()
 }
 
   render() {
     console.log('something2')
 
     return (<div className="App">
-      <Drawer />
+      {/* <Sidebar /> */}
           <Fab color="primary" aria-label="Add" className={this.state.classes.fab}>
         <AddIcon />
       </Fab>
@@ -52,20 +52,16 @@ componentDidMount() {
         <h4 className={this.state.classes.cardTitle}>Card Title</h4>
         <h6 className={this.state.classes.cardSubtitle}>Card Subtitle</h6>
         <div>
-      {this.props.user.map((user, key) => {
-        return(<div key={key}>
-          <p>{user.created_at}</p>
-          <p>{user.email}</p>
-          <p>{user.first_name}</p>
-          <p>{user.last_name}</p>
-          <p>{user.password}</p>
-          <p>{user.updated_at}</p>
-          <p>{user.username}</p>
+
+          <p>{this.props.user.created_at}</p>
+          <p>{this.props.user.email}</p>
+          <p>{this.props.user.first_name}</p>
+          <p>{this.props.user.last_name}</p>
+          <p>{this.props.user.password}</p>
+          <p>{this.props.user.updated_at}</p>
+          <p>{this.props.user.username}</p>
           </div>
 
-        )
-      })}
-      </div>
         <a
           href="#pablo"
           className={this.state.classes.cardLink}
@@ -92,4 +88,4 @@ const mapState = state => {
   }
 }
 
-export default withRouter(connect(mapState, {getUsers})(Summary))
+export default withRouter(connect(mapState, {getUser})(User))
