@@ -41,7 +41,7 @@ const Sidebar = ({ ...props }) => {
   }
   const { classes, color, logo, image, logoText, routes } = props;
   var links = (
-    <List className={classes.list}>
+    <List className={props.classes.list}>
       {routes.map((prop, key) => {
         var activePro = " ";
         var listItemClasses;
@@ -60,10 +60,10 @@ const Sidebar = ({ ...props }) => {
         });
         return (
           <NavLink
-            to={prop.layout + prop.path}
-            className={activePro + classes.item}
+            to="/"
+            // className={activePro + classes.item}
             activeClassName="active"
-            key={key}
+            // key={key}
           >
             <ListItem button className={classes.itemLink + listItemClasses}>
               {typeof prop.icon === "string" ? (

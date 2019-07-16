@@ -6,9 +6,13 @@ import Add from "./Add";
 
 import Card from "components/Card/Card.jsx";
 import CardBody from "components/Card/CardBody.jsx";
-import Fab from "@material-ui/core/Fab";
-import AddIcon from "@material-ui/icons/Add";
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+import Sidebar from "components/Sidebar/Sidebar.jsx"
+import EcommercePage from 'views/EcommercePage/EcommercePage.jsx'
+
 // import Dashboard from "views/Dashboard/Dashboard.jsx"
+import Drawer from '@material-ui/core/Drawer';
 
 import { getUsers } from "./actions";
 
@@ -41,18 +45,40 @@ class Summary extends React.Component {
   render() {
     console.log("something2");
 
-    return (
-      <div className="App">
-        {/* <Dashboard /> */}
-        <Link to="/add">
-          <Fab
-            color="primary"
-            aria-label="Add"
-            className={this.state.classes.fab}
-          >
-            <AddIcon />
-          </Fab>
-        </Link>
+    return (<div className="App">
+      <Drawer />
+          <Fab color="primary" aria-label="Add" className={this.state.classes.fab}>
+        <AddIcon />
+      </Fab>
+    <Card style={{ width: "20rem" }}>
+      <CardBody>
+        <h4 className={this.state.classes.cardTitle}>Card Title</h4>
+        <h6 className={this.state.classes.cardSubtitle}>Card Subtitle</h6>
+        <div>
+      {this.props.user.map((user, key) => {
+        return(<div key={key}>
+          <p>{user.created_at}</p>
+          <p>{user.email}</p>
+          <p>{user.first_name}</p>
+          <p>{user.last_name}</p>
+          <p>{user.password}</p>
+          <p>{user.updated_at}</p>
+          <p>{user.username}</p>
+          </div>
+
+//     return (
+//       <div className="App">
+//         {/* <Dashboard /> */}
+//         <Link to="/add">
+//           <Fab
+//             color="primary"
+//             aria-label="Add"
+//             className={this.state.classes.fab}
+//           >
+//             <AddIcon />
+//           </Fab>
+//         </Link>
+// >>>>>>> develop
 
         <Card style={{ width: "20rem" }}>
           <CardBody>

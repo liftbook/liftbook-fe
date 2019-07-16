@@ -53,7 +53,7 @@ class LoginPage extends React.Component {
     const { classes } = this.props;
     return (
       <div>
-        <Header
+        {/* <Header
           absolute
           color="transparent"
           brand="Material Kit PRO React"
@@ -66,7 +66,7 @@ class LoginPage extends React.Component {
             backgroundSize: "cover",
             backgroundPosition: "top center"
           }}
-        >
+        > */}
           <div className={classes.container}>
             <GridContainer justify="center">
               <GridItem xs={12} sm={12} md={4}>
@@ -78,7 +78,7 @@ class LoginPage extends React.Component {
                       className={classes.cardHeader}
                     >
                       <h4 className={classes.cardTitle}>Login</h4>
-                      <div className={classes.socialLine}>
+                      {/* <div className={classes.socialLine}>
                         <Button
                           justIcon
                           color="transparent"
@@ -103,15 +103,15 @@ class LoginPage extends React.Component {
                         >
                           <i className="fab fa-google-plus-g" />
                         </Button>
-                      </div>
+                      </div> */}
                     </CardHeader>
-                    <p
+                    {/* <p
                       className={classes.description + " " + classes.textCenter}
                     >
                       Or Be Classical
-                    </p>
+                    </p> */}
                     <CardBody signup>
-                      <CustomInput
+                      {/* <CustomInput
                         id="first"
                         formControlProps={{
                           fullWidth: true
@@ -125,15 +125,15 @@ class LoginPage extends React.Component {
                             </InputAdornment>
                           )
                         }}
-                      />
+                      /> */}
                       <CustomInput
                         id="email"
                         formControlProps={{
                           fullWidth: true
                         }}
                         inputProps={{
-                          placeholder: "Email...",
-                          type: "email",
+                          placeholder: "Username...",
+                          type: "username",
                           startAdornment: (
                             <InputAdornment position="start">
                               <Email className={classes.inputIconsColor} />
@@ -161,8 +161,13 @@ class LoginPage extends React.Component {
                       />
                     </CardBody>
                     <div className={classes.textCenter}>
+                    <p
+                      className={classes.description + " " + classes.textCenter}
+                    >
+                      Don't have an account yet? 
+                    </p>
                       <Button simple color="primary" size="lg">
-                        Get started
+                        Sign Up
                       </Button>
                     </div>
                   </form>
@@ -170,7 +175,7 @@ class LoginPage extends React.Component {
               </GridItem>
             </GridContainer>
           </div>
-          <Footer
+          {/* <Footer
             className={classes.footer}
             content={
               <div>
@@ -226,9 +231,9 @@ class LoginPage extends React.Component {
                 </div>
               </div>
             }
-          />
+          /> */}
         </div>
-      </div>
+      
     );
   }
 }
