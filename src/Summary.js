@@ -45,79 +45,8 @@ class Summary extends React.Component {
   render() {
     console.log("something2");
 
-    return (<div className="App">
-      <Drawer />
-          <Fab color="primary" aria-label="Add" className={this.state.classes.fab}>
-        <AddIcon />
-      </Fab>
-    <Card style={{ width: "20rem" }}>
-      <CardBody>
-        <h4 className={this.state.classes.cardTitle}>Card Title</h4>
-        <h6 className={this.state.classes.cardSubtitle}>Card Subtitle</h6>
-        <div>
-      {this.props.user.map((user, key) => {
-        return(<div key={key}>
-          <p>{user.created_at}</p>
-          <p>{user.email}</p>
-          <p>{user.first_name}</p>
-          <p>{user.last_name}</p>
-          <p>{user.password}</p>
-          <p>{user.updated_at}</p>
-          <p>{user.username}</p>
-          </div>
-
-//     return (
-//       <div className="App">
-//         {/* <Dashboard /> */}
-//         <Link to="/add">
-//           <Fab
-//             color="primary"
-//             aria-label="Add"
-//             className={this.state.classes.fab}
-//           >
-//             <AddIcon />
-//           </Fab>
-//         </Link>
-// >>>>>>> develop
-
-        <Card style={{ width: "20rem" }}>
-          <CardBody>
-            <h4 className={this.state.classes.cardTitle}>Card Title</h4>
-            <h6 className={this.state.classes.cardSubtitle}>Card Subtitle</h6>
-            <div>
-              {this.props.user.map(user => {
-                return (
-                  <div>
-                    <p>{user.created_at}</p>
-                    <p>{user.email}</p>
-                    <p>{user.first_name}</p>
-                    <p>{user.last_name}</p>
-                    <p>{user.password}</p>
-                    <p>{user.updated_at}</p>
-                    <p>{user.username}</p>
-                  </div>
-                );
-              })}
-            </div>
-            <a
-              href="#pablo"
-              className={this.state.classes.cardLink}
-              onClick={e => e.preventDefault()}
-            >
-              Card link
-            </a>
-            <a
-              href="#pablo"
-              className={this.state.classes.cardLink}
-              onClick={e => e.preventDefault()}
-            >
-              Another link
-            </a>
-          </CardBody>
-        </Card>
-      </div>
-    );
-  }
+    return (<div></div>)
+}
 }
 
 const mapState = state => {
