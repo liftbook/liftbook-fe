@@ -10,8 +10,10 @@ import Sidebar from "components/Sidebar/Sidebar.jsx"
 import EcommercePage from 'views/EcommercePage/EcommercePage.jsx'
 // import Dashboard from "views/Dashboard/Dashboard.jsx"
 import Drawer from '@material-ui/core/Drawer';
-
+import Add from './Add'
 import { getUser } from './actions'
+import { Route, Switch, Link } from "react-router-dom";
+
 
 import {
   cardTitle,
@@ -43,10 +45,16 @@ componentDidMount() {
     console.log('something2')
 
     return (<div className="App">
-      {/* <Sidebar /> */}
-          <Fab color="primary" aria-label="Add" className={this.state.classes.fab}>
-        <AddIcon />
-      </Fab>
+
+      <Link to="/add">
+          <Fab
+            color="primary"
+            aria-label="Add"
+            className={this.state.classes.fab}
+          >
+            <AddIcon />
+          </Fab>
+        </Link>
     <Card style={{ width: "20rem" }}>
       <CardBody>
         <h4 className={this.state.classes.cardTitle}>Card Title</h4>
