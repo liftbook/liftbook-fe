@@ -1,3 +1,16 @@
+// import React from 'react';
+// import './App.css';
+// import { Route } from 'react-router-dom';
+
+// function App() {
+//   return (
+//     <div className="App">
+//       {/* <header className="App-header" /> */}
+//       <Route exact path='/' render={props => <LoginForm {...props} />} />
+//       <Route path='/users/register' render={props => <SignupForm {...props} />} />
+//     </div>
+//   );
+// }
 import React, { Component } from "react";
 import Summary from "./Summary";
 import "./App.css";
@@ -16,6 +29,8 @@ import CardBody from "components/Card/CardBody.jsx";
 import { makeStyles } from "@material-ui/core/styles";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
+import LoginForm from './components/Login/LoginForm'
+import SignupForm from './components/SignUp/SignupForm';
 
 import {
   cardTitle,
