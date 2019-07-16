@@ -2,15 +2,7 @@
 // import './App.css';
 // import { Route } from 'react-router-dom';
 
-// function App() {
-//   return (
-//     <div className="App">
-//       {/* <header className="App-header" /> */}
-//       <Route exact path='/' render={props => <LoginForm {...props} />} />
-//       <Route path='/users/register' render={props => <SignupForm {...props} />} />
-//     </div>
-//   );
-// }
+
 import React, { Component } from "react";
 import Summary from "./Summary";
 import "./App.css";
@@ -61,6 +53,8 @@ export default class App extends React.Component {
         <Link to="/Summary">LINK</Link>
         <Route exact path="/Summary" component={Summary} />
         <Route exact path="/add" component={Add} />
+        <Route exact path='/' render={props => <LoginForm {...props} />} />
+      <Route path='/users/register' render={props => <SignupForm {...props} />} />
       </div>
     );
   }
