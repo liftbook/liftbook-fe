@@ -113,13 +113,13 @@ export default class App extends React.Component {
                     </Button>
                   </ListItem>
                 </List>
-              }
+              }//
             />
       <Route exact path="/" component={LoginForm} />
       <Route exact path="/login" component={LoginForm} />
       <Route exact path="/users/register" component={SignupForm} />
 
-
+      {/*this route private after login*/}
       <Route exact path="/users" component={User} />
       {/* <PrivateRoute exact path="/users/[username]/logs/[exerciseId]" component={DeleteFriend} /> */}
 

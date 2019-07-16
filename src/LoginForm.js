@@ -36,7 +36,7 @@ class LoginForm extends React.Component {
     render() {
         return (
             <div>
-                {/* <LoginPage /> */}
+                <LoginPage />
                 <h1>LiftBook</h1>
                 <div className='login'>
                     <h2>Log In</h2>
