@@ -1,17 +1,16 @@
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import thunk from 'redux-thunk';
-import logger from 'redux-logger';
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import reducer from './reducer';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import thunk from "redux-thunk";
+import logger from "redux-logger";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import reducer from "./reducer";
 
-import {  BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { withRouter } from "react-router";
-
 
 import "assets/scss/material-kit-pro-react.scss?v=1.7.0";
 
@@ -36,41 +35,17 @@ import { createBrowserHistory } from "history";
 
 var hist = createBrowserHistory();
 
-const store = createStore(
-  reducer, 
-  applyMiddleware(thunk, logger)
-);
+const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
   <div>
-  <Router >
-
-    <Provider store={store}>
-
-      <App />
-
-    </Provider>
-  </Router>
-  </div>
-,
+    <Router>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </Router>
+  </div>,
   document.getElementById("root")
 );
 
 
-
-
-// <Route path="/blog-post" component={BlogPostPage} />
-// <Route path="/blog-posts" component={BlogPostsPage} />
-// <Route path="/components" component={ComponentsPage} />
-// <Route path="/contact-us" component={ContactUsPage} />
-// <Route path="/ecommerce-page" component={EcommercePage} />
-// <Route path="/landing-page" component={LandingPage} />
-// <Route path="/login-page" component={LoginPage} />
-// <Route path="/pricing" component={PricingPage} />
-// <Route path="/profile-page" component={ProfilePage} />
-// <Route path="/product-page" component={ProductPage} />
-// <Route path="/sections" component={SectionsPage} />
-// <Route path="/shopping-cart-page" component={ShoppingCartPage} />
-// <Route path="/signup-page" component={SignupPage} />
-// <Route path="/error-page" component={ErrorPage} />
-// <Route path="/" component={PresentationPage} />
