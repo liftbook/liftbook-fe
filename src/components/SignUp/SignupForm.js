@@ -1,8 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import './SignupForm.css';
+// import Axios from 'axios';
 
 class SignupForm extends React.Component {
     constructor(props) {
@@ -17,19 +18,19 @@ class SignupForm extends React.Component {
             }
         }
     }
-    
-
+ 
     handleChange = e => {
         this.setState({
             credentials: {
                 [e.target.name]: e.target.value
             }
         });
+        console.log(e);
     };
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.signupRequest(this.state.credentials)
+        console.log(e);
     };
 
     render() {
@@ -44,35 +45,35 @@ class SignupForm extends React.Component {
                                 type='text'
                                 name='firstName'
                                 placeholder='First Name'
-                                value={this.state.credentials.firstName}
+                                value={this.state.firstName}
                                 onChange={this.handleChange}
                             />
                             <input
                                 type='text'
                                 name='lastName'
                                 placeholder='Last Name'
-                                value={this.state.credentials.lastName}
+                                value={this.state.lastName}
                                 onChange={this.handleChange}
                             />
                             <input
                                 type='email'
                                 name='email'
                                 placeholder='Email'
-                                value={this.state.credentials.email}
+                                value={this.state.email}
                                 onChange={this.handleChange}
                             />
                             <input
                                 type='username'
                                 name='username'
                                 placeholder='Username'
-                                value={this.state.credentials.username}
+                                value={this.state.username}
                                 onChange={this.handleChange}
                             />
                             <input
                                 type='password'
                                 name='password'
                                 placeholder='Password'
-                                value={this.state.credentials.password}
+                                value={this.state.password}
                                 onChange={this.handleChange}
                             />
                         </div>

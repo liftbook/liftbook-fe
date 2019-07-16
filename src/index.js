@@ -13,10 +13,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 // import "assets/scss/material-kit-pro-react.scss?v=1.7.0";
 
-import { createBrowserHistory } from "history";
-
-var hist = createBrowserHistory();
-
 const store = createStore(
   reducer, 
   applyMiddleware(thunk, logger)

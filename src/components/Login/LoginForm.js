@@ -14,10 +14,8 @@ class LoginForm extends React.Component {
                 password: ""
             }   
         };
-
     }
     
-
     handleChange = e => {
         this.setState({
             credentials: {
@@ -25,6 +23,7 @@ class LoginForm extends React.Component {
                 [e.target.name]: e.target.value
             }
         });
+        console.log(e);
     };
 
     handleSubmit = e => {
@@ -32,6 +31,7 @@ class LoginForm extends React.Component {
         this.props
             .login(this.state.credentials)
             .then(() => this.props.history.push('/'))
+        console.log(this.state.credentials);
     };
 
     render() {
@@ -57,7 +57,9 @@ class LoginForm extends React.Component {
                                 onChange={this.handleChange}
                             />
                         </div>
-                        <button onClick={this.handleSubmit} className='loginButton'>Log In</button>
+                        <Link to='/users/history'>
+                            <button onClick={this.handleSubmit} className='loginButton'>Log In</button>
+                        </Link>
                     </form>
                     <div className='newAccountLink'>
                         <p>Don't have an account yet?</p>

@@ -20,10 +20,3 @@ export const login = creds => dispatch => {
             dispatch({ type: LOGIN_FAILURE })
         })
 }
-
-
-export function signupRequest(userData) {
-    return dispatch => {
-        return axios.post('/', userData);
-    }
-}
