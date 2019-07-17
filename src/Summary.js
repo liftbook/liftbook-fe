@@ -6,13 +6,13 @@ import Add from "./Add";
 
 import Card from "components/Card/Card.jsx";
 import CardBody from "components/Card/CardBody.jsx";
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
-import Sidebar from "components/Sidebar/Sidebar.jsx"
-import EcommercePage from 'views/EcommercePage/EcommercePage.jsx'
+import Fab from "@material-ui/core/Fab";
+import AddIcon from "@material-ui/icons/Add";
+import Sidebar from "components/Sidebar/Sidebar.jsx";
+import EcommercePage from "views/EcommercePage/EcommercePage.jsx";
 
 // import Dashboard from "views/Dashboard/Dashboard.jsx"
-import Drawer from '@material-ui/core/Drawer';
+import Drawer from "@material-ui/core/Drawer";
 
 import { getUsers } from "./actions";
 
@@ -45,8 +45,8 @@ class Summary extends React.Component {
   render() {
     console.log("something2");
 
-    return (<div></div>)
-}
+    return <div />;
+  }
 }
 
 const mapState = state => {
