@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./Add.css";
 
 import withStyles from "@material-ui/core/styles/withStyles";
 import FormControl from "@material-ui/core/FormControl";
@@ -22,6 +23,10 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
 
 import Select from "@material-ui/core/Select";
+
+const formStyle = {
+  color: "green"
+};
 
 export default class Add extends Component {
   render() {
