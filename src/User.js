@@ -6,13 +6,13 @@ import Card from "components/Card/Card.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-import Sidebar from "components/Sidebar/Sidebar.jsx"
-import EcommercePage from 'views/EcommercePage/EcommercePage.jsx'
-// import Dashboard from "views/Dashboard/Dashboard.jsx"
-import Drawer from '@material-ui/core/Drawer';
-import Add from './Add'
-import { getUser } from './actions'
-import { Route, Switch, Link } from "react-router-dom";
+// import Sidebar from "components/Sidebar/Sidebar.jsx"
+// import EcommercePage from 'views/EcommercePage/EcommercePage.jsx'
+// // import Dashboard from "views/Dashboard/Dashboard.jsx"
+// import Drawer from '@material-ui/core/Drawer';
+// import Add from './Add'
+import { getUser, getLogs } from './actions'
+import { Link } from "react-router-dom";
 
 
 import {
@@ -21,11 +21,11 @@ import {
   cardSubtitle
 } from "assets/jss/material-kit-pro-react.jsx";
 
-const style = {
-  cardTitle,
-  cardLink,
-  cardSubtitle
-};
+// const style = {
+//   cardTitle,
+//   cardLink,
+//   cardSubtitle
+// };
 
 var moment = require('moment');
 moment().format();
@@ -43,7 +43,10 @@ componentDidMount() {
   // // this.props.getExercise();
   // // this.props.getGoals();
   // // this.props.getGoal();
+  // this.props.getUser(this.props.user)
 }
+
+
 
   render() {
     console.log('something2')
@@ -72,7 +75,15 @@ componentDidMount() {
           <p>{this.props.user.password}</p>
           <p>{this.props.user.updated_at}</p>
           <p>{this.props.user.username}</p>
+
           </div>
+
+
+          {/* <div>
+            {this.props.logs(session => {
+
+            })}
+          </div> */}
 
         <a
           href="#pablo"
@@ -96,8 +107,9 @@ componentDidMount() {
 
 const mapState = state => {
   return {
-    user: state.user
+    user: state.user,
+    logs: state.logs,
   }
 }
 
-export default withRouter(connect(mapState, {getUser})(User))
+export default withRouter(connect(mapState, {getUser, getLogs})(User))

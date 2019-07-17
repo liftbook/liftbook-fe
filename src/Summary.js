@@ -1,18 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
-import { Route, Link } from "react-router-dom";
-import Add from "./Add";
-
-import Card from "components/Card/Card.jsx";
-import CardBody from "components/Card/CardBody.jsx";
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
-import Sidebar from "components/Sidebar/Sidebar.jsx"
-import EcommercePage from 'views/EcommercePage/EcommercePage.jsx'
-
-// import Dashboard from "views/Dashboard/Dashboard.jsx"
-import Drawer from '@material-ui/core/Drawer';
 
 import { getUsers, getUser, getExercise, getExercises } from "./actions";
 
@@ -22,11 +10,11 @@ import {
   cardSubtitle
 } from "assets/jss/material-kit-pro-react.jsx";
 
-const style = {
-  cardTitle,
-  cardLink,
-  cardSubtitle
-};
+// const style = {
+//   cardTitle,
+//   cardLink,
+//   cardSubtitle
+// };
 
 var moment = require("moment");
 moment().format();
@@ -40,14 +28,13 @@ class Summary extends React.Component {
   }
   componentDidMount() {
     this.props.getUsers();
-    this.props.getExercises();
-    // this.props.getExercise();
-    // this.props.getGoals();
-    // this.props.getGoal();
+
   }
 
-  getUser = user => {
-    this.props.getUser(user);
+  getUser = event => {
+    this.props.getUser(event.target.innerHTML);
+    this.props.history.push(`/users/${event.target.innerHTML}`)
+    // this.props.getLogs(user);
     
   }
 
@@ -56,7 +43,7 @@ class Summary extends React.Component {
 
     return (<div>{this.props.users.map((user, key) => {
       return(
-        <div onClick={(event) => this.getUser(user)} key={key}>{user.username}</div>
+        <div onClick={(event) => this.getUser(event)} key={key}>{user.username}</div>
       )
     })}</div>)
 }

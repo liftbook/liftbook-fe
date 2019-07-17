@@ -1,14 +1,18 @@
 import axios from 'axios'
 export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+
+
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const FETCHING = 'FETCHING'
 export const CREATING = 'CREATING' 
 export const DELETING = 'DELETING'
 export const UPDATING = 'UPDATING' 
 export const NOT_UPDATING = 'NOT_UPDATING' 
+
 export const DATA_SUCCESS = 'DATA_SUCCESS' 
-export const USER_SUCCESS = 'USER_SUCCSES' 
+export const USER_SUCCESS = 'USER_SUCCESS' 
+export const LOG_SUCCESS = 'LOG_SUCCESS'
 
 export const DATA_FAIL = 'DATA_FAIL' 
 // import authentication from './Authentication/authentication'
@@ -53,7 +57,7 @@ export const getUsers = () => dispatch => {
 export const getUser = (user) => dispatch => {
   dispatch({type: FETCHING})
   axios
-    .get(`https://lift-book.herokuapp.com/api/users/${user.username}`, {
+    .get(`https://lift-book.herokuapp.com/api/users/${user}`, {
       headers: {
         "content-type": "application/json",
         username: localStorage.getItem("username"),
@@ -66,6 +70,36 @@ export const getUser = (user) => dispatch => {
   .catch(error => {
     dispatch({type: DATA_FAIL, payload: error})
   })
+}
+
+//LOG ACTIONS
+// GET -- /logs
+// Returns: array of objects
+// Function: Returns all logs for all users
+
+// GET -- /logs/[log id]
+// Returns: object
+// Function: Returns a single log
+
+// PUT -- /logs/[log id]
+// Returns: object
+// Function: Returns an updated log
+export const getLogs = (user) => dispatch => {
+  dispatch({type: FETCHING})
+  axios
+    .get(`https://lift-book.herokuapp.com/api/users/${user.username}/logs`, {
+      headers: {
+        "content-type": "application/json",
+        username: localStorage.getItem("username"),
+        Authorization: localStorage.getItem("token")
+    }
+    })
+    .then(response => {
+      dispatch({type: LOG_SUCCESS, payload: response.data})
+    })
+    .catch(error => {
+      dispatch({type: DATA_FAIL, payload: error})
+    })
 }
 
 
