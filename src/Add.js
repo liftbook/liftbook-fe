@@ -10,6 +10,14 @@ import NativeSelect from "@material-ui/core/NativeSelect";
 import FormHelperText from "@material-ui/core/FormHelperText";
 
 export default class Add extends Component {
+  state = {
+    name: "",
+    weight: "",
+    reps: "",
+    date: "",
+    bodyPart: ""
+  };
+
   render() {
     return (
       <form>

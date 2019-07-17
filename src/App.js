@@ -68,7 +68,6 @@ export default class App extends React.Component {
     };
   }
   render() {
-    console.log("something");
     return (
       <div>
         <Header
