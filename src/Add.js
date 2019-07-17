@@ -1,4 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, PropTypes } from "react";
+import { addWorkout } from "./actions";
+import { connect } from "react-redux";
 import "./Add.css";
 
 // material-ui imports
@@ -9,7 +11,7 @@ import Button from "@material-ui/core/Button";
 import NativeSelect from "@material-ui/core/NativeSelect";
 import FormHelperText from "@material-ui/core/FormHelperText";
 
-export default class Add extends Component {
+class Add extends Component {
   state = {
     name: "",
     weight: "",
@@ -18,33 +20,70 @@ export default class Add extends Component {
     bodyPart: ""
   };
 
+  handleSubmit = e => {
+    e.preventDefault();
+    const { name, weight, reps, date, bodyPart } = this.state;
+    const newWorkout = { name, weight, reps, date, bodyPart };
+    this.props.addWorkout(newWorkout);
+    this.setState({
+      name: "",
+      weight: "",
+      reps: "",
+      date: "",
+      bodyPart: ""
+    });
+  };
+
+  changeHandler = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <FormControl className="input-style">
           <InputLabel>NAME OF EXERCISE</InputLabel>
-          <Input />
+          <Input
+            onChange={this.changeHandler}
+            value={this.state.name}
+            name="name"
+            type="text"
+          />
         </FormControl>
 
         <br />
 
         <FormControl className="input-style">
           <InputLabel>WEIGHT LIFTED</InputLabel>
-          <Input />
+          <Input
+            onChange={this.changeHandler}
+            value={this.state.weight}
+            name="weight"
+            type="number"
+          />
         </FormControl>
 
         <br />
 
         <FormControl className="input-style">
           <InputLabel className="input-label">REPS COMPLETED</InputLabel>
-          <Input />
+          <Input
+            onChange={this.changeHandler}
+            value={this.state.reps}
+            name="reps"
+            type="number"
+          />
         </FormControl>
 
         <br />
 
         <FormControl className="input-style">
           <InputLabel className="input-label">DATE</InputLabel>
-          <Input />
+          <Input
+            onChange={this.changeHandler}
+            value={this.state.date}
+            name="date"
+            type="number"
+          />
         </FormControl>
 
         <br />
@@ -70,8 +109,21 @@ export default class Add extends Component {
         <br />
         <br />
 
-        <Button variant="outlined">Submit</Button>
+        <Button variant="outlined" onSubmit={this.handleSubmit}>
+          Submit
+        </Button>
       </form>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    workouts: state.workouts
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { addWorkout }
+)(Add);
