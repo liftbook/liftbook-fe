@@ -1,7 +1,12 @@
 form {
     text-align: center;
     font-size: 40px;
-    color: green;
+    color: green !important;
+}
+
+.input-label {
+    color: green !important;
+    font-size: 20px !important;
 }
 
 .input-style {

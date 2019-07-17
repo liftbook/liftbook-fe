@@ -68,7 +68,6 @@ export default class App extends React.Component {
     };
   }
   render() {
-    console.log("something");
     return (
       <div>
         <Header
@@ -125,7 +124,6 @@ export default class App extends React.Component {
         <Route exact path="/users" component={User} />
         <Route exact path="/users/:username" component={User} />
         <Route exact path="/Summary" component={Summary} />
-        <Route exact path="/test" component={CustomInput} />
       </div>
     );
   }
