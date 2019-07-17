@@ -38,11 +38,11 @@ class User extends React.Component {
     }
 }
 componentDidMount() {
-  this.props.getUser()
-  this.props.getExercises();
-  // this.props.getExercise();
-  // this.props.getGoals();
-  // this.props.getGoal();
+  // this.props.getUser()
+  // this.props.getExercises();
+  // // this.props.getExercise();
+  // // this.props.getGoals();
+  // // this.props.getGoal();
 }
 
   render() {
