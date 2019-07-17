@@ -1,8 +1,9 @@
-import { FETCHING, CREATING, UPDATING, NOT_UPDATING, DELETING, DATA_SUCCESS, DATA_FAIL } from './actions'
+import { FETCHING, CREATING, UPDATING, NOT_UPDATING, DELETING, DATA_SUCCESS, DATA_FAIL, USER_SUCCESS } from './actions'
     var moment = require('moment');
     moment().format();
     const initialState = {
-        user: [],
+        users: [],
+        user: {},
     }
     
     const reducer = (state = initialState, action) => {
@@ -19,6 +20,12 @@ import { FETCHING, CREATING, UPDATING, NOT_UPDATING, DELETING, DATA_SUCCESS, DAT
                 }
               }
               case DATA_SUCCESS: {
+                return {
+                  ...state,
+                  users: action.payload,
+                }
+              }
+              case USER_SUCCESS: {
                 return {
                   ...state,
                   user: action.payload,

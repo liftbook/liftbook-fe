@@ -8,32 +8,10 @@ export const DELETING = 'DELETING'
 export const UPDATING = 'UPDATING' 
 export const NOT_UPDATING = 'NOT_UPDATING' 
 export const DATA_SUCCESS = 'DATA_SUCCESS' 
+export const USER_SUCCESS = 'USER_SUCCSES' 
+
 export const DATA_FAIL = 'DATA_FAIL' 
-
-export const getUsers = () => dispatch => {
-    dispatch({type: FETCHING})
-    axios
-      .get('https://lift-book.herokuapp.com/api/users')
-      .then(response => {
-        dispatch({type: DATA_SUCCESS, payload: response.data})
-      })
-      .catch(error => {
-        dispatch({type: DATA_FAIL, payload: error})
-      })
-  }
-
-export const getUser = (username) => dispatch => {
-  dispatch({type: FETCHING})
-  axios
-    .get(`https://lift-book.herokuapp.com/api/users/${username}`)
-    .then(response => {
-    dispatch({type: DATA_SUCCESS, payload: response.data})
-  })
-  .catch(error => {
-    dispatch({type: DATA_FAIL, payload: error})
-  })
-}
-
+// import authentication from './Authentication/authentication'
 
 export const login = creds => dispatch => {
   dispatch({ type: LOGIN_START });
@@ -51,4 +29,134 @@ export const login = creds => dispatch => {
           dispatch({ type: LOGIN_FAILURE })
       })
 }
+
+//USER ACTIONS
+
+export const getUsers = () => dispatch => {
+    dispatch({type: FETCHING})
+    axios
+      .get('https://lift-book.herokuapp.com/api/users', {
+        headers: {
+          "content-type": "application/json",
+          username: localStorage.getItem("username"),
+          Authorization: localStorage.getItem("token")
+      }
+      })
+      .then(response => {
+        dispatch({type: DATA_SUCCESS, payload: response.data})
+      })
+      .catch(error => {
+        dispatch({type: DATA_FAIL, payload: error})
+      })
+  }
+
+export const getUser = (user) => dispatch => {
+  dispatch({type: FETCHING})
+  axios
+    .get(`https://lift-book.herokuapp.com/api/users/${user.username}`, {
+      headers: {
+        "content-type": "application/json",
+        username: localStorage.getItem("username"),
+        Authorization: localStorage.getItem("token")
+    }
+    })
+    .then(response => {
+    dispatch({type: USER_SUCCESS, payload: response.data})
+  })
+  .catch(error => {
+    dispatch({type: DATA_FAIL, payload: error})
+  })
+}
+
+
+//EXERCISE ACTIONS
+export const getExercises = () => dispatch => {
+  dispatch({type: FETCHING})
+  axios
+    .get('https://lift-book.herokuapp.com/api/exercises', {
+      headers: {
+        "content-type": "application/json",
+        username: localStorage.getItem("username"),
+        Authorization: localStorage.getItem("token")
+    }
+    })
+    .then(response => {
+      dispatch({type: DATA_SUCCESS, payload: response.data})
+    })
+    .catch(error => {
+      dispatch({type: DATA_FAIL, payload: error})
+    })
+}
+
+export const getExercise = (exercise) => dispatch => {
+  dispatch({type: FETCHING})
+  axios
+    .get(`https://lift-book.herokuapp.com/api/exercises/${exercise}`, {
+      headers: {
+        "content-type": "application/json",
+        username: localStorage.getItem("username"),
+        Authorization: localStorage.getItem("token")
+    }
+    })
+    .then(response => {
+      dispatch({type: DATA_SUCCESS, payload: response.data})
+    })
+    .catch(error => {
+      dispatch({type: DATA_FAIL, payload: error})
+    })
+}
+//GOAL ACTIONS
+export const getGoals = () => dispatch => {
+  dispatch({type: FETCHING})
+  axios
+    .get('https://lift-book.herokuapp.com/api/goals', {
+      headers: {
+        "content-type": "application/json",
+        username: localStorage.getItem("username"),
+        Authorization: localStorage.getItem("token")
+    }
+    })
+    .then(response => {
+      dispatch({type: DATA_SUCCESS, payload: response.data})
+    })
+    .catch(error => {
+      dispatch({type: DATA_FAIL, payload: error})
+    })
+}
+export const getGoal = (username) => dispatch => {
+  dispatch({type: FETCHING})
+  axios
+    .get(`https://lift-book.herokuapp.com/api/users/${username}/goals`, {
+      headers: {
+        "content-type": "application/json",
+        username: localStorage.getItem("username"),
+        Authorization: localStorage.getItem("token")
+    }
+    })
+    .then(response => {
+      dispatch({type: DATA_SUCCESS, payload: response.data})
+    })
+    .catch(error => {
+      dispatch({type: DATA_FAIL, payload: error})
+    })
+}
+// GET -- /goals
+// Returns: array of objects
+// Function: Returns all goals
+
+// GET -- /goals/[goal id]
+// Returns: object
+// Function: Returns a single goal
+
+// GET -- /users/[username]/goals
+// Returns: array of objects
+// Function: Returns all goals for one user
+
+// GET -- /users/[username]/goals/[exercise name or id]
+// Returns: array of objects
+// Function: Returns all goals for one exercise
+//LOGS ACTIONS
+
+//RECORDS ACTIONS
+
 

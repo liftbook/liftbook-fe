@@ -14,7 +14,7 @@ import EcommercePage from 'views/EcommercePage/EcommercePage.jsx'
 // import Dashboard from "views/Dashboard/Dashboard.jsx"
 import Drawer from '@material-ui/core/Drawer';
 
-import { getUsers } from "./actions";
+import { getUsers, getUser, getExercise, getExercises } from "./actions";
 
 import {
   cardTitle,
@@ -40,24 +40,38 @@ class Summary extends React.Component {
   }
   componentDidMount() {
     this.props.getUsers();
+    this.props.getExercises();
+    // this.props.getExercise();
+    // this.props.getGoals();
+    // this.props.getGoal();
+  }
+
+  getUser = user => {
+    this.props.getUser(user);
+    
   }
 
   render() {
     console.log("something2");
 
-    return (<div></div>)
+    return (<div>{this.props.users.map((user, key) => {
+      return(
+        <div onClick={(event) => this.getUser(user)} key={key}>{user.username}</div>
+      )
+    })}</div>)
 }
 }
 
 const mapState = state => {
   return {
-    user: state.user
+    users: state.users
+
   };
 };
 
 export default withRouter(
   connect(
     mapState,
-    { getUsers }
+    { getUsers, getUser, getExercise, getExercises }
   )(Summary)
 );

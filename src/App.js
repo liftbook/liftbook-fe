@@ -17,6 +17,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import User from './User'
 
+
 import withStyles from "@material-ui/core/styles/withStyles";
 // core components
 import Card from "components/Card/Card.jsx";
@@ -111,15 +112,20 @@ export default class App extends React.Component {
                       Settings
                     </Button>
                   </ListItem>
+                  <Summary />
                 </List>
               }//
             />
       <Route exact path="/" component={LoginForm} />
       <Route exact path="/login" component={LoginForm} />
       <Route exact path="/users/register" component={SignupForm} />
+      <Route exact path="/add" component={Add} />
 
       {/*this route private after login*/}
       <Route exact path="/users" component={User} />
+      <Route exact path="/users/:username" component={User} />
+      <Route exact path="/Summary" component={Summary}/>
+
       {/* <PrivateRoute exact path="/users/[username]/logs/[exerciseId]" component={DeleteFriend} /> */}
 
     </div>
