@@ -1,10 +1,9 @@
-
 // import React from 'react';
 // import './App.css';
 // import { Route } from 'react-router-dom';
 
 
-import React from "react";
+import React, { Component } from "react";
 import Summary from "./Summary";
 import "./App.css";
 import { Route, Link } from "react-router-dom";
@@ -27,6 +26,20 @@ import User from './User'
 // import AddIcon from "@material-ui/icons/Add";
 import LoginForm from './components/Login/LoginForm'
 import SignupForm from './components/SignUp/SignupForm';
+import { connect } from "react-redux";
+import { withRouter } from "react-router";
+import User from "./User";
+
+import withStyles from "@material-ui/core/styles/withStyles";
+// core components
+import Card from "components/Card/Card.jsx";
+import CardBody from "components/Card/CardBody.jsx";
+import { makeStyles } from "@material-ui/core/styles";
+import Fab from "@material-ui/core/Fab";
+import AddIcon from "@material-ui/icons/Add";
+import LoginForm from "./components/Login/LoginForm";
+import SignupForm from "./components/SignUp/SignupForm";
+
 
 // @material-ui/core components
 import List from "@material-ui/core/List";
@@ -45,13 +58,14 @@ import Header from "components/Header/Header.jsx";
 // import CustomInput from "components/CustomInput/CustomInput.jsx";
 // import CustomDropdown from "components/CustomDropdown/CustomDropdown.jsx";
 import PrivateRoute from './PrivateRoute'
+import CustomInput from "components/CustomInput/CustomInput.jsx";
+import CustomDropdown from "components/CustomDropdown/CustomDropdown.jsx";
+import PrivateRoute from "./PrivateRoute";
 
 // import navbarsStyle from "assets/jss/material-kit-pro-react/views/componentsSections/navbarsStyle.jsx";
 
 // import image from "assets/img/bg.jpg";
 // import profileImage from "assets/img/faces/avatar.jpg";
-
-
 
 import {
   cardTitle,
@@ -131,4 +145,63 @@ export default class App extends React.Component {
     </div>
   );
 }
+    return (
+      <div>
+        <Header
+          brand="Liftbook"
+          color="info"
+          links={
+            <List
+              className={
+                this.state.classes.list + " " + this.state.classes.mlAuto
+              }
+            >
+              <ListItem className={this.state.classes.listItem}>
+                <Button
+                  href="#pablo"
+                  className={
+                    this.state.classes.navLink +
+                    " " +
+                    this.state.classes.navLinkActive
+                  }
+                  onClick={e => e.preventDefault()}
+                  color="transparent"
+                >
+                  Discover
+                </Button>
+              </ListItem>
+              <ListItem className={this.state.classes.listItem}>
+                <Button
+                  className={this.state.classes.navLink}
+                  onClick={e => e.preventDefault()}
+                  color="transparent"
+                >
+                  <Link to="/users">Profile</Link>
+                </Button>
+              </ListItem>
+              <ListItem className={this.state.classes.listItem}>
+                <Button
+                  href="#pablo"
+                  className={this.state.classes.navLink}
+                  onClick={e => e.preventDefault()}
+                  color="transparent"
+                >
+                  Settings
+                </Button>
+              </ListItem>
+            </List>
+          } //
+        />
+        <Route exact path="/" component={LoginForm} />
+        <Route exact path="/login" component={LoginForm} />
+        <Route exact path="/users/register" component={SignupForm} />
+        <Route exact path="/add" component={Add} />
+
+        {/*this route private after login*/}
+        <Route exact path="/users" component={User} />
+        <Route exact path="/users/:username" component={User} />
+        <Route exact path="/Summary" component={Summary} />
+      </div>
+    );
+  }
 }

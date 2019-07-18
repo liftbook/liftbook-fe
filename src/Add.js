@@ -1,74 +1,137 @@
 import React, { Component } from "react";
+import { addWorkout } from "./actions";
+import { connect } from "react-redux";
+import "./Add.css";
 
-import withStyles from "@material-ui/core/styles/withStyles";
+// material-ui imports
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import Input from "@material-ui/core/Input";
-import CustomInput from "components/CustomInput/CustomInput.jsx";
-
-// @material-ui/icons
-import Clear from "@material-ui/icons/Clear";
-import Check from "@material-ui/icons/Check";
-// core components
-import customInputStyle from "assets/jss/material-dashboard-react/components/customInputStyle.jsx";
-
-// Material-Ui
-import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
 import NativeSelect from "@material-ui/core/NativeSelect";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
-import FilledInput from "@material-ui/core/FilledInput";
-
-import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
 
-import Select from "@material-ui/core/Select";
+class Add extends Component {
+  state = {
+    name: "",
+    weight: "",
+    reps: "",
+    date: "",
+    bodyPart: ""
+  };
 
-export default class Add extends Component {
+  handleSubmit = e => {
+    e.preventDefault();
+    const { name, weight, reps, date, bodyPart } = this.state;
+    const newWorkout = { name, weight, reps, date, bodyPart };
+    this.props.addWorkout(newWorkout);
+    this.setState({
+      name: "",
+      weight: "",
+      reps: "",
+      date: "",
+      bodyPart: ""
+    });
+  };
+
+  changeHandler = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
   render() {
     return (
-      <form>
-        <FormControl>
-          <InputLabel>Name of Exercise</InputLabel>
-          <Input />
+      <form onSubmit={this.handleSubmit}>
+        <FormControl className="input-group">
+          <InputLabel className="input-label">NAME OF EXERCISE</InputLabel>
+          <Input
+            className="input-style"
+            onChange={this.changeHandler}
+            value={this.state.name}
+            name="name"
+            type="text"
+          />
         </FormControl>
 
         <br />
 
-        <FormControl>
-          <InputLabel>Amount Lifted</InputLabel>
-          <Input />
+        <FormControl className="input-group">
+          <InputLabel className="input-label">WEIGHT LIFTED</InputLabel>
+          <Input
+            className="input-style"
+            onChange={this.changeHandler}
+            value={this.state.weight}
+            name="weight"
+            type="number"
+          />
         </FormControl>
 
         <br />
 
-        <FormControl>
-          <InputLabel>Reps completed</InputLabel>
-          <Input />
+        <FormControl className="input-group">
+          <InputLabel className="input-label">REPS COMPLETED</InputLabel>
+          <Input
+            className="input-style"
+            onChange={this.changeHandler}
+            value={this.state.reps}
+            name="reps"
+            type="number"
+          />
         </FormControl>
 
         <br />
 
-        <FormControl>
-          <InputLabel>Date</InputLabel>
-          <Input />
+        <FormControl className="input-group">
+          <InputLabel className="input-label">DATE</InputLabel>
+          <Input
+            className="input-style"
+            onChange={this.changeHandler}
+            value={this.state.date}
+            name="date"
+            type="number"
+          />
         </FormControl>
 
         <br />
         <br />
 
-        <FormControl>
+        <FormControl className="input-group">
           <NativeSelect>
             <option value="" disabled>
-              Body Part
+              BODY PART
             </option>
-            <option>Bicep</option>
-            <option>Triceps </option>
-            <option>Back</option>
-            <option>Shoulder</option>
+            <option className="input-style">BICEPS</option>
+            <option className="input-style">TRICEPS</option>
+            <option className="input-style">BACK</option>
+            <option className="input-style">CHEST</option>
+            <option className="input-style">SHOULDERS</option>
+            <option className="input-style">ABS</option>
+            <option className="input-style">LEGS</option>
+            <option className="input-style">MISC</option>
           </NativeSelect>
-          <FormHelperText>Body Part</FormHelperText>
+          <FormHelperText className="input-label">BODY PART</FormHelperText>
         </FormControl>
+
+        <br />
+        <br />
+
+        <Button
+          variant="outlined"
+          onSubmit={this.handleSubmit}
+          className="submit"
+        >
+          Submit
+        </Button>
       </form>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    workouts: state.workouts
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { addWorkout }
+)(Add);

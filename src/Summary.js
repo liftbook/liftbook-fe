@@ -3,6 +3,16 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router";
 
 import { getUsers, getUser, getExercise, getExercises } from "./actions";
+import Card from "components/Card/Card.jsx";
+import CardBody from "components/Card/CardBody.jsx";
+import Fab from "@material-ui/core/Fab";
+import AddIcon from "@material-ui/icons/Add";
+import Sidebar from "components/Sidebar/Sidebar.jsx";
+import EcommercePage from "views/EcommercePage/EcommercePage.jsx";
+
+// import Dashboard from "views/Dashboard/Dashboard.jsx"
+import Drawer from "@material-ui/core/Drawer";
+
 
 import {
   cardTitle,
@@ -47,6 +57,7 @@ class Summary extends React.Component {
       )
     })}</div>)
 }
+
 }
 
 const mapState = state => {
