@@ -14,6 +14,7 @@ export const DATA_SUCCESS = "DATA_SUCCESS";
 
 export const DATA_FAIL = "DATA_FAIL";
 
+
 export const login = creds => dispatch => {
   dispatch({ type: LOGIN_START });
 
@@ -41,3 +42,4 @@ export const getUsers = () => dispatch => {
       dispatch({ type: DATA_FAIL, payload: error });
     });
 };
+
