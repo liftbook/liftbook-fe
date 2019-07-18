@@ -216,9 +216,13 @@ export const getGoal = username => dispatch => {
 //RECORDS ACTIONS
 
 export const addWorkout = newWorkout => dispatch => {
+  console.log(newWorkout);
   dispatch({ type: CREATING });
   axios
     .post("https://lift-book.herokuapp.com/api/exercises", newWorkout)
-    .then(res => dispatch({ type: ADD_WORKOUT, payload: res.data }))
+    .then(res => {
+      console.log(res);
+      dispatch({ type: ADD_WORKOUT, payload: res.data });
+    })
     .catch(err => dispatch({ type: DATA_FAIL, payload: err }));
 };
