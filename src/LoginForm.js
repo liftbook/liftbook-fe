@@ -30,7 +30,7 @@ class LoginForm extends React.Component {
         e.preventDefault();
         this.props
             .login(this.state.credentials)
-            .then(() => this.props.history.push('/users'))
+            .then(() => this.props.history.push(`/user/${this.state.username}`))
     };
 
     render() {

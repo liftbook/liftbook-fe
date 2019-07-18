@@ -16,6 +16,7 @@ class LoginForm extends React.Component {
     };
   }
 
+
   handleChange = e => {
     this.setState({
       credentials: {
@@ -32,6 +33,7 @@ class LoginForm extends React.Component {
       .then(() => this.props.history.push("/"));
     console.log(this.state.credentials);
   };
+
 
   render() {
     return (

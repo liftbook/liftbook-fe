@@ -1,3 +1,13 @@
+
+import { FETCHING, DATA_SUCCESS, DATA_FAIL, USER_SUCCESS, LOG_SUCCESS } from './actions'
+    var moment = require('moment');
+    moment().format();
+    const initialState = {
+
+    }
+    
+    const reducer = (state = initialState, action) => {
+
 import {
   FETCHING,
   CREATING,
@@ -6,14 +16,19 @@ import {
   DELETING,
   DATA_SUCCESS,
   DATA_FAIL,
-  ADD_WORKOUT
+  ADD_WORKOUT,
+  USER_SUCCESS,
+  LOG_SUCCESS
 } from "./actions";
 
 var moment = require("moment");
 moment().format();
 const initialState = {
   user: [],
-  workouts: []
+  workouts: [],
+          users: [],
+        user: [],
+        logs: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -30,17 +45,42 @@ const reducer = (state = initialState, action) => {
         ...state
       };
     }
-    case DATA_SUCCESS: {
-      return {
-        ...state,
-        user: action.payload
-      };
-    }
+
     case DATA_FAIL: {
       return {
         ...state
       };
     }
+             
+            case FETCHING: {
+                return {
+                  ...state,
+                    }
+                  }
+              case DATA_SUCCESS: {
+                return {
+                  ...state,
+                  users: action.payload,
+                }
+              }
+              case USER_SUCCESS: {
+                return {
+                  ...state,
+                  user: action.payload,
+                }
+              }
+              case LOG_SUCCESS: {
+                return {
+                  ...state,
+                  logs: action.payload,
+                }
+              }
+              case DATA_FAIL: {
+                return {
+                  ...state,
+                }
+            }
+
     default:
       return state;
   }
