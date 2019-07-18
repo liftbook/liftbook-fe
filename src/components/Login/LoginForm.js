@@ -28,7 +28,9 @@ class LoginForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.login(this.state.credentials)
-      .then(() => this.props.history.push("/users/[username]"));
+      .then(() =>
+        this.props.history.push(`/users/${this.state.credentials.username}`)
+      );
   };
 
   render() {
