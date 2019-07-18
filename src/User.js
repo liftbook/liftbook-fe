@@ -13,8 +13,10 @@ import AddIcon from '@material-ui/icons/Add';
 // import Add from './Add'
 import { getUser, getLogs } from './actions'
 import { Link } from "react-router-dom";
-import RecipeReviewCard from './MediaCard'
 import Icon from '@material-ui/core/Icon';
+
+import RecipeReviewCard from './MediaCard'
+
 
 import {
   cardTitle,
@@ -61,28 +63,9 @@ componentDidMount() {
       <div className="mainColumn"></div>
     </div>
 
-    <RecipeReviewCard user={this.props.user.username}/>
-
-    <Card style={{ width: "20rem" }}>
-    <Link to="/add">
-
-      <Icon className={this.state.classes.icon} color="primary">
-        add_circle
-      </Icon>        
-        </Link>
-      <CardBody>
-        <h4 className={this.state.classes.cardTitle}>Exercise</h4>
-        <div>
-          <p>{this.props.name}</p>
-          <p>{this.props.weight_lifted}</p>
-          <p>{this.props.repetitions}</p>
-          <p>{this.props.date}</p>
-          <p>{this.props.body_part}</p>
-          </div>
+    <RecipeReviewCard user={this.props.user.username} all={this.props}/>
 
 
-      </CardBody>
-    </Card>
      </div>
   )}
 }

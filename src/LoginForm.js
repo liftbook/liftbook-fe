@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { login } from './actions'
 import { Link } from 'react-router-dom';
 import LoginPage from './views/LoginPage/LoginPage.jsx'
+import { withRouter } from "react-router";
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -30,7 +31,7 @@ class LoginForm extends React.Component {
         e.preventDefault();
         this.props
             .login(this.state.credentials)
-            .then(() => this.props.history.push(`/user/${this.state.username}`))
+            .then(() => this.props.history.push(`/users/${this.state.credentials.username}`))
     };
 
     render() {
@@ -72,7 +73,7 @@ const mapStateToProps = ({ isLoggedIn }) => ({
     isLoggedIn
 });
 
-export default connect(
+export default withRouter(connect(
     mapStateToProps,
     { login }
-)(LoginForm)
+)(LoginForm))

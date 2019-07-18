@@ -83,7 +83,7 @@ export default class App extends React.Component {
       <Route exact path="/add" component={Add} />
 
       {/*this route private after login*/}
-      <PrivateRoute exact path="/users" component={User} />
+      <PrivateRoute exact path="/users" component={Summary} />
       <PrivateRoute exact path="/users/:username" component={User} />
       <PrivateRoute exact path="/Summary" component={Summary}/>
 
