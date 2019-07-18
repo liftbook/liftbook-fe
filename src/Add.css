@@ -1,16 +1,25 @@
 form {
     text-align: center;
     font-size: 40px;
-    color: green !important;
+}
+
+.input-group {
+    width: 350px;
+    height: 70px;
 }
 
 .input-label {
-    color: green !important;
-    font-size: 20px !important;
+    color: #410b13 !important;
+    font-weight: bold !important;
+    font-size: 25px !important;
 }
 
 .input-style {
-    width: 300px;
-    height: 70px;
-    font-size: 20px;
+    font-size: 20px !important;
+    font-weight: bold !important;
+}
+
+.submit {
+    font-weight: bold !important;
+    font-size: 20px !important;
 }

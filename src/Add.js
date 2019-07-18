@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from "react";
+import React, { Component } from "react";
 import { addWorkout } from "./actions";
 import { connect } from "react-redux";
 import "./Add.css";
@@ -40,9 +40,10 @@ class Add extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <FormControl className="input-style">
-          <InputLabel>NAME OF EXERCISE</InputLabel>
+        <FormControl className="input-group">
+          <InputLabel className="input-label">NAME OF EXERCISE</InputLabel>
           <Input
+            className="input-style"
             onChange={this.changeHandler}
             value={this.state.name}
             name="name"
@@ -52,9 +53,10 @@ class Add extends Component {
 
         <br />
 
-        <FormControl className="input-style">
-          <InputLabel>WEIGHT LIFTED</InputLabel>
+        <FormControl className="input-group">
+          <InputLabel className="input-label">WEIGHT LIFTED</InputLabel>
           <Input
+            className="input-style"
             onChange={this.changeHandler}
             value={this.state.weight}
             name="weight"
@@ -64,9 +66,10 @@ class Add extends Component {
 
         <br />
 
-        <FormControl className="input-style">
+        <FormControl className="input-group">
           <InputLabel className="input-label">REPS COMPLETED</InputLabel>
           <Input
+            className="input-style"
             onChange={this.changeHandler}
             value={this.state.reps}
             name="reps"
@@ -76,9 +79,10 @@ class Add extends Component {
 
         <br />
 
-        <FormControl className="input-style">
+        <FormControl className="input-group">
           <InputLabel className="input-label">DATE</InputLabel>
           <Input
+            className="input-style"
             onChange={this.changeHandler}
             value={this.state.date}
             name="date"
@@ -89,27 +93,31 @@ class Add extends Component {
         <br />
         <br />
 
-        <FormControl className="input-style">
+        <FormControl className="input-group">
           <NativeSelect>
             <option value="" disabled>
               BODY PART
             </option>
-            <option>BICEPS</option>
-            <option>TRICEPS</option>
-            <option>BACK</option>
-            <option>CHEST</option>
-            <option>SHOULDERS</option>
-            <option>ABS</option>
-            <option>LEGS</option>
-            <option>MISC</option>
+            <option className="input-style">BICEPS</option>
+            <option className="input-style">TRICEPS</option>
+            <option className="input-style">BACK</option>
+            <option className="input-style">CHEST</option>
+            <option className="input-style">SHOULDERS</option>
+            <option className="input-style">ABS</option>
+            <option className="input-style">LEGS</option>
+            <option className="input-style">MISC</option>
           </NativeSelect>
-          <FormHelperText>BODY PART</FormHelperText>
+          <FormHelperText className="input-label">BODY PART</FormHelperText>
         </FormControl>
 
         <br />
         <br />
 
-        <Button variant="outlined" onSubmit={this.handleSubmit}>
+        <Button
+          variant="outlined"
+          onSubmit={this.handleSubmit}
+          className="submit"
+        >
           Submit
         </Button>
       </form>
