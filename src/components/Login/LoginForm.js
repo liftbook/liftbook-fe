@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { login } from "../../actions/index";
+import { login } from "../../actions";
 import { Link } from "react-router-dom";
 
 import "./LoginForm.css";
@@ -16,7 +16,6 @@ class LoginForm extends React.Component {
     };
   }
 
-
   handleChange = e => {
     this.setState({
       credentials: {
@@ -31,7 +30,6 @@ class LoginForm extends React.Component {
     this.props.login(this.state.credentials)
       .then(() => this.props.history.push("/users/[username]"));
   };
-
 
   render() {
     return (
@@ -56,7 +54,7 @@ class LoginForm extends React.Component {
                 onChange={this.handleChange}
               />
             </div>
-      <Link to="/Summary">
+            <Link to="/Summary">
               <button onClick={this.handleSubmit} className="loginButton">
                 Log In
               </button>

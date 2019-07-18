@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { signup } from "../../actions/index";
+import { signup } from "../../actions";
 import { Link } from "react-router-dom";
 
 import "./SignupForm.css";
@@ -29,7 +29,8 @@ class SignupForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-       this.props.signup(this.state.credentials)
+    this.props
+      .signup(this.state.credentials)
       .then(() => this.props.history.push("/users/[username]"));
   };
 
@@ -82,7 +83,6 @@ class SignupForm extends React.Component {
                 Sign Up
               </button>
             </Link>
-
           </form>
           <div className="loginLink">
             <p>Already have an account?</p>
