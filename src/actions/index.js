@@ -14,17 +14,6 @@ export const DATA_SUCCESS = "DATA_SUCCESS";
 
 export const DATA_FAIL = "DATA_FAIL";
 
-// export const register = creds => dispatch => {
-//   dispatch({ type: REGISTER_START });
-//   return axios
-//     .post("https://lift-book.herokuapp.com/api", creds)
-//     .then(res => {
-
-//       dispatch({ type: REGISTER_START });
-//     })
-//     .catch(err => console.log(err.response));
-// }
-
 export const login = creds => dispatch => {
   dispatch({ type: LOGIN_START });
 
