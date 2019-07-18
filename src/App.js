@@ -44,7 +44,7 @@ import ListItem from "@material-ui/core/ListItem";
 import Header from "components/Header/Header.jsx";
 // import CustomInput from "components/CustomInput/CustomInput.jsx";
 // import CustomDropdown from "components/CustomDropdown/CustomDropdown.jsx";
-// import PrivateRoute from './PrivateRoute'
+import PrivateRoute from './PrivateRoute'
 
 // import navbarsStyle from "assets/jss/material-kit-pro-react/views/componentsSections/navbarsStyle.jsx";
 
@@ -122,9 +122,9 @@ export default class App extends React.Component {
       <Route exact path="/add" component={Add} />
 
       {/*this route private after login*/}
-      <Route exact path="/users" component={User} />
-      <Route exact path="/users/:username" component={User} />
-      <Route exact path="/Summary" component={Summary}/>
+      <PrivateRoute exact path="/users" component={User} />
+      <PrivateRoute exact path="/users/:username" component={User} />
+      <PrivateRoute exact path="/Summary" component={Summary}/>
 
       {/* <PrivateRoute exact path="/users/[username]/logs/[exerciseId]" component={DeleteFriend} /> */}
 
