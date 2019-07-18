@@ -90,7 +90,7 @@ const reducer = (state = initialState, action) => {
     case ADD_WORKOUT: {
       return {
         ...state,
-        workouts: [...action.payload]
+        workouts: [action.payload]
       };
     }
     case FETCHING: {
