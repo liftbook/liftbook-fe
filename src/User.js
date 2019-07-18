@@ -13,7 +13,8 @@ import AddIcon from '@material-ui/icons/Add';
 // import Add from './Add'
 import { getUser, getLogs } from './actions'
 import { Link } from "react-router-dom";
-
+import RecipeReviewCard from './MediaCard'
+import Icon from '@material-ui/core/Icon';
 
 import {
   cardTitle,
@@ -53,52 +54,33 @@ componentDidMount() {
 
     return (<div className="App">
 
-      <Link to="/add">
-          <Fab
-            color="primary"
-            aria-label="Add"
-            className={this.state.classes.fab}
-          >
-            <AddIcon />
-          </Fab>
-        </Link>
+
+
+    <div className="profile">
+      <div className="leftcolumn"></div>
+      <div className="mainColumn"></div>
+    </div>
+
+    <RecipeReviewCard user={this.props.user.username}/>
+
     <Card style={{ width: "20rem" }}>
+    <Link to="/add">
+
+      <Icon className={this.state.classes.icon} color="primary">
+        add_circle
+      </Icon>        
+        </Link>
       <CardBody>
-        <h4 className={this.state.classes.cardTitle}>Card Title</h4>
-        <h6 className={this.state.classes.cardSubtitle}>Card Subtitle</h6>
+        <h4 className={this.state.classes.cardTitle}>Exercise</h4>
         <div>
-
-          <p>{this.props.user.created_at}</p>
-          <p>{this.props.user.email}</p>
-          <p>{this.props.user.first_name}</p>
-          <p>{this.props.user.last_name}</p>
-          <p>{this.props.user.password}</p>
-          <p>{this.props.user.updated_at}</p>
-          <p>{this.props.user.username}</p>
-
+          <p>{this.props.name}</p>
+          <p>{this.props.weight_lifted}</p>
+          <p>{this.props.repetitions}</p>
+          <p>{this.props.date}</p>
+          <p>{this.props.body_part}</p>
           </div>
 
 
-          {/* <div>
-            {this.props.logs(session => {
-
-            })}
-          </div> */}
-
-        <a
-          href="#pablo"
-          className={this.state.classes.cardLink}
-          onClick={e => e.preventDefault()}
-        >
-          Card link
-        </a>
-        <a
-          href="#pablo"
-          className={this.state.classes.cardLink}
-          onClick={e => e.preventDefault()}
-        >
-          Another link
-        </a>
       </CardBody>
     </Card>
      </div>
@@ -109,6 +91,11 @@ const mapState = state => {
   return {
     user: state.user,
     logs: state.logs,
+    name: state.name,
+    weight_lifted: state.weight_lifted,
+    repetitions: state.repetitions,
+    date: state.date,
+    body_part: state.body_part,
   }
 }
 

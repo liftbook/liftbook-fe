@@ -7,12 +7,12 @@
 import React from "react";
 import Summary from "./Summary";
 import "./App.css";
-import { Route, Link } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Add from "Add";
 
 // material-ui components
 // core components
-import Button from "components/CustomButtons/Button.jsx";
+// import Button from "components/CustomButtons/Button.jsx";
 // import { connect } from "react-redux";
 // import { withRouter } from "react-router";
 import User from './User'
@@ -28,9 +28,9 @@ import User from './User'
 import LoginForm from './components/Login/LoginForm'
 import SignupForm from './components/SignUp/SignupForm';
 
-// @material-ui/core components
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
+// // @material-ui/core components
+// import List from "@material-ui/core/List";
+// import ListItem from "@material-ui/core/ListItem";
 // @material-ui/icons
 // import Search from "@material-ui/icons/Search";
 // import Email from "@material-ui/icons/Email";
@@ -41,11 +41,11 @@ import ListItem from "@material-ui/core/ListItem";
 // // core components
 // import GridContainer from "components/Grid/GridContainer.jsx";
 // import GridItem from "components/Grid/GridItem.jsx";
-import Header from "components/Header/Header.jsx";
+// import Header from "components/Header/Header.jsx";
 // import CustomInput from "components/CustomInput/CustomInput.jsx";
 // import CustomDropdown from "components/CustomDropdown/CustomDropdown.jsx";
 import PrivateRoute from './PrivateRoute'
-
+import AppBar from './AppBar'
 // import navbarsStyle from "assets/jss/material-kit-pro-react/views/componentsSections/navbarsStyle.jsx";
 
 // import image from "assets/img/bg.jpg";
@@ -59,11 +59,11 @@ import {
   cardSubtitle
 } from "assets/jss/material-kit-pro-react.jsx";
 
-const style = {
-  cardTitle,
-  cardLink,
-  cardSubtitle
-};
+// const style = {
+//   cardTitle,
+//   cardLink,
+//   cardSubtitle
+// };
 
 export default class App extends React.Component {
   constructor(props) {
@@ -76,46 +76,7 @@ export default class App extends React.Component {
     console.log('something')
   return (
     <div >
-       <Header
-              brand="Liftbook"
-              color="info"
-              links={
-                <List className={this.state.classes.list + " " + this.state.classes.mlAuto}>
-                  <ListItem className={this.state.classes.listItem}>
-                    <Button
-                      href="#pablo"
-                      className={this.state.classes.navLink + " " + this.state.classes.navLinkActive}
-                      onClick={e => e.preventDefault()}
-                      color="transparent"
-                    >
-                      Discover
-                    </Button>
-                  </ListItem>
-                  <ListItem className={this.state.classes.listItem}>
-                    <Button
-                      className={this.state.classes.navLink}
-                      onClick={e => e.preventDefault()}
-                      color="transparent"
-                    >
-                      <Link to="/users/">
-                      Profile
-                      </Link>
-                    </Button>
-                  </ListItem>
-                  <ListItem className={this.state.classes.listItem}>
-                    <Button
-                      href="#pablo"
-                      className={this.state.classes.navLink}
-                      onClick={e => e.preventDefault()}
-                      color="transparent"
-                    >
-                      Settings
-                    </Button>
-                  </ListItem>
-                  <Summary />
-                </List>
-              }//
-            />
+      <AppBar />
       <Route exact path="/" component={LoginForm} />
       <Route exact path="/login" component={LoginForm} />
       <Route exact path="/users/register" component={SignupForm} />
@@ -132,3 +93,46 @@ export default class App extends React.Component {
   );
 }
 }
+
+
+
+// <Header
+// brand="Liftbook"
+// color="info"
+// links={
+//   <List className={this.state.classes.list + " " + this.state.classes.mlAuto}>
+//     <ListItem className={this.state.classes.listItem}>
+//       <Button
+//         href="#pablo"
+//         className={this.state.classes.navLink + " " + this.state.classes.navLinkActive}
+//         onClick={e => e.preventDefault()}
+//         color="transparent"
+//       >
+//         Discover
+//       </Button>
+//     </ListItem>
+//     <ListItem className={this.state.classes.listItem}>
+//       <Button
+//         className={this.state.classes.navLink}
+//         onClick={e => e.preventDefault()}
+//         color="transparent"
+//       >
+//         <Link to="/users/">
+//         Profile
+//         </Link>
+//       </Button>
+//     </ListItem>
+//     <ListItem className={this.state.classes.listItem}>
+//       <Button
+//         href="#pablo"
+//         className={this.state.classes.navLink}
+//         onClick={e => e.preventDefault()}
+//         color="transparent"
+//       >
+//         Settings
+//       </Button>
+//     </ListItem>
+//     <Summary />
+//   </List>
+// }//
+// />
