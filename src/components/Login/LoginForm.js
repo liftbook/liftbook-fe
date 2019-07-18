@@ -28,10 +28,8 @@ class LoginForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props
-      .login(this.state.credentials)
-      .then(() => this.props.history.push("/"));
-    console.log(this.state.credentials);
+    this.props.login(this.state.credentials)
+      .then(() => this.props.history.push("/users/[username]"));
   };
 
 
@@ -58,7 +56,7 @@ class LoginForm extends React.Component {
                 onChange={this.handleChange}
               />
             </div>
-            <Link to="/users/history">
+      <Link to="/Summary">
               <button onClick={this.handleSubmit} className="loginButton">
                 Log In
               </button>
