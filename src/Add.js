@@ -13,24 +13,40 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 
 class Add extends Component {
   state = {
+    user: "bob",
     name: "",
-    weight: "",
-    reps: "",
+    weight_lifted: "",
+    repetitions: "",
     date: "",
-    bodyPart: ""
+    body_part: ""
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    const { name, weight, reps, date, bodyPart } = this.state;
-    const newWorkout = { name, weight, reps, date, bodyPart };
+    const {
+      name,
+      weight_lifted,
+      repetitions,
+      date,
+      body_part,
+      user
+    } = this.state;
+    const newWorkout = {
+      name,
+      weight_lifted,
+      repetitions,
+      date,
+      body_part,
+      user
+    };
     this.props.addWorkout(newWorkout);
     this.setState({
+      user: "bob",
       name: "",
-      weight: "",
-      reps: "",
+      weight_lifted: "",
+      repetitions: "",
       date: "",
-      bodyPart: ""
+      body_part: ""
     });
   };
 
@@ -58,8 +74,8 @@ class Add extends Component {
           <Input
             className="input-style"
             onChange={this.changeHandler}
-            value={this.state.weight}
-            name="weight"
+            value={this.state.weight_lifted}
+            name="weight_lifted"
             type="number"
           />
         </FormControl>
@@ -71,8 +87,8 @@ class Add extends Component {
           <Input
             className="input-style"
             onChange={this.changeHandler}
-            value={this.state.reps}
-            name="reps"
+            value={this.state.repetitions}
+            name="repetitions"
             type="number"
           />
         </FormControl>
@@ -93,7 +109,7 @@ class Add extends Component {
         <br />
         <br />
 
-        <FormControl className="input-group">
+        {/* <FormControl className="input-group">
           <NativeSelect>
             <option value="" disabled>
               BODY PART
@@ -108,14 +124,14 @@ class Add extends Component {
             <option className="input-style">MISC</option>
           </NativeSelect>
           <FormHelperText className="input-label">BODY PART</FormHelperText>
-        </FormControl>
+        </FormControl> */}
 
         <br />
         <br />
 
         <Button
           variant="outlined"
-          onSubmit={this.handleSubmit}
+          onClick={this.handleSubmit}
           className="submit"
         >
           Submit
