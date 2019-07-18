@@ -225,4 +225,5 @@ export const addWorkout = newWorkout => dispatch => {
       dispatch({ type: ADD_WORKOUT, payload: res.data });
     })
     .catch(err => dispatch({ type: DATA_FAIL, payload: err }));
+
 };

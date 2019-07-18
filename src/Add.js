@@ -182,3 +182,4 @@ export default connect(
   mapStateToProps,
   { addWorkout }
 )(Add);
+
