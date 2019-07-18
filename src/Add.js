@@ -23,6 +23,7 @@ class Add extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+
     const {
       name,
       weight_lifted,
@@ -31,6 +32,7 @@ class Add extends Component {
       body_part,
       user
     } = this.state;
+
     const newWorkout = {
       name,
       weight_lifted,
@@ -50,12 +52,20 @@ class Add extends Component {
     });
   };
 
+  // handle input change
   changeHandler = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
+
+  //handle option change
+  handleChange = e => {
+    this.setState({ body_part: e.target.value });
+  };
+
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
+        {/* Name Input */}
         <FormControl className="input-group">
           <InputLabel className="input-label">NAME OF EXERCISE</InputLabel>
           <Input
@@ -68,7 +78,7 @@ class Add extends Component {
         </FormControl>
 
         <br />
-
+        {/* Weight Input */}
         <FormControl className="input-group">
           <InputLabel className="input-label">WEIGHT LIFTED</InputLabel>
           <Input
@@ -81,7 +91,7 @@ class Add extends Component {
         </FormControl>
 
         <br />
-
+        {/* Reps Input */}
         <FormControl className="input-group">
           <InputLabel className="input-label">REPS COMPLETED</InputLabel>
           <Input
@@ -94,7 +104,7 @@ class Add extends Component {
         </FormControl>
 
         <br />
-
+        {/* Date Input */}
         <FormControl className="input-group">
           <InputLabel className="input-label">DATE</InputLabel>
           <Input
@@ -109,22 +119,43 @@ class Add extends Component {
         <br />
         <br />
 
-        {/* <FormControl className="input-group">
-          <NativeSelect>
+        {/* Dropdown */}
+        <FormControl className="input-group">
+          <NativeSelect
+            value={this.state.body_part}
+            onChange={this.handleChange}
+            name="body_part"
+          >
             <option value="" disabled>
               BODY PART
             </option>
-            <option className="input-style">BICEPS</option>
-            <option className="input-style">TRICEPS</option>
-            <option className="input-style">BACK</option>
-            <option className="input-style">CHEST</option>
-            <option className="input-style">SHOULDERS</option>
-            <option className="input-style">ABS</option>
-            <option className="input-style">LEGS</option>
-            <option className="input-style">MISC</option>
+            <option className="input-style" value="biceps">
+              BICEPS
+            </option>
+            <option className="input-style" value="triceps">
+              TRICEPS
+            </option>
+            <option className="input-style" value="back">
+              BACK
+            </option>
+            <option className="input-style" value="chest">
+              CHEST
+            </option>
+            <option className="input-style" value="shoulders">
+              SHOULDERS
+            </option>
+            <option className="input-style" value="abs">
+              ABS
+            </option>
+            <option className="input-style" value="legs">
+              LEGS
+            </option>
+            <option className="input-style" value="misc">
+              MISC
+            </option>
           </NativeSelect>
           <FormHelperText className="input-label">BODY PART</FormHelperText>
-        </FormControl> */}
+        </FormControl>
 
         <br />
         <br />
