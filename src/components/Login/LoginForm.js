@@ -54,7 +54,7 @@ class LoginForm extends React.Component {
                 onChange={this.handleChange}
               />
             </div>
-            <Link to="/Summary">
+      <Link to="/Summary">
               <button onClick={this.handleSubmit} className="loginButton">
                 Log In
               </button>
