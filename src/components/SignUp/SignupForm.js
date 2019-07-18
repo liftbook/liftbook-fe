@@ -1,10 +1,9 @@
 import React from "react";
-// import { connect } from 'react-redux';
+import { connect } from "react-redux";
+import { signup } from "../../actions/index";
 import { Link } from "react-router-dom";
 
 import "./SignupForm.css";
-import Axios from "axios";
-// import Axios from 'axios';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -30,12 +29,8 @@ class SignupForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const register = this.state;
-    Axios.post("https://lift-book.herokuapp.com/api/register", register)
-      .then(res => {
-        this.props.history.push("/login");
-      })
-      .catch(err => console.log(err.response));
+    this.props.signup(this.state.credentials)
+      .then(() => this.props.history.push("/users/[username]"));
   };
 
   render() {
@@ -100,4 +95,11 @@ class SignupForm extends React.Component {
   }
 }
 
-export default SignupForm;
+const mapStateToProps = ({ isSignedUp }) => ({
+  isSignedUp
+});
+
+export default connect(
+  mapStateToProps,
+  { signup }
+)(SignupForm);
