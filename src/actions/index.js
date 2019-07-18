@@ -14,8 +14,6 @@ export const DATA_SUCCESS = "DATA_SUCCESS";
 
 export const DATA_FAIL = "DATA_FAIL";
 
-// add.js
-export const ADD_WORKOUT = "ADD_WORKOUT";
 
 export const login = creds => dispatch => {
   dispatch({ type: LOGIN_START });
@@ -45,10 +43,3 @@ export const getUsers = () => dispatch => {
     });
 };
 
-export const addWorkout = newWorkout => dispatch => {
-  dispatch({ type: CREATING });
-  axios
-    .post("https://lift-book.herokuapp.com/api/exercises", newWorkout)
-    .then(res => dispatch({ type: ADD_WORKOUT, payload: res.data }))
-    .catch(err => dispatch({ type: DATA_FAIL, payload: err }));
-};
