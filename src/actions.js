@@ -219,7 +219,12 @@ export const addWorkout = newWorkout => dispatch => {
   console.log(newWorkout);
   dispatch({ type: CREATING });
   axios
-    .post("https://lift-book.herokuapp.com/api/exercises", newWorkout)
+    .post("https://lift-book.herokuapp.com/api/exercises", newWorkout, {
+      headers: {
+        "content-type": "application/json",
+        username: localStorage.getItem("username"),
+        Authorization: localStorage.getItem("token")
+      }})
     .then(res => {
       console.log(res);
       dispatch({ type: ADD_WORKOUT, payload: res.data });
