@@ -13,7 +13,7 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 
 class Add extends Component {
   state = {
-    user: "bob",
+    user: this.props.user,
     name: "",
     weight_lifted: "",
     repetitions: "",
@@ -43,7 +43,7 @@ class Add extends Component {
     };
     this.props.addWorkout(newWorkout);
     this.setState({
-      user: "bob",
+      user: this.props.user,
       name: "",
       weight_lifted: "",
       repetitions: "",
@@ -174,6 +174,7 @@ class Add extends Component {
 
 const mapStateToProps = state => {
   return {
+    user: state.user,
     workouts: state.workouts
   };
 };
