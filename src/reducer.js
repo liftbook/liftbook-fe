@@ -27,10 +27,9 @@ const initialState = {
   status: "",
   isLoggedIn: false,
   loginError: "",
-  user: [],
+  user: "",
   workouts: [],
   users: [],
-  user: [],
   logs: []
 };
 
@@ -55,8 +54,7 @@ const reducer = (state = initialState, action) => {
     case SIGNUP_START: {
       return {
         ...state,
-        isSigningUp: true,
-        signupError: ""
+        isSigningUp: true
       };
     }
     case SIGNUP_FAILURE: {
@@ -77,7 +75,8 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isLoggedIn: true,
-        loginError: ""
+        loginError: "",
+        user: action.user
       };
     }
     case LOGIN_FAILURE: {

@@ -1,4 +1,3 @@
-
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
@@ -6,6 +5,7 @@ import App from "./App";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
 import { createStore, applyMiddleware } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
 import { Provider } from "react-redux";
 import reducer from "./reducer";
 
@@ -17,7 +17,7 @@ import "assets/scss/material-kit-pro-react.scss?v=1.7.0";
 
 // var hist = createBrowserHistory();
 
-const store = createStore(reducer, applyMiddleware(thunk, logger));
+const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk, logger)));
 
 ReactDOM.render(
   <div>
