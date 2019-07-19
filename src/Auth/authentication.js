@@ -5,8 +5,7 @@ export default function() {
 
   return axios.create({
     headers: {
-      "content-type": "application/json",
-      username: localStorage.getItem("username"),
+      "Content-Type": "application/json",
       Authorization: `${token}`
     }
   });
