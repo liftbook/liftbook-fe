@@ -7,6 +7,8 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { createMuiTheme } from '@material-ui/core/styles';
+import PersistentDrawerLeft from './SideMenu'
+
 import Menu from './Menu'
 const theme = createMuiTheme({
   palette: {
@@ -49,7 +51,7 @@ export default function ButtonAppBar() {
       <AppBar color={colors.primary} position="static">
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="Menu">
-            <Menu />
+            <PersistentDrawerLeft />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
             LiftBook

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { withRouter } from "react-router";
-
+import UserProfile from './views/UserProfile/UserProfile.jsx'
 import Card from "components/Card/Card.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 import Fab from '@material-ui/core/Fab';
@@ -15,7 +15,7 @@ import { getUser, getLogs } from './actions'
 import { Link } from "react-router-dom";
 import RecipeReviewCard from './MediaCard'
 import Icon from '@material-ui/core/Icon';
-
+import PersistentDrawerLeft from './SideMenu'
 import {
   cardTitle,
   cardLink,
@@ -53,7 +53,7 @@ componentDidMount() {
     console.log('something2')
 
     return (<div className="App">
-
+      <UserProfile user={this.props.user.username} all={this.props}/>
 
 
     <div className="profile">
@@ -61,28 +61,8 @@ componentDidMount() {
       <div className="mainColumn"></div>
     </div>
 
-    <RecipeReviewCard user={this.props.user.username}/>
+    <RecipeReviewCard user={this.props.user.username} all={this.props}/>
 
-    <Card style={{ width: "20rem" }}>
-    <Link to="/add">
-
-      <Icon className={this.state.classes.icon} color="primary">
-        add_circle
-      </Icon>        
-        </Link>
-      <CardBody>
-        <h4 className={this.state.classes.cardTitle}>Exercise</h4>
-        <div>
-          <p>{this.props.name}</p>
-          <p>{this.props.weight_lifted}</p>
-          <p>{this.props.repetitions}</p>
-          <p>{this.props.date}</p>
-          <p>{this.props.body_part}</p>
-          </div>
-
-
-      </CardBody>
-    </Card>
      </div>
   )}
 }

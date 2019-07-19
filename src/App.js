@@ -5,6 +5,7 @@ import "./App.css";
 import { Route, Switch, Link } from "react-router-dom";
 import Add from "Add";
 // material-ui components
+import PersistentDrawerLeft from './SideMenu'
 
 import Button from "components/CustomButtons/Button.jsx";
 import { connect } from "react-redux";
@@ -39,9 +40,7 @@ import PrivateRoute from "./PrivateRoute";
 import navbarsStyle from "assets/jss/material-kit-pro-react/views/componentsSections/navbarsStyle.jsx";
 import image from "assets/img/bg.jpg";
 import profileImage from "assets/img/faces/avatar.jpg";
-import PrivateRoute from './PrivateRoute'
 import AppBar from './AppBar'
-import User from './User'
 import {
   cardTitle,
   cardLink,
@@ -72,7 +71,7 @@ export default class App extends React.Component {
     console.log('something')
   return (
     <div >
-      <AppBar />
+      <PersistentDrawerLeft />
       <Route exact path="/" component={LoginForm} />
       <Route exact path="/login" component={LoginForm} />
       <Route exact path="/users/register" component={SignupForm} />
