@@ -10,8 +10,8 @@ class SignupForm extends React.Component {
     super(props);
     this.state = {
       credentials: {
-        firstName: "",
-        lastName: "",
+        first_name: "",
+        last_name: "",
         email: "",
         username: "",
         password: ""
@@ -46,16 +46,16 @@ class SignupForm extends React.Component {
             <div className="inputs">
               <input
                 type="text"
-                name="firstName"
+                name="first_name"
                 placeholder="First Name"
-                value={this.state.firstName}
+                value={this.state.first_name}
                 onChange={this.handleChange}
               />
               <input
                 type="text"
-                name="lastName"
+                name="last_name"
                 placeholder="Last Name"
-                value={this.state.lastName}
+                value={this.state.last_name}
                 onChange={this.handleChange}
               />
               <input
@@ -80,7 +80,7 @@ class SignupForm extends React.Component {
                 onChange={this.handleChange}
               />
             </div>
-            <Link to="/users/register" className="signupLink">
+            <Link to="/users" className="signupLink">
               <button className="signupButton" onClick={this.handleSubmit}>
                 Sign Up
               </button>
