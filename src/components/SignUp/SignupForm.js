@@ -34,6 +34,15 @@ class SignupForm extends React.Component {
       .then(() =>
         this.props.history.push(`/users/${this.state.credentials.username}`)
       );
+    this.setState({
+      credentials: {
+        first_name: "",
+        last_name: "",
+        email: "",
+        username: "",
+        password: ""
+      }
+    });
   };
 
   render() {
