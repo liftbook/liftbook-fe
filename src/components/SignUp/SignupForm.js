@@ -36,7 +36,11 @@ class SignupForm extends React.Component {
       );
     this.setState({
       credentials: {
-        ...this.state.credentials
+        first_name: "",
+        last_name: "",
+        email: "",
+        username: "",
+        password: ""
       }
     });
   };
