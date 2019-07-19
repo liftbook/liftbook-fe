@@ -59,6 +59,7 @@ const style = {
   cardLink,
   cardSubtitle
 };
+
 export default class App extends React.Component {
   constructor(props) {
     super();
@@ -66,6 +67,7 @@ export default class App extends React.Component {
       classes: props
     };
   }
+
   render() {
     console.log('something')
   return (

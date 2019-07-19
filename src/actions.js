@@ -40,12 +40,18 @@ export const signup = user => dispatch => {
 
 export const login = creds => dispatch => {
   dispatch({ type: LOGIN_START });
-
   return axios
     .post("https://lift-book.herokuapp.com/api/users/login", creds)
     .then(res => {
       localStorage.setItem("token", res.data.payload);
-      dispatch({ type: LOGIN_SUCCESS });
+      dispatch({
+        type: LOGIN_SUCCESS,
+        user: res.data.username,
+        token: res.data.token,
+        status: "success",
+        message: res.data.message
+      });
+      console.log(res.data);
     })
     .catch(err => {
       if (err.response && err.response.status === 403) {
