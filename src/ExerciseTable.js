@@ -2,7 +2,7 @@ import React from "react";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 // material-ui icons
-import Person from "@material-ui/icons/Person";
+// import Person from "@material-ui/icons/Person";
 import Edit from "@material-ui/icons/Edit";
 import Close from "@material-ui/icons/Close";
 import Add from "@material-ui/icons/Add";
@@ -72,6 +72,7 @@ class Tables extends React.Component {
         </div>
       ]);
     });
+
     return (
       <Table
         tableHead={[
