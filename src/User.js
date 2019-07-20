@@ -47,6 +47,7 @@ class User extends React.Component {
     }
 }
 componentDidMount() {
+  this.props.getUsers()
 }
 
 getUser = event => {

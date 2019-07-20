@@ -7,10 +7,10 @@ import {
   SIGNUP_START,
   SIGNUP_FAILURE,
   FETCHING,
-  CREATING,
-  UPDATING,
-  NOT_UPDATING,
-  DELETING,
+  // CREATING,
+  // UPDATING,
+  // NOT_UPDATING,
+  // DELETING,
   DATA_SUCCESS,
   DATA_FAIL,
   ADD_WORKOUT,
@@ -154,7 +154,7 @@ const reducer = (state = initialState, action) => {
     case LOG_POST_SUCCESS: {
       return {
         ...state,
-        logs: action.payload
+        logs: [action.payload]
       };
     }
     default:

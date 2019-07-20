@@ -20,20 +20,20 @@ import React from "react";
 import PropTypes from "prop-types";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
-import InputLabel from "@material-ui/core/InputLabel";
+// import InputLabel from "@material-ui/core/InputLabel";
 // core components
 import GridItem from "components/Grid/GridItem.jsx";
-import GridContainer from "components/Grid/GridContainer.jsx";
-import CustomInput from "components/CustomInput/CustomInput.jsx";
+// import GridContainer from "components/Grid/GridContainer.jsx";
+// import CustomInput from "components/CustomInput/CustomInput.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 import Card from "components/Card/Card.jsx";
-import CardHeader from "components/Card/CardHeader.jsx";
+// import CardHeader from "components/Card/CardHeader.jsx";
 import CardAvatar from "components/Card/CardAvatar.jsx";
 import CardBody from "components/Card/CardBody.jsx";
-import CardFooter from "components/Card/CardFooter.jsx";
+// import CardFooter from "components/Card/CardFooter.jsx";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
-import { getUsers, getUser, deleteExercise, editExercise, getExercises } from "../../actions";
+import {  getUser, deleteExercise, editExercise, getExercises } from "../../actions";
 
 
 import avatar from "assets/img/faces/marc.jpg";
@@ -76,7 +76,7 @@ class UserProfile extends React.Component {
               </a>
             </CardAvatar>
             <CardBody profile>
-              <h6 className={this.state.classes.cardCategory}></h6>
+              <h6 className={this.state.classes.cardCategory}>PROFILE</h6>
               <h4 className={this.state.classes.cardTitle}>{this.props.user}</h4>
               <p className={this.state.classes.description}>
                 {this.props.currentUser.email}

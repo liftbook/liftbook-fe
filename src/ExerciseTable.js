@@ -45,7 +45,7 @@ class Tables extends React.Component {
                         onClick={(event) => {this.props.deleteExercise(workout)}}
                     justIcon size="sm" color="danger" >
                       <Close />
-                    </Button>npm 
+                    </Button> 
                     <Button 
                     justIcon size="sm" color="info" >
                       <Edit />

@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { withRouter } from "react-router";
-import UserProfile from './views/UserProfile/UserProfile.jsx'
-import Card from "components/Card/Card.jsx";
-import CardBody from "components/Card/CardBody.jsx";
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
+// import UserProfile from './views/UserProfile/UserProfile.jsx'
+// import Card from "components/Card/Card.jsx";
+// import CardBody from "components/Card/CardBody.jsx";
+// import Fab from '@material-ui/core/Fab';
+// import AddIcon from '@material-ui/icons/Add';
 import Paper from '@material-ui/core/Paper';
 import { getUsers, getUser, getExercise, getExercises, toLogs } from "./actions";
 import Tables from './ExerciseTable'
@@ -14,15 +14,14 @@ import Tables from './ExerciseTable'
 // // import Dashboard from "views/Dashboard/Dashboard.jsx"
 // import Drawer from '@material-ui/core/Drawer';
 // import Add from './Add'
-import { Link } from "react-router-dom";
-import RecipeReviewCard from './MediaCard'
+// import RecipeReviewCard from './MediaCard'
 import Icon from '@material-ui/core/Icon';
 import PersistentDrawerLeft from './SideMenu'
-import {
-  cardTitle,
-  cardLink,
-  cardSubtitle
-} from "assets/jss/material-kit-pro-react.jsx";
+// import {
+//   cardTitle,
+//   cardLink,
+//   cardSubtitle
+// } from "assets/jss/material-kit-pro-react.jsx";
 
 // const style = {
 //   cardTitle,

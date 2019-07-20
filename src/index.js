@@ -11,7 +11,6 @@ import reducer from "./reducer";
 import { persistStore, persistReducer } from 'redux-persist'
 import { PersistGate } from 'redux-persist/integration/react'
 import storage from 'redux-persist/lib/storage' 
-import { composeWithDevTools } from 'redux-devtools-extension';
 
 
 import { BrowserRouter as Router } from "react-router-dom";
