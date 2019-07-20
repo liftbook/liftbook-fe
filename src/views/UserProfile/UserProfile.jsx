@@ -31,6 +31,7 @@ import CardHeader from "components/Card/CardHeader.jsx";
 import CardAvatar from "components/Card/CardAvatar.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
+import { withRouter } from "react-router";
 
 import avatar from "assets/img/faces/marc.jpg";
 
@@ -73,10 +74,10 @@ function UserProfile(props) {
                 human foundation in truth And I love you like Kanye loves Kanye
                 I love Rick Owens’ bed design but the back is...
               </p>
-              <Button color="primary" round>
+              <Button color="primary" round onClick={(event) => {props.history.push(`/users/${props.user}/exercises`)}}>
                 Exercise Logs
               </Button>
-              <Button color="primary" round>
+              <Button color="primary" round onClick={(event) => {props.history.push(`/add`)}}>
                 Add New Workout
               </Button>
             </CardBody>
@@ -91,4 +92,4 @@ UserProfile.propTypes = {
   classes: PropTypes.object
 };
 
-export default withStyles(styles)(UserProfile);
+export default withRouter(withStyles(styles)(UserProfile));

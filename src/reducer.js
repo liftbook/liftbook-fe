@@ -15,7 +15,8 @@ import {
   DATA_FAIL,
   ADD_WORKOUT,
   USER_SUCCESS,
-  LOG_SUCCESS
+  LOG_SUCCESS,
+  EXERCISE_SUCCESS,
 } from "./actions";
 
 var moment = require("moment");
@@ -118,6 +119,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         logs: action.payload
+      };
+    }
+    case EXERCISE_SUCCESS: {
+      return {
+        ...state,
+        workouts: action.payload
       };
     }
     default:

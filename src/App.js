@@ -40,7 +40,10 @@ import PrivateRoute from "./PrivateRoute";
 import navbarsStyle from "assets/jss/material-kit-pro-react/views/componentsSections/navbarsStyle.jsx";
 import image from "assets/img/bg.jpg";
 import profileImage from "assets/img/faces/avatar.jpg";
-import AppBar from "./AppBar";
+import AppBar from './AppBar'
+import Paper from '@material-ui/core/Paper';
+import Exercises from './Exercises.js'
+
 import {
   cardTitle,
   cardLink,
@@ -77,11 +80,17 @@ export default class App extends React.Component {
         <Route exact path="/users/register" component={SignupForm} />
         <Route exact path="/add" component={Add} />
 
-        {/*this route private after login*/}
-        <PrivateRoute exact path="/users" component={User} />
-        <PrivateRoute exact path="/users/:username" component={User} />
-        <PrivateRoute exact path="/Summary" component={Summary} />
-      </div>
-    );
-  }
+      {/*this route private after login*/}
+      <PrivateRoute exact path="/users" component={User} />
+      <PrivateRoute exact path="/users/:username" component={User} />
+      <PrivateRoute exact path="/Summary" component={Summary}/>
+      <PrivateRoute exact path="/users/:username/exercises" component={Exercises}/>
+
+
+      {/* <PrivateRoute exact path="/users/[username]/logs/[exerciseId]" component={DeleteFriend} /> */}
+
+    </div>
+  );
+}
+
 }
