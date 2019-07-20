@@ -8,6 +8,8 @@ import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import Paper from '@material-ui/core/Paper';
 import { getUsers, getUser, getExercise, getExercises } from "./actions";
+import "./App.css";
+import { makeStyles } from "@material-ui/core/styles";
 
 // import Sidebar from "components/Sidebar/Sidebar.jsx"
 // import EcommercePage from 'views/EcommercePage/EcommercePage.jsx'
@@ -32,7 +34,11 @@ import {
 
 var moment = require('moment');
 moment().format();
-
+const useStyles = makeStyles(theme => ({
+  root: {
+    padding: theme.spacing(3, 2),
+  },
+}));
 class User extends React.Component {
   constructor(props) {
     super();
@@ -41,7 +47,6 @@ class User extends React.Component {
     }
 }
 componentDidMount() {
-
 }
 
 getUser = event => {
@@ -55,7 +60,7 @@ getUser = event => {
 
     return (<div className="App">
       <Paper className={this.state.classes.root}>
-      <UserProfile user={this.props.user.username} all={this.props}/>
+      <UserProfile className="app" user={this.props.currentUser.username} all={this.props}/>
     </Paper>
 
     <div className="profile">
@@ -63,7 +68,6 @@ getUser = event => {
       <div className="mainColumn"></div>
     </div>
 
-    <RecipeReviewCard user={this.props.user.username} all={this.props}/>
 
      </div>
   )}
@@ -78,6 +82,7 @@ const mapState = state => {
     repetitions: state.repetitions,
     date: state.date,
     body_part: state.body_part,
+    currentUser: state.currentUser,
   }
 }
 

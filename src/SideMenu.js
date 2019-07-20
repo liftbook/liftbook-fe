@@ -29,6 +29,7 @@ const useStyles = makeStyles(theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    backgroundColor: "#410b13"
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -36,6 +37,8 @@ const useStyles = makeStyles(theme => ({
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
+    backgroundColor: "#2d3047"
+
     }),
   },
   menuButton: {
@@ -47,9 +50,13 @@ const useStyles = makeStyles(theme => ({
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
+    
   },
   drawerPaper: {
     width: drawerWidth,
+    backgroundColor: "#2d3047",
+    color: "white",
+
   },
   drawerHeader: {
     display: 'flex',
@@ -57,6 +64,7 @@ const useStyles = makeStyles(theme => ({
     padding: '0 8px',
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
+    
   },
   content: {
     flexGrow: 1,
@@ -73,6 +81,7 @@ const useStyles = makeStyles(theme => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
     marginLeft: 0,
+    
   },
 }));
 
@@ -92,7 +101,7 @@ export default function PersistentDrawerLeft() {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar
+      <AppBar 
         position="fixed"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,

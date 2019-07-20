@@ -71,14 +71,15 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log("something");
-    return (
-      <div>
-        <PersistentDrawerLeft />
-        <Route exact path="/" component={LoginForm} />
-        {/* <Route exact path="/login" component={LoginForm} /> */}
-        <Route exact path="/users/register" component={SignupForm} />
-        <Route exact path="/add" component={Add} />
+    console.log('something')
+  return (
+    <div className="app" >
+      <PersistentDrawerLeft />
+      <Route exact path="/" component={LoginForm} />
+      <Route exact path="/login" component={LoginForm} />
+      <Route exact path="/users/register" component={SignupForm} />
+      <Route exact path="/add" component={Add} />
+
 
       {/*this route private after login*/}
       <PrivateRoute exact path="/users" component={User} />

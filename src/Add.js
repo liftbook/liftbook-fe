@@ -10,6 +10,7 @@ import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
 import NativeSelect from "@material-ui/core/NativeSelect";
 import FormHelperText from "@material-ui/core/FormHelperText";
+import { withRouter } from "react-router";
 
 class Add extends Component {
   state = {
@@ -51,6 +52,7 @@ class Add extends Component {
       date: "",
       body_part: ""
     });
+    this.props.history.push(`/users/${this.props.currentUser.username}`)
   };
 
   // handle input change
@@ -176,11 +178,13 @@ class Add extends Component {
 const mapStateToProps = state => {
   return {
     user: state.user,
-    workouts: state.workouts
+    workouts: state.workouts,
+    currentUser: state.currentUser,
   };
 };
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   { addWorkout }
-)(Add);
+)(Add));
+
