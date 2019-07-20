@@ -44,6 +44,7 @@ class Add extends Component {
     };
     this.props.addWorkout(newWorkout);
     this.setState({
+      id: "",
       user: this.props.user,
       name: "",
       weight_lifted: "",
@@ -66,7 +67,7 @@ class Add extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} key={this.id}>
         {/* Name Input */}
         <FormControl className="input-group">
           <InputLabel className="input-label">NAME OF EXERCISE</InputLabel>

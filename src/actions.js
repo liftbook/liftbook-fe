@@ -1,4 +1,6 @@
 import axios from "axios";
+import uuid from "uuid";
+
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
@@ -26,6 +28,7 @@ export const EXERCISE_SUCCESS = 'EXERCISE_SUCCESS'
 export const ADD_WORKOUT = "ADD_WORKOUT";
 
 export const signup = user => dispatch => {
+  console.log(user);
   dispatch({ type: SIGNUP_START });
   return axios
     .post("https://lift-book.herokuapp.com/api/users/register", user)
@@ -242,6 +245,7 @@ export const getGoal = username => dispatch => {
 //RECORDS ACTIONS
 
 export const addWorkout = newWorkout => dispatch => {
+  newWorkout.id = uuid();
   console.log(newWorkout);
   dispatch({ type: CREATING });
   axios
@@ -250,11 +254,11 @@ export const addWorkout = newWorkout => dispatch => {
         "content-type": "application/json",
         username: localStorage.getItem("username"),
         Authorization: localStorage.getItem("token")
-      }})
+      }
+    })
     .then(res => {
       console.log(res);
       dispatch({ type: ADD_WORKOUT, payload: res.data });
     })
     .catch(err => dispatch({ type: DATA_FAIL, payload: err }));
-
 };
