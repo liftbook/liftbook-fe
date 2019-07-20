@@ -3,6 +3,8 @@ h1 {
 }
 
 .login {
+    background-color: white;
+    box-shadow: 6px 6px 10px lightgrey;
     text-align: center;
     margin-left: 29%;
     width: 40%;
@@ -15,9 +17,11 @@ input {
     border-radius: 5px;
     height: 30px;
     margin-left: 5px;
+    font-size: 24px;
 }
 
 .loginButton {
+    cursor: pointer;
     background-color: whitesmoke;
     padding: 5px;
     width: 120px;
