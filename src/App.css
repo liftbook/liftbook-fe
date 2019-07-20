@@ -5,9 +5,11 @@
   justify-content: center;
   align-items: center;
 }
-
+.usercard {
+  width: 260px;
+}
 .app {
-  background-color: #91171f;
+  /* background-color: #91171f; */
   height: 100%;
   margin: auto 10px;
   width: auto;

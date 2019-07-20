@@ -90,7 +90,7 @@ class SignupForm extends React.Component {
                 onChange={this.handleChange}
               />
             </div>
-            <Link to="/users" className="signupLink">
+            <Link to="/login" className="signupLink">
               <button className="signupButton" onClick={this.handleSubmit}>
                 Sign Up
               </button>

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { addWorkout } from "./actions";
 import { connect } from "react-redux";
 import "./Add.css";
+import {toLogs, clearWorkout} from './actions'
 
 // material-ui imports
 import FormControl from "@material-ui/core/FormControl";
@@ -19,7 +20,9 @@ class Add extends Component {
     weight_lifted: "",
     repetitions: "",
     date: "",
-    body_part: ""
+    body_part: "",
+
+    
   };
 
   handleSubmit = e => {
@@ -43,6 +46,8 @@ class Add extends Component {
       user
     };
     this.props.addWorkout(newWorkout);
+    this.props.clearWorkout();
+
     this.setState({
       id: "",
       user: this.props.user,
@@ -52,7 +57,7 @@ class Add extends Component {
       date: "",
       body_part: ""
     });
-    this.props.history.push(`/users/${this.props.currentUser.username}`)
+    this.props.history.push(`/users/${this.props.currentUser.username}/exercises`)
   };
 
   // handle input change
@@ -185,6 +190,6 @@ const mapStateToProps = state => {
 
 export default withRouter(connect(
   mapStateToProps,
-  { addWorkout }
+  { addWorkout, toLogs, clearWorkout }
 )(Add));
 

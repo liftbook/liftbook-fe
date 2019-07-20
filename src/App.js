@@ -75,16 +75,15 @@ export default class App extends React.Component {
   return (
     <div className="app" >
       <PersistentDrawerLeft />
-      <Route exact path="/" component={LoginForm} />
-      <Route exact path="/login" component={LoginForm} />
+      <Route exact path="/" exact component={LoginForm} />
+      <Route exact path="/login" exact component={LoginForm} />
       <Route exact path="/users/register" component={SignupForm} />
-      <Route exact path="/add" component={Add} />
+      <Route exact path="/add" exact component={Add} />
 
 
       {/*this route private after login*/}
-      <PrivateRoute exact path="/users" component={User} />
-      <PrivateRoute exact path="/users/:username" component={User} />
-      <PrivateRoute exact path="/Summary" component={Summary}/>
+      <PrivateRoute exact path="/users" exact component={User} />
+      <PrivateRoute exact path="/users/:username" exact component={User} />
       <PrivateRoute exact path="/users/:username/exercises" component={Exercises}/>
 
 
