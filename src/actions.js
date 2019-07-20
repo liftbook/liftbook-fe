@@ -27,6 +27,9 @@ export const EXERCISE_SUCCESS = 'EXERCISE_SUCCESS'
 
 export const ADD_WORKOUT = "ADD_WORKOUT";
 
+export const LOG_POST_SUCCESS = "LOG_POST_SUCCESS";
+export const CLEAR_WORKOUT = "CLEAR_WORKOUT"
+
 export const signup = user => dispatch => {
   console.log(user);
   dispatch({ type: SIGNUP_START });
@@ -69,6 +72,21 @@ export const login = creds => dispatch => {
     });
 };
 
+export const toLogs = (log) => dispatch => {
+  dispatch({ type: FETCHING });
+  return axios
+    .post("https://lift-book.herokuapp.com/api/logs", log)
+    .then(response => {
+      dispatch({ type: LOG_POST_SUCCESS, payload: response.data });
+    })
+    .catch(err => {
+      if (err.response && err.response.status === 403) {
+        localStorage.removeItem("token");
+      }
+      dispatch({ type: DATA_FAIL});
+    });
+};
+
 //USER ACTIONS
 
 export const getUsers = () => dispatch => {
@@ -87,6 +105,10 @@ export const getUsers = () => dispatch => {
     .catch(error => {
       dispatch({ type: DATA_FAIL, payload: error });
     });
+};
+export const clearWorkout = () => dispatch => {
+  dispatch({ type: CLEAR_WORKOUT });
+ 
 };
 
 // add.js
@@ -116,10 +138,10 @@ export const getUser = username => dispatch => {
 // PUT -- /logs/[log id]
 // Returns: object
 // Function: Returns an updated log
-export const getLogs = user => dispatch => {
+export const getUserLogs = user => dispatch => {
   dispatch({ type: FETCHING });
   axios
-    .get(`https://lift-book.herokuapp.com/api/users/${user.username}/logs`, {
+    .get(`https://lift-book.herokuapp.com/api/users/${user}/logs`, {
       headers: {
         "content-type": "application/json",
         username: localStorage.getItem("username"),
@@ -164,6 +186,7 @@ export const getExercise = exercise => dispatch => {
       dispatch({ type: DATA_FAIL, payload: error });
     });
 };
+
 
 export const deleteExercise = exercise => dispatch => {
   dispatch({ type: FETCHING });
@@ -225,6 +248,9 @@ export const getGoal = username => dispatch => {
       dispatch({ type: DATA_FAIL, payload: error });
     });
 };
+
+//LOGS 
+
 // GET -- /goals
 // Returns: array of objects
 // Function: Returns all goals
@@ -245,17 +271,11 @@ export const getGoal = username => dispatch => {
 //RECORDS ACTIONS
 
 export const addWorkout = newWorkout => dispatch => {
-  newWorkout.id = uuid();
   console.log(newWorkout);
   dispatch({ type: CREATING });
   axios
-    .post("https://lift-book.herokuapp.com/api/exercises", newWorkout, {
-      headers: {
-        "content-type": "application/json",
-        username: localStorage.getItem("username"),
-        Authorization: localStorage.getItem("token")
-      }
-    })
+    .post("https://lift-book.herokuapp.com/api/exercises", newWorkout)
+
     .then(res => {
       console.log(res);
       dispatch({ type: ADD_WORKOUT, payload: res.data });

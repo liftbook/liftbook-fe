@@ -18,18 +18,26 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import DoneIcon from '@material-ui/icons/Done';
+import Button from "components/CustomButtons/Button.jsx";
+import { Route, Switch, Link } from "react-router-dom";
+import "./App.css";
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
+    color: "white",
+
   },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    backgroundColor: "#410b13"
+    backgroundColor: "#410b13",
+    color: "white",
+
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -37,25 +45,34 @@ const useStyles = makeStyles(theme => ({
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
-    backgroundColor: "#2d3047"
+    backgroundColor: "#2d3047",
+    color: "white",
+
 
     }),
   },
   menuButton: {
     marginRight: theme.spacing(2),
+    color: "white",
   },
   hide: {
     display: 'none',
+    color: "white",
+
   },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
+    color: "white",
+
     
   },
   drawerPaper: {
     width: drawerWidth,
     backgroundColor: "#2d3047",
+    textcolor: "white",
     color: "white",
+
 
   },
   drawerHeader: {
@@ -64,6 +81,7 @@ const useStyles = makeStyles(theme => ({
     padding: '0 8px',
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
+    color: "white",
     
   },
   content: {
@@ -74,6 +92,9 @@ const useStyles = makeStyles(theme => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     marginLeft: -drawerWidth,
+    color: "white",
+
+
   },
   contentShift: {
     transition: theme.transitions.create('margin', {
@@ -81,6 +102,8 @@ const useStyles = makeStyles(theme => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
     marginLeft: 0,
+    color: "white",
+
     
   },
 }));
@@ -108,18 +131,19 @@ export default function PersistentDrawerLeft() {
         })}
       >
         <Toolbar>
-          <IconButton
-            color="inherit"
+          <IconButton 
+            color="white"
             aria-label="Open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            className={clsx(classes.menuButton, open && classes.hide)}
+            className={clsx(classes.menuButton, open && classes.hide)} 
           >
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
             LiftBook
           </Typography>
+          
         </Toolbar>
       </AppBar>
       <Drawer
@@ -138,12 +162,15 @@ export default function PersistentDrawerLeft() {
         </div>
         <Divider />
         <List>
-          {['Login', 'Sign-Up', 'Exercises', 'Something'].map((text, index) => (
-            <ListItem button key={text}>
-              {/* <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon> */}
-              <ListItemText primary={text} />
+            <ListItem button >
+              <Link style={{color: "white"}} to="/">Home</Link>
             </ListItem>
-          ))}
+            <ListItem button >
+              <Link style={{color: "white"}} to="/login">Log in</Link>
+            </ListItem>
+            <ListItem button >
+              <Link style={{color: "white"}} to="/users/register">Sign up</Link>
+            </ListItem>
         </List>
       </Drawer>
       <main

@@ -39,16 +39,56 @@ import Card from "components/Card/Card.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
+import { connect } from "react-redux";
+import { login } from "../../actions";
+import { Link } from "react-router-dom";
+import { getUsers, getUser, getExercise, getExercises } from "../../actions";
 
 import loginPageStyle from "assets/jss/material-kit-pro-react/views/loginPageStyle.jsx";
 
 import image from "assets/img/bg7.jpg";
 
 class LoginPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      credentials: {
+        username: "",
+        password: "",
+        user: ""
+      }
+    };
+  }
   componentDidMount() {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
   }
+  handleChange = e => {
+    this.setState({
+      credentials: {
+        ...this.state.credentials,
+        [e.target.name]: e.target.value
+      }
+    });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    console.log(this.state.credentials.username)
+    this.props.getUser(this.state.credentials.username)
+
+    this.props
+      .login(this.state.credentials)
+      .then(() =>
+        this.props.history.push(`/users/${this.state.credentials.username}`)
+      );
+    this.setState({
+      credentials: {
+        ...this.state.credentials,
+        user: ""
+      }
+    });
+  };
   render() {
     const { classes } = this.props;
     return (

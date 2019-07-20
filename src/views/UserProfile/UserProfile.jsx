@@ -32,6 +32,9 @@ import CardAvatar from "components/Card/CardAvatar.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
 import { withRouter } from "react-router";
+import { connect } from "react-redux";
+import { getUsers, getUser, deleteExercise, editExercise, getExercises } from "../../actions";
+
 
 import avatar from "assets/img/faces/marc.jpg";
 
@@ -54,8 +57,14 @@ const styles = {
   }
 };
 
-function UserProfile(props) {
-  const { classes } = props;
+class UserProfile extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      classes: props
+    }
+  }
+  render() {
   return (
     <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
       <div  >
@@ -67,17 +76,17 @@ function UserProfile(props) {
               </a>
             </CardAvatar>
             <CardBody profile>
-              <h6 className={classes.cardCategory}>CEO / CO-FOUNDER</h6>
-              <h4 className={classes.cardTitle}>Alec Thompson</h4>
-              <p className={classes.description}>
-                Don{"'"}t be scared of the truth because we need to restart the
-                human foundation in truth And I love you like Kanye loves Kanye
-                I love Rick Owens’ bed design but the back is...
+              <h6 className={this.state.classes.cardCategory}></h6>
+              <h4 className={this.state.classes.cardTitle}>{this.props.user}</h4>
+              <p className={this.state.classes.description}>
+                {this.props.currentUser.email}
+                {this.props.currentUser.username}
+
               </p>
-              <Button color="primary" round onClick={(event) => {props.history.push(`/users/${props.user}/exercises`)}}>
+              <Button color="primary" round onClick={(event) => {this.props.history.push(`/users/${this.props.user}/exercises`)}}>
                 Exercise Logs
               </Button>
-              <Button color="primary" round onClick={(event) => {props.history.push(`/add`)}}>
+              <Button color="primary" round onClick={(event) => {this.props.history.push(`/add`)}}>
                 Add New Workout
               </Button>
             </CardBody>
@@ -88,8 +97,14 @@ function UserProfile(props) {
   );
 }
 
+}
+const mapState = state => ({
+  isLoggedIn: state.isLoggedIn,
+  currentUser: state.currentUser
+});
+
 UserProfile.propTypes = {
   classes: PropTypes.object
 };
+export default withStyles(styles)(withRouter(connect(mapState, {getUser, getExercises, deleteExercise, editExercise})(UserProfile)))
 
-export default withRouter(withStyles(styles)(UserProfile));

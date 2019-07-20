@@ -5,12 +5,14 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Person from "@material-ui/icons/Person";
 import Edit from "@material-ui/icons/Edit";
 import Close from "@material-ui/icons/Close";
+import Add from "@material-ui/icons/Add";
+
 // core components
 import Table from "components/Table/Table.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 import { withRouter } from "react-router";
 import { connect } from 'react-redux'
-import { getUsers, getUser, deleteExercise, editExercise, getExercises } from "./actions";
+import { getUsers, getUser, deleteExercise, editExercise, getExercises, getUserLogs } from "./actions";
 
 import style from "assets/jss/material-kit-pro-react/views/componentsSections/contentAreas.jsx";
 const exerciseArray = []
@@ -27,22 +29,28 @@ class Tables extends React.Component {
  
       
     componentDidMount() {
-        this.props.getExercises(this.props.currentUser.username)
+        this.props.getUserLogs(this.props.currentUser.username)
     }
 
 
      render() {
         this.props.workouts.map((workout, key) => {
             exerciseArray.push(            
-                    [ workout.name,workout.name, workout.weight_lifted, workout.repetitions, workout.body_part,         <div><Button 
-                        onClick={(event) => {this.props.deleteExercise(workout)}}
-                    justIcon size="sm" color="danger" key={key}>
-                      <Close />
+                    [ workout.name,workout.name, workout.weight_lifted, workout.repetitions, workout.body_part,         
+                    <div><Button onClick={() => {this.props.history.push(`/add`)}}
+                    justIcon size="sm" color="success" >
+                      <Add />
                     </Button>
+                      <Button 
+                        onClick={(event) => {this.props.deleteExercise(workout)}}
+                    justIcon size="sm" color="danger" >
+                      <Close />
+                    </Button>npm 
                     <Button 
-                    justIcon size="sm" color="info" key={key}>
+                    justIcon size="sm" color="info" >
                       <Edit />
-                    </Button></div>],
+                    </Button>
+                    </div>],
          )})
     return (
           <Table
@@ -84,4 +92,4 @@ const mapState = state => {
     }
   }
   
-  export default withStyles(style)(withRouter(connect(mapState, {getUser, getExercises, deleteExercise, editExercise})(Tables)))
+  export default withStyles(style)(withRouter(connect(mapState, {getUser, getExercises, deleteExercise, editExercise, getUserLogs})(Tables)))
