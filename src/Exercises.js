@@ -7,16 +7,16 @@ import { withRouter } from "react-router";
 // import Fab from '@material-ui/core/Fab';
 // import AddIcon from '@material-ui/icons/Add';
 import Paper from '@material-ui/core/Paper';
-import { getUsers, getUser, getExercise, getExercises, toLogs } from "./actions";
+import {  getUser,  getExercises, toLogs } from "./actions";
 import Tables from './ExerciseTable'
 // import Sidebar from "components/Sidebar/Sidebar.jsx"
 // import EcommercePage from 'views/EcommercePage/EcommercePage.jsx'
 // // import Dashboard from "views/Dashboard/Dashboard.jsx"
 // import Drawer from '@material-ui/core/Drawer';
 // import Add from './Add'
-// import RecipeReviewCard from './MediaCard'
-import Icon from '@material-ui/core/Icon';
-import PersistentDrawerLeft from './SideMenu'
+// // import RecipeReviewCard from './MediaCard'
+// import Icon from '@material-ui/core/Icon';
+// import PersistentDrawerLeft from './SideMenu'
 // import {
 //   cardTitle,
 //   cardLink,

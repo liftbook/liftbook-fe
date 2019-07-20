@@ -191,7 +191,7 @@ export const getExercise = exercise => dispatch => {
 export const deleteExercise = exercise => dispatch => {
   dispatch({ type: FETCHING });
   axios
-    .delete(`https://lift-book.herokuapp.com/api/exercises/${exercise.eid}`. exercise)
+    .delete(`https://lift-book.herokuapp.com/api/exercises/${exercise.eid}`, exercise)
     .then(response => {
       dispatch({ type: DELETE_SUCCESS, payload: response.data });
     })
