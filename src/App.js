@@ -5,7 +5,7 @@ import "./App.css";
 import { Route, Switch, Link } from "react-router-dom";
 import Add from "Add";
 // material-ui components
-import PersistentDrawerLeft from './SideMenu'
+import PersistentDrawerLeft from "./SideMenu";
 
 import Button from "components/CustomButtons/Button.jsx";
 import { connect } from "react-redux";
@@ -43,6 +43,7 @@ import profileImage from "assets/img/faces/avatar.jpg";
 import AppBar from './AppBar'
 import Paper from '@material-ui/core/Paper';
 import Exercises from './Exercises.js'
+
 import {
   cardTitle,
   cardLink,
@@ -70,14 +71,14 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log('something')
-  return (
-    <div >
-      <PersistentDrawerLeft />
-      <Route exact path="/" component={LoginForm} />
-      <Route exact path="/login" component={LoginForm} />
-      <Route exact path="/users/register" component={SignupForm} />
-      <Route exact path="/add" component={Add} />
+    console.log("something");
+    return (
+      <div>
+        <PersistentDrawerLeft />
+        <Route exact path="/" component={LoginForm} />
+        {/* <Route exact path="/login" component={LoginForm} /> */}
+        <Route exact path="/users/register" component={SignupForm} />
+        <Route exact path="/add" component={Add} />
 
       {/*this route private after login*/}
       <PrivateRoute exact path="/users" component={User} />
@@ -91,47 +92,5 @@ export default class App extends React.Component {
     </div>
   );
 }
+
 }
-
-
-
-// <Header
-// brand="Liftbook"
-// color="info"
-// links={
-//   <List className={this.state.classes.list + " " + this.state.classes.mlAuto}>
-//     <ListItem className={this.state.classes.listItem}>
-//       <Button
-//         href="#pablo"
-//         className={this.state.classes.navLink + " " + this.state.classes.navLinkActive}
-//         onClick={e => e.preventDefault()}
-//         color="transparent"
-//       >
-//         Discover
-//       </Button>
-//     </ListItem>
-//     <ListItem className={this.state.classes.listItem}>
-//       <Button
-//         className={this.state.classes.navLink}
-//         onClick={e => e.preventDefault()}
-//         color="transparent"
-//       >
-//         <Link to="/users/">
-//         Profile
-//         </Link>
-//       </Button>
-//     </ListItem>
-//     <ListItem className={this.state.classes.listItem}>
-//       <Button
-//         href="#pablo"
-//         className={this.state.classes.navLink}
-//         onClick={e => e.preventDefault()}
-//         color="transparent"
-//       >
-//         Settings
-//       </Button>
-//     </ListItem>
-//     <Summary />
-//   </List>
-// }//
-// />

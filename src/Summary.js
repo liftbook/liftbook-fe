@@ -13,7 +13,6 @@ import EcommercePage from "views/EcommercePage/EcommercePage.jsx";
 // import Dashboard from "views/Dashboard/Dashboard.jsx"
 import Drawer from "@material-ui/core/Drawer";
 
-
 import {
   cardTitle,
   cardLink,
@@ -38,32 +37,34 @@ class Summary extends React.Component {
   }
   componentDidMount() {
     this.props.getUsers();
-
   }
 
   getUser = event => {
     this.props.getUser(event.target.innerHTML);
-    this.props.history.push(`/users/${event.target.innerHTML}`)
+    this.props.history.push(`/users/${event.target.innerHTML}`);
     // this.props.getLogs(user);
-    
-  }
+  };
 
   render() {
     console.log("something2");
 
-    return (<div>{this.props.users.map((user, key) => {
-      return(
-        <div onClick={(event) => this.getUser(event)} key={key}>{user.username}</div>
-      )
-    })}</div>)
-}
-
+    return (
+      <div>
+        {this.props.users.map((user, key) => {
+          return (
+            <div onClick={event => this.getUser(event)} key={key}>
+              {user.username}
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
 }
 
 const mapState = state => {
   return {
     users: state.users
-
   };
 };
 
