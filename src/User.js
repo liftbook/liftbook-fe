@@ -1,12 +1,12 @@
-import React from 'react';
-import { connect } from 'react-redux'
+import React from "react";
+import { connect } from "react-redux";
 import { withRouter } from "react-router";
-import UserProfile from './views/UserProfile/UserProfile.jsx'
+import UserProfile from "./views/UserProfile/UserProfile.jsx";
 // import Card from "components/Card/Card.jsx";
 // import CardBody from "components/Card/CardBody.jsx";
 // import Fab from '@material-ui/core/Fab';
 // import AddIcon from '@material-ui/icons/Add';
-import Paper from '@material-ui/core/Paper';
+import Paper from "@material-ui/core/Paper";
 import { getUser } from "./actions";
 import "./App.css";
 // import { makeStyles } from "@material-ui/core/styles";
@@ -32,45 +32,47 @@ import "./App.css";
 //   cardSubtitle
 // };
 
-var moment = require('moment');
+var moment = require("moment");
 moment().format();
-// const useStyles = makeStyles(theme => ({
-//   root: {
-//     padding: theme.spacing(3, 2),
-//   },
-// }));
+const useStyles = makeStyles(theme => ({
+  root: {
+    padding: theme.spacing(3, 2)
+  }
+}));
+
 class User extends React.Component {
   constructor(props) {
     super();
     this.state = {
-      classes: props,
-    }
-}
-componentDidMount() {
-}
+      classes: props
+    };
+  }
+  componentDidMount() {}
 
-getUser = event => {
-  // this.props.getLogs(user);
-  
-}
-
+  getUser = event => {
+    // this.props.getLogs(user);
+  };
 
   render() {
-    console.log('something2')
+    console.log("something2");
 
-    return (<div className="App">
-      <Paper className={this.state.classes.root}>
-      <UserProfile className="app"  all={this.props}/>
-    </Paper>
+    return (
+      <div className="App">
+        <Paper className={this.state.classes.root}>
+          <UserProfile
+            className="app"
+            user={this.props.currentUser.username}
+            all={this.props}
+          />
+        </Paper>
 
-    <div className="profile">
-      <div className="leftcolumn"></div>
-      <div className="mainColumn"></div>
-    </div>
-
-
-     </div>
-  )}
+        <div className="profile">
+          <div className="leftcolumn"></div>
+          <div className="mainColumn"></div>
+        </div>
+      </div>
+    );
+  }
 }
 
 const mapState = state => {
@@ -82,8 +84,13 @@ const mapState = state => {
     repetitions: state.repetitions,
     date: state.date,
     body_part: state.body_part,
-    currentUser: state.currentUser,
-  }
-}
+    currentUser: state.currentUser
+  };
+};
 
-export default withRouter(connect(mapState, {getUser})(User))
+export default withRouter(
+  connect(
+    mapState,
+    { getUser }
+  )(User)
+);
