@@ -83,7 +83,7 @@ class UserProfile extends React.Component {
                 {this.props.currentUser.username}
 
               </p>
-              <Button color="primary" round onClick={(event) => {this.props.history.push(`/users/${this.props.user}/exercises`)}}>
+              <Button color="primary" round onClick={(event) => {this.props.history.push(`/users/${this.props.currentUser.username}/exercises`)}}>
                 Exercise Logs
               </Button>
               <Button color="primary" round onClick={(event) => {this.props.history.push(`/add`)}}>
