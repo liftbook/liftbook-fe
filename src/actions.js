@@ -1,4 +1,5 @@
 import axios from "axios";
+
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
@@ -22,6 +23,7 @@ export const DATA_FAIL = "DATA_FAIL";
 export const ADD_WORKOUT = "ADD_WORKOUT";
 
 export const signup = user => dispatch => {
+  console.log(user);
   dispatch({ type: SIGNUP_START });
   return axios
     .post("https://lift-book.herokuapp.com/api/users/register", user)

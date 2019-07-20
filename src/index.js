@@ -17,7 +17,10 @@ import "assets/scss/material-kit-pro-react.scss?v=1.7.0";
 
 // var hist = createBrowserHistory();
 
-const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk, logger)));
+const store = createStore(
+  reducer,
+  composeWithDevTools(applyMiddleware(thunk, logger))
+);
 
 ReactDOM.render(
   <div>

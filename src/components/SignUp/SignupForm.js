@@ -22,21 +22,26 @@ class SignupForm extends React.Component {
   handleChange = e => {
     this.setState({
       credentials: {
+        ...this.state.credentials,
         [e.target.name]: e.target.value
       }
     });
   };
 
   handleSubmit = e => {
+    console.log(this.state.credentials);
     e.preventDefault();
     this.props
       .signup(this.state.credentials)
-      .then(() =>
-        this.props.history.push(`/users/${this.state.credentials.username}`)
-      );
+      .then(() => this.props.history.push("/"));
     this.setState({
       credentials: {
-        ...this.state.credentials
+        ...this.state.credentials,
+        first_name: "",
+        last_name: "",
+        email: "",
+        username: "",
+        password: ""
       }
     });
   };
