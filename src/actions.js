@@ -19,6 +19,8 @@ export const USER_SUCCESS = "USER_SUCCESS";
 export const LOG_SUCCESS = "LOG_SUCCESS";
 export const DATA_FAIL = "DATA_FAIL";
 
+export const EXERCISE_SUCCESS = 'EXERCISE_SUCCESS'
+
 export const ADD_WORKOUT = "ADD_WORKOUT";
 
 export const signup = user => dispatch => {
@@ -143,7 +145,7 @@ export const getExercises = () => dispatch => {
       }
     })
     .then(response => {
-      dispatch({ type: DATA_SUCCESS, payload: response.data });
+      dispatch({ type: EXERCISE_SUCCESS, payload: response.data });
     })
     .catch(error => {
       dispatch({ type: DATA_FAIL, payload: error });
