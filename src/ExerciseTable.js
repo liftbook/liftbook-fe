@@ -2,7 +2,7 @@ import React from "react";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 // material-ui icons
-import Person from "@material-ui/icons/Person";
+// import Person from "@material-ui/icons/Person";
 import Edit from "@material-ui/icons/Edit";
 import Close from "@material-ui/icons/Close";
 import Add from "@material-ui/icons/Add";
@@ -12,7 +12,7 @@ import Table from "components/Table/Table.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 import { withRouter } from "react-router";
 import { connect } from 'react-redux'
-import { getUsers, getUser, deleteExercise, editExercise, getExercises, getUserLogs } from "./actions";
+import {  getUser, deleteExercise, editExercise, getExercises, getUserLogs } from "./actions";
 
 import style from "assets/jss/material-kit-pro-react/views/componentsSections/contentAreas.jsx";
 const exerciseArray = []
@@ -34,7 +34,8 @@ class Tables extends React.Component {
 
 
      render() {
-        this.props.workouts.map((workout, key) => {
+        this.props.workouts.map((workout) => {
+          return(
             exerciseArray.push(            
                     [ workout.name,workout.name, workout.weight_lifted, workout.repetitions, workout.body_part,         
                     <div><Button onClick={() => {this.props.history.push(`/add`)}}
@@ -51,7 +52,7 @@ class Tables extends React.Component {
                       <Edit />
                     </Button>
                     </div>],
-         )})
+         ))})
     return (
           <Table
             tableHead={[
