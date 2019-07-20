@@ -1,14 +1,14 @@
-import React from 'react';
-import { connect } from 'react-redux'
+import React from "react";
+import { connect } from "react-redux";
 import { withRouter } from "react-router";
 // import UserProfile from './views/UserProfile/UserProfile.jsx'
 // import Card from "components/Card/Card.jsx";
 // import CardBody from "components/Card/CardBody.jsx";
 // import Fab from '@material-ui/core/Fab';
 // import AddIcon from '@material-ui/icons/Add';
-import Paper from '@material-ui/core/Paper';
-import {  getUser,  getExercises, toLogs } from "./actions";
-import Tables from './ExerciseTable'
+import Paper from "@material-ui/core/Paper";
+import { getUser, getExercises, toLogs } from "./actions";
+import Tables from "./ExerciseTable";
 // import Sidebar from "components/Sidebar/Sidebar.jsx"
 // import EcommercePage from 'views/EcommercePage/EcommercePage.jsx'
 // // import Dashboard from "views/Dashboard/Dashboard.jsx"
@@ -29,12 +29,9 @@ import Tables from './ExerciseTable'
 //   cardSubtitle
 // };
 
-
-
-var moment = require('moment');
+var moment = require("moment");
 moment().format();
 // var uniqid = require('uniqid');
-
 
 class Exercises extends React.Component {
   constructor(props) {
@@ -44,33 +41,31 @@ class Exercises extends React.Component {
       log: {
         uid: props.currentUser.uid,
         eid: props.currentWorkout.eid,
-        lid: Date.now().toString(),
+        lid: Date.now().toString()
       }
-    }
-}
-componentDidMount() {
-  console.log(this.state.log)
-  this.props.toLogs(this.state.log)
-
-}
- 
-
+    };
+  }
+  componentDidMount() {
+    console.log(this.state.log);
+    this.props.toLogs(this.state.log);
+  }
 
   render() {
-    console.log('something5')
+    console.log("something5");
 
-    return (<div className="App">
-      <Paper className={this.state.classes.root}>
-        <Tables workouts={this.props.logs}/>
-    </Paper>
-    
-    <div className="profile">
-      <div className="leftcolumn"></div>
-      <div className="mainColumn"></div>
-    </div>
+    return (
+      <div className="App">
+        <Paper className={this.state.classes.root}>
+          <Tables workouts={this.props.logs} />
+        </Paper>
 
-     </div>
-  )}
+        <div className="profile">
+          <div className="leftcolumn"></div>
+          <div className="mainColumn"></div>
+        </div>
+      </div>
+    );
+  }
 }
 
 const mapState = state => {
@@ -78,8 +73,13 @@ const mapState = state => {
     workouts: state.workouts,
     currentUser: state.currentUser,
     currentWorkout: state.currentWorkout,
-    logs: state.logs,
-  }
-}
+    logs: state.logs
+  };
+};
 
-export default withRouter(connect(mapState, {getUser, toLogs, getExercises})(Exercises))
+export default withRouter(
+  connect(
+    mapState,
+    { getUser, toLogs, getExercises }
+  )(Exercises)
+);

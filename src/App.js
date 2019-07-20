@@ -41,7 +41,7 @@ import PrivateRoute from "./PrivateRoute";
 // import profileImage from "assets/img/faces/avatar.jpg";
 // import AppBar from './AppBar'
 // import Paper from '@material-ui/core/Paper';
-import Exercises from './Exercises.js'
+import Exercises from "./Exercises.js";
 
 import {
   cardTitle,
@@ -70,26 +70,26 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log('something')
-  return (
-    <div className="app" >
-      <PersistentDrawerLeft />
-      <Route exact path="/" exact component={LoginForm} />
-      <Route exact path="/login" exact component={LoginForm} />
-      <Route exact path="/users/register" component={SignupForm} />
-      <Route exact path="/add" exact component={Add} />
+    console.log("something");
+    return (
+      <div className="app">
+        <PersistentDrawerLeft />
+        <Route exact path="/" exact component={LoginForm} />
+        <Route exact path="/login" exact component={LoginForm} />
+        <Route exact path="/users/register" component={SignupForm} />
+        <Route exact path="/add" exact component={Add} />
 
+        {/*this route private after login*/}
+        <PrivateRoute exact path="/users" exact component={User} />
+        <PrivateRoute exact path="/users/:username" exact component={User} />
+        <PrivateRoute
+          exact
+          path="/users/:username/exercises"
+          component={Exercises}
+        />
 
-      {/*this route private after login*/}
-      <PrivateRoute exact path="/users" exact component={User} />
-      <PrivateRoute exact path="/users/:username" exact component={User} />
-      <PrivateRoute exact path="/users/:username/exercises" component={Exercises}/>
-
-
-      {/* <PrivateRoute exact path="/users/[username]/logs/[exerciseId]" component={DeleteFriend} /> */}
-
-    </div>
-  );
-}
-
+        {/* <PrivateRoute exact path="/users/[username]/logs/[exerciseId]" component={DeleteFriend} /> */}
+      </div>
+    );
+  }
 }
