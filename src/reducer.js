@@ -17,6 +17,8 @@ import {
   USER_SUCCESS,
   LOG_SUCCESS,
   EXERCISE_SUCCESS,
+  DELETE_SUCCESS,
+  EDIT_SUCCESS,
 } from "./actions";
 
 var moment = require("moment");
@@ -31,7 +33,8 @@ const initialState = {
   user: "",
   workouts: [],
   users: [],
-  logs: []
+  logs: [],
+  currentUser: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -106,13 +109,13 @@ const reducer = (state = initialState, action) => {
     case DATA_SUCCESS: {
       return {
         ...state,
-        users: action.payload
+        currentUser: action.payload
       };
     }
     case USER_SUCCESS: {
       return {
         ...state,
-        user: action.payload
+        currentUser: action.payload
       };
     }
     case LOG_SUCCESS: {
@@ -122,6 +125,17 @@ const reducer = (state = initialState, action) => {
       };
     }
     case EXERCISE_SUCCESS: {
+      return {
+        ...state,
+        workouts: action.payload
+      };
+    }
+    case DELETE_SUCCESS: {
+      return {
+        ...state,
+      };
+    }
+    case EDIT_SUCCESS: {
       return {
         ...state,
         workouts: action.payload

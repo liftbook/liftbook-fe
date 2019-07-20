@@ -7,13 +7,14 @@ import CardBody from "components/Card/CardBody.jsx";
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import Paper from '@material-ui/core/Paper';
-
+import { getUsers, getUser, getExercise, getExercises } from "./actions";
+import Tables from './ExerciseTable'
 // import Sidebar from "components/Sidebar/Sidebar.jsx"
 // import EcommercePage from 'views/EcommercePage/EcommercePage.jsx'
 // // import Dashboard from "views/Dashboard/Dashboard.jsx"
 // import Drawer from '@material-ui/core/Drawer';
 // import Add from './Add'
-import { getUser, getLogs } from './actions'
+import { getLogs } from './actions'
 import { Link } from "react-router-dom";
 import RecipeReviewCard from './MediaCard'
 import Icon from '@material-ui/core/Icon';
@@ -30,6 +31,8 @@ import {
 //   cardSubtitle
 // };
 
+
+
 var moment = require('moment');
 moment().format();
 
@@ -41,38 +44,23 @@ class Exercises extends React.Component {
     }
 }
 componentDidMount() {
-
 }
-
+ 
 
 
   render() {
-    console.log('something2')
+    console.log('something5')
 
     return (<div className="App">
       <Paper className={this.state.classes.root}>
-      <UserProfile user={this.props.user.username} all={this.props}/>
+        <Tables workouts={this.props.workouts}/>
     </Paper>
-
+    
     <div className="profile">
       <div className="leftcolumn"></div>
       <div className="mainColumn"></div>
     </div>
 
-    <CardBody>
-        <h4 className={this.state.classes.cardTitle}>Exercise</h4>
-        <div>
-          <p>{this.props.workouts.map(workout => {
-            return(
-              <div>
-                {workout.eid}
-              </div>
-            )
-          })}</p>
-          </div>
-
-
-      </CardBody>
      </div>
   )}
 }
@@ -80,8 +68,8 @@ componentDidMount() {
 const mapState = state => {
   return {
     workouts: state.workouts,
-    user: state.user,
+    currentUser: state.currentUser,
   }
 }
 
-export default withRouter(connect(mapState, {getUser, getLogs})(Exercises))
+export default withRouter(connect(mapState, {getUser, getLogs, getExercises})(Exercises))

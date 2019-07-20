@@ -72,7 +72,7 @@ export default class App extends React.Component {
   render() {
     console.log('something')
   return (
-    <div >
+    <div className="app" >
       <PersistentDrawerLeft />
       <Route exact path="/" component={LoginForm} />
       <Route exact path="/login" component={LoginForm} />
