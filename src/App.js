@@ -43,11 +43,11 @@ import PrivateRoute from "./PrivateRoute";
 // import Paper from '@material-ui/core/Paper';
 import Exercises from "./Exercises.js";
 
-import {
-  cardTitle,
-  cardLink,
-  cardSubtitle
-} from "assets/jss/material-kit-pro-react.jsx";
+// import {
+//   cardTitle,
+//   cardLink,
+//   cardSubtitle
+// } from "assets/jss/material-kit-pro-react.jsx";
 
 // const style = {
 //   cardTitle,
@@ -55,11 +55,11 @@ import {
 //   cardSubtitle
 // };
 
-const style = {
-  cardTitle,
-  cardLink,
-  cardSubtitle
-};
+// const style = {
+//   cardTitle,
+//   cardLink,
+//   cardSubtitle
+// };
 
 export default class App extends React.Component {
   constructor(props) {
@@ -70,6 +70,7 @@ export default class App extends React.Component {
   }
 
   render() {
+
     console.log("something");
     return (
       <div className="app">

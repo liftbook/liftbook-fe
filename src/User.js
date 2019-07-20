@@ -9,7 +9,7 @@ import UserProfile from './views/UserProfile/UserProfile.jsx'
 import Paper from '@material-ui/core/Paper';
 import { getUser } from "./actions";
 import "./App.css";
-import { makeStyles } from "@material-ui/core/styles";
+// import { makeStyles } from "@material-ui/core/styles";
 
 // import Sidebar from "components/Sidebar/Sidebar.jsx"
 // import EcommercePage from 'views/EcommercePage/EcommercePage.jsx'
@@ -34,11 +34,11 @@ import { makeStyles } from "@material-ui/core/styles";
 
 var moment = require('moment');
 moment().format();
-const useStyles = makeStyles(theme => ({
-  root: {
-    padding: theme.spacing(3, 2),
-  },
-}));
+// const useStyles = makeStyles(theme => ({
+//   root: {
+//     padding: theme.spacing(3, 2),
+//   },
+// }));
 class User extends React.Component {
   constructor(props) {
     super();
@@ -60,7 +60,7 @@ getUser = event => {
 
     return (<div className="App">
       <Paper className={this.state.classes.root}>
-      <UserProfile className="app" user={this.props.currentUser.username} all={this.props}/>
+      <UserProfile className="app"  all={this.props}/>
     </Paper>
 
     <div className="profile">
