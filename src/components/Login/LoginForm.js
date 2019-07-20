@@ -29,8 +29,8 @@ class LoginForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state.credentials.username)
-    this.props.getUser(this.state.credentials.username)
+    console.log(this.state.credentials.username);
+    this.props.getUser(this.state.credentials.username);
 
     this.props
       .login(this.state.credentials)
@@ -92,5 +92,5 @@ const mapStateToProps = ({ isLoggedIn }) => ({
 
 export default connect(
   mapStateToProps,
-  { login, getUser, getExercises}
+  { login, getUser, getExercises }
 )(LoginForm);
