@@ -67,7 +67,7 @@ class LoginForm extends React.Component {
                 value={this.state.credentials.password}
                 onChange={this.handleChange}
               />
-            </div>
+            </div> 
             <Link to="/users">
               <button onClick={this.handleSubmit} className="loginButton">
                 Log In

@@ -157,6 +157,11 @@ export default function PersistentDrawerLeft() {
             </Link>
           </ListItem>
           <ListItem button>
+            <Link style={{ color: "white" }} to="/profile/:username">
+              Profile
+            </Link>
+          </ListItem>
+          <ListItem button>
             <Link style={{ color: "white" }} to="/login">
               Log in
             </Link>

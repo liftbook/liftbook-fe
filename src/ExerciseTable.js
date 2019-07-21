@@ -6,7 +6,6 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Edit from "@material-ui/icons/Edit";
 import Close from "@material-ui/icons/Close";
 import Add from "@material-ui/icons/Add";
-
 // core components
 import Table from "components/Table/Table.jsx";
 import Button from "components/CustomButtons/Button.jsx";
@@ -20,6 +19,7 @@ import {
   getExercises,
   getUserLogs
 } from "./actions";
+import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
 import style from "assets/jss/material-kit-pro-react/views/componentsSections/contentAreas.jsx";
 const exerciseArray = [];
@@ -29,18 +29,20 @@ class Tables extends React.Component {
     super(props);
     this.state = {
       classes: props,
-      workouts: []
+      exercises: [],
     };
   }
 
   componentDidMount() {
-    this.props.getUserLogs(this.props.currentUser.username);
   }
 
   render() {
-    this.props.workouts.map((workout, key) => {
+ 
+
+
+    this.props.exercises.map((workout, key) => {
       exerciseArray.push([
-        workout.name,
+        workout.created_at,
         workout.name,
         workout.weight_lifted,
         workout.repetitions,
@@ -74,6 +76,7 @@ class Tables extends React.Component {
     });
 
     return (
+      <div>
       <Table
         tableHead={[
           "Date",
@@ -102,14 +105,18 @@ class Tables extends React.Component {
         ]}
         customHeadClassesForCells={[0, 4, 5]}
       />
+      
+      {/* <Pagination /> */}
+      </div>
     );
   }
 }
 
 const mapState = state => {
   return {
-    workouts: state.workouts,
-    currentUser: state.currentUser
+    logs: state.logs,
+    currentUser: state.currentUser,
+    exercises: state.exercises,
   };
 };
 
