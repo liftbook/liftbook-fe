@@ -80,11 +80,6 @@ class UserProfile extends React.Component {
         <div>
           <GridItem xs={12} sm={12} md={4}>
             <Card profile>
-              <CardAvatar profile>
-                <a href="#pablo" onClick={e => e.preventDefault()}>
-                  <img src={avatar} alt="..." />
-                </a>
-              </CardAvatar>
               <CardBody profile>
                 <h6 className={this.state.classes.cardCategory}>PROFILE</h6>
                 <h4 className={this.state.classes.cardTitle}>

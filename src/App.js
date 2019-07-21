@@ -87,7 +87,7 @@ export default class App extends React.Component {
 
         <PrivateRoute
           exact
-          path="/profile/:username/exercises"
+          path="/users/:username/exercises"
           component={Exercises}
         />
         <PrivateRoute exact path="/profile/:username" component={User} />
