@@ -161,12 +161,14 @@ export const getUserLogs = user => dispatch => {
 };
 
 //EXERCISE ACTIONS
-export const getExercises = () => dispatch => {
+export const getExercises = (uid) => dispatch => {
   dispatch({ type: FETCHING });
   axios
     .get("https://lift-book.herokuapp.com/api/exercises")
     .then(response => {
-      dispatch({ type: EXERCISE_SUCCESS, payload: response.data});
+      dispatch({ type: EXERCISE_SUCCESS, payload: response.data.filter(exercise => {
+        return(exercise.created_by === uid)
+      })});
     })
     .catch(error => {
       dispatch({ type: DATA_FAIL, payload: error });

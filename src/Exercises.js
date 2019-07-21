@@ -46,7 +46,7 @@ class Exercises extends React.Component {
   }
   componentDidMount() {
     // this.props.toLogs(this.state.log)
-    this.props.getExercises()
+    this.props.getExercises(this.props.currentUser.uid)
     // this.props.getUserLogs(this.props.currentUser.username)
   }
 
@@ -56,9 +56,7 @@ class Exercises extends React.Component {
     return (
       <div className="App">
         <Paper className={this.state.classes.root}>
-          <Tables  filtered={this.props.exercises.filter(exercise => {
-      return(exercise.created_by === this.props.currentUser.uid)
-    })}/>
+          <Tables  />
         </Paper>
 
         <div className="profile">
@@ -76,7 +74,6 @@ const mapState = state => {
     currentUser: state.currentUser,
     currentWorkout: state.currentWorkout,
     logs: state.logs,
-    exercises: state.exercises,
   };
 };
 

@@ -6,9 +6,6 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Edit from "@material-ui/icons/Edit";
 import Close from "@material-ui/icons/Close";
 import Add from "@material-ui/icons/Add";
-import TablePagination from '@material-ui/core/TablePagination';
-import TableFooter from '@material-ui/core/TableFooter';
-import Pagination from './components/Pagination/Pagination.jsx'
 // core components
 import Table from "components/Table/Table.jsx";
 import Button from "components/CustomButtons/Button.jsx";
@@ -22,6 +19,7 @@ import {
   getExercises,
   getUserLogs
 } from "./actions";
+import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
 import style from "assets/jss/material-kit-pro-react/views/componentsSections/contentAreas.jsx";
 const exerciseArray = [];
@@ -36,14 +34,13 @@ class Tables extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getUserLogs(this.props.currentUser.username)
   }
 
   render() {
  
 
 
-    this.props.filtered.map((workout, key) => {
+    this.props.exercises.map((workout, key) => {
       exerciseArray.push([
         workout.created_at,
         workout.name,
@@ -108,6 +105,7 @@ class Tables extends React.Component {
         ]}
         customHeadClassesForCells={[0, 4, 5]}
       />
+      
       {/* <Pagination /> */}
       </div>
     );
