@@ -12,21 +12,29 @@ import Button from "@material-ui/core/Button";
 import NativeSelect from "@material-ui/core/NativeSelect";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import { withRouter } from "react-router";
+class Add extends React.Component {
 
-class Add extends Component {
-  state = {
-    user: this.props.user,
+  constructor(props) {
+    super();
+    this.state = {
+    user: props.user,
     name: "",
     weight_lifted: "",
     repetitions: "",
     date: "",
-    body_part: ""
+    body_part: "",
+    log: {
+      username: props.currentUser.username,
+      exercise: props.currentWorkout.name,
+    }  
   };
-
+  
+}
   handleSubmit = e => {
     e.preventDefault();
 
     const {
+      log,
       name,
       weight_lifted,
       repetitions,
@@ -36,6 +44,7 @@ class Add extends Component {
     } = this.state;
 
     const newWorkout = {
+      log,
       name,
       weight_lifted,
       repetitions,
@@ -44,7 +53,7 @@ class Add extends Component {
       user
     };
     this.props.addWorkout(newWorkout);
-    this.props.clearWorkout();
+
 
     this.setState({
       id: "",
@@ -58,6 +67,8 @@ class Add extends Component {
     this.props.history.push(
       `/users/${this.props.currentUser.username}/exercises`
     );
+
+
   };
 
   // handle input change
@@ -184,7 +195,8 @@ const mapStateToProps = state => {
   return {
     user: state.user,
     workouts: state.workouts,
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    currentWorkout: state.currentWorkout,
   };
 };
 

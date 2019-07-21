@@ -77,7 +77,10 @@ export const toLogs = log => dispatch => {
     .post("https://lift-book.herokuapp.com/api/logs", log)
     .then(response => {
       dispatch({ type: LOG_POST_SUCCESS, payload: response.data });
+      setTimeout(() => dispatch({ type: SIGNUP_RESOLVED }), 1500);
+
     })
+    
     .catch(err => {
       if (err.response && err.response.status === 403) {
         localStorage.removeItem("token");

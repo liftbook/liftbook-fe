@@ -39,9 +39,8 @@ class Exercises extends React.Component {
     this.state = {
       classes: props,
       log: {
-        uid: props.currentUser.uid,
-        eid: props.currentWorkout.eid,
-        lid: Date.now().toString()
+        username: props.currentUser.username,
+        exercise: props.currentWorkout.name,
       }
     };
   }
