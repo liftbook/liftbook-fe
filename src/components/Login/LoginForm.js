@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { login } from "../../actions";
 import { Link } from "react-router-dom";
-import {  getUser, getExercises } from "../../actions";
+import { getUser, getExercises } from "../../actions";
 
 import "./LoginForm.css";
 
@@ -29,7 +29,7 @@ class LoginForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state.credentials);
+    console.log(this.state.credentials.username);
     this.props.getUser(this.state.credentials.username);
 
     this.props

@@ -33,8 +33,12 @@ import CardBody from "components/Card/CardBody.jsx";
 // import CardFooter from "components/Card/CardFooter.jsx";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
-import {  getUser, deleteExercise, editExercise, getExercises } from "../../actions";
-
+import {
+  getUser,
+  deleteExercise,
+  editExercise,
+  getExercises
+} from "../../actions";
 
 import avatar from "assets/img/faces/marc.jpg";
 
@@ -62,7 +66,7 @@ class UserProfile extends React.Component {
     super(props);
     this.state = {
       classes: props
-    }
+    };
   }
   render() {
   return (
@@ -97,6 +101,7 @@ class UserProfile extends React.Component {
   );
 }
 
+
 }
 const mapState = state => ({
   isLoggedIn: state.isLoggedIn,
@@ -106,11 +111,12 @@ const mapState = state => ({
 UserProfile.propTypes = {
   classes: PropTypes.object
 };
-export default withStyles(styles)( 
+
+export default withStyles(styles)(
   withRouter(
     connect(
-      mapState, 
-      {getUser, getExercises, deleteExercise, editExercise}
-      )(UserProfile)
-      )
-)
+      mapState,
+      { getUser, getExercises, deleteExercise, editExercise }
+    )(UserProfile)
+  )
+);
