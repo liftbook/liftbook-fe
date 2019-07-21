@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { signup } from "../../actions";
-import { Link } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 
 import "./SignupForm.css";
 
@@ -103,6 +103,7 @@ class SignupForm extends React.Component {
             </Link>
           </div>
         </div>
+
       </div>
     );
   }

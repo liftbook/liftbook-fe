@@ -35,7 +35,7 @@ class LoginForm extends React.Component {
     this.props
       .login(this.state.credentials)
       .then(() =>
-        this.props.history.push(`/users/${this.state.credentials.username}`)
+        this.props.history.push(`/profile/${this.state.credentials.username}`)
       );
     this.setState({
       credentials: {
