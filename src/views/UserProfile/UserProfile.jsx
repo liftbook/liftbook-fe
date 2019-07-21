@@ -33,8 +33,12 @@ import CardBody from "components/Card/CardBody.jsx";
 // import CardFooter from "components/Card/CardFooter.jsx";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
-import {  getUser, deleteExercise, editExercise, getExercises } from "../../actions";
-
+import {
+  getUser,
+  deleteExercise,
+  editExercise,
+  getExercises
+} from "../../actions";
 
 import avatar from "assets/img/faces/marc.jpg";
 
@@ -62,41 +66,61 @@ class UserProfile extends React.Component {
     super(props);
     this.state = {
       classes: props
-    }
+    };
   }
   render() {
-  return (
-    <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
-      <div  >
-        <GridItem  xs={12} sm={12} md={4}>
-          <Card profile >
-            <CardAvatar profile>
-              <a href="#pablo" onClick={e => e.preventDefault()}>
-                <img src={avatar} alt="..." />
-              </a>
-            </CardAvatar>
-            <CardBody profile>
-              <h6 className={this.state.classes.cardCategory}>PROFILE</h6>
-              <h4 className={this.state.classes.cardTitle}>{this.props.user}</h4>
-              <p className={this.state.classes.description}>
-                {this.props.currentUser.email}
-                {this.props.currentUser.username}
-
-              </p>
-              <Button color="primary" round onClick={(event) => {this.props.history.push(`/users/${this.props.currentUser.username}/exercises`)}}>
-                Exercise Logs
-              </Button>
-              <Button color="primary" round onClick={(event) => {this.props.history.push(`/add`)}}>
-                Add New Workout
-              </Button>
-            </CardBody>
-          </Card>
-        </GridItem>
-    </div>
-    </div>
-  );
-}
-
+    return (
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center"
+        }}
+      >
+        <div>
+          <GridItem xs={12} sm={12} md={4}>
+            <Card profile>
+              <CardAvatar profile>
+                <a href="#pablo" onClick={e => e.preventDefault()}>
+                  <img src={avatar} alt="..." />
+                </a>
+              </CardAvatar>
+              <CardBody profile>
+                <h6 className={this.state.classes.cardCategory}>PROFILE</h6>
+                <h4 className={this.state.classes.cardTitle}>
+                  {this.props.user}
+                </h4>
+                <p className={this.state.classes.description}>
+                  {this.props.currentUser.email}
+                  {this.props.currentUser.username}
+                </p>
+                <Button
+                  color="primary"
+                  round
+                  onClick={event => {
+                    this.props.history.push(
+                      `/users/${this.props.currentUser.username}/exercises`
+                    );
+                  }}
+                >
+                  Exercise Logs
+                </Button>
+                <Button
+                  color="primary"
+                  round
+                  onClick={event => {
+                    this.props.history.push(`/add`);
+                  }}
+                >
+                  Add New Workout
+                </Button>
+              </CardBody>
+            </Card>
+          </GridItem>
+        </div>
+      </div>
+    );
+  }
 }
 const mapState = state => ({
   isLoggedIn: state.isLoggedIn,
@@ -106,5 +130,11 @@ const mapState = state => ({
 UserProfile.propTypes = {
   classes: PropTypes.object
 };
-export default withStyles(styles)(withRouter(connect(mapState, {getUser, getExercises, deleteExercise, editExercise})(UserProfile)))
-
+export default withStyles(styles)(
+  withRouter(
+    connect(
+      mapState,
+      { getUser, getExercises, deleteExercise, editExercise }
+    )(UserProfile)
+  )
+);
