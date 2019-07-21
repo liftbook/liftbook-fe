@@ -17,7 +17,7 @@ class Add extends React.Component {
   constructor(props) {
     super();
     this.state = {
-    user: props.user,
+    user: props.currentUser.username,
     name: "",
     weight_lifted: "",
     repetitions: "",
@@ -26,15 +26,19 @@ class Add extends React.Component {
     log: {
       username: props.currentUser.username,
       exercise: props.currentWorkout.name,
-    }  
+    }
   };
   
+}
+
+componentDidMount() {
+
+
 }
   handleSubmit = e => {
     e.preventDefault();
 
     const {
-      log,
       name,
       weight_lifted,
       repetitions,
@@ -44,7 +48,6 @@ class Add extends React.Component {
     } = this.state;
 
     const newWorkout = {
-      log,
       name,
       weight_lifted,
       repetitions,
@@ -52,8 +55,8 @@ class Add extends React.Component {
       body_part,
       user
     };
-    this.props.addWorkout(newWorkout);
 
+    this.props.addWorkout(newWorkout);
 
     this.setState({
       id: "",
@@ -64,9 +67,9 @@ class Add extends React.Component {
       date: "",
       body_part: ""
     });
-    this.props.history.push(
-      `/users/${this.props.currentUser.username}/exercises`
-    );
+    // this.props.history.push(
+    //   `/profile/${this.props.currentUser.username}/exercises`
+    // );
 
 
   };
@@ -78,7 +81,24 @@ class Add extends React.Component {
 
   //handle option change
   handleChange = e => {
+    const {
+      name,
+      weight_lifted,
+      repetitions,
+      date,
+      body_part,
+      user
+    } = this.state;
+    const newWorkout = {
+      name,
+      weight_lifted,
+      repetitions,
+      date,
+      body_part,
+      user
+    };
     this.setState({ body_part: e.target.value });
+    
   };
 
   render() {

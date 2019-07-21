@@ -21,6 +21,7 @@ import {
   EDIT_SUCCESS,
   LOG_POST_SUCCESS,
   CLEAR_WORKOUT,
+  EXERCISE_USER_SUCCESS,
 } from "./actions";
 
 var moment = require("moment");
@@ -33,11 +34,11 @@ const initialState = {
   isLoggedIn: false,
   loginError: "",
   user: "",
-  workouts: [],
   users: [],
   logs: [],
   currentUser: [],
   currentWorkout: [],
+  exercises: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -96,7 +97,6 @@ const reducer = (state = initialState, action) => {
     case ADD_WORKOUT: {
       return {
         ...state,
-        workouts: [action.payload],
         currentWorkout: action.payload,
       };
     }
@@ -137,7 +137,13 @@ const reducer = (state = initialState, action) => {
     case EXERCISE_SUCCESS: {
       return {
         ...state,
-        workouts: action.payload
+        exercises: action.payload
+      };
+    }
+    case EXERCISE_USER_SUCCESS: {
+      return {
+        ...state,
+        exercises: action.payload
       };
     }
     case DELETE_SUCCESS: {

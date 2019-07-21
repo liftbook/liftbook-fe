@@ -7,7 +7,7 @@ import { withRouter } from "react-router";
 // import Fab from '@material-ui/core/Fab';
 // import AddIcon from '@material-ui/icons/Add';
 import Paper from "@material-ui/core/Paper";
-import { getUser, getExercises, toLogs } from "./actions";
+import { getUser, getExercises, getExercise, toLogs, clearWorkout, getUserLogs } from "./actions";
 import Tables from "./ExerciseTable";
 // import Sidebar from "components/Sidebar/Sidebar.jsx"
 // import EcommercePage from 'views/EcommercePage/EcommercePage.jsx'
@@ -45,8 +45,9 @@ class Exercises extends React.Component {
     };
   }
   componentDidMount() {
-    console.log(this.state.log);
-    this.props.toLogs(this.state.log);
+    // this.props.toLogs(this.state.log)
+    this.props.getExercises(this.props.currentUser.uid)
+    // this.props.getUserLogs(this.props.currentUser.username)
   }
 
   render() {
@@ -55,7 +56,7 @@ class Exercises extends React.Component {
     return (
       <div className="App">
         <Paper className={this.state.classes.root}>
-          <Tables workouts={this.props.logs} />
+          <Tables  />
         </Paper>
 
         <div className="profile">
@@ -72,13 +73,13 @@ const mapState = state => {
     workouts: state.workouts,
     currentUser: state.currentUser,
     currentWorkout: state.currentWorkout,
-    logs: state.logs
+    logs: state.logs,
   };
 };
 
 export default withRouter(
   connect(
     mapState,
-    { getUser, toLogs, getExercises }
+    { getUser, toLogs, getExercises, getExercise, clearWorkout, getUserLogs }
   )(Exercises)
 );

@@ -125,6 +125,7 @@ const mapState = state => ({
 UserProfile.propTypes = {
   classes: PropTypes.object
 };
+
 export default withStyles(styles)(
   withRouter(
     connect(
