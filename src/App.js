@@ -20,7 +20,7 @@ import User from "./User";
 // import AddIcon from "@material-ui/icons/Add";
 import LoginForm from "./components/Login/LoginForm";
 import SignupForm from "./components/SignUp/SignupForm";
-import Home from './Home'
+import Home from "./Home";
 // @material-ui/core components
 // import List from "@material-ui/core/List";
 // import ListItem from "@material-ui/core/ListItem";
@@ -90,11 +90,7 @@ export default class App extends React.Component {
           path="/users/:username/exercises"
           component={Exercises}
         />
-        <PrivateRoute
-          exact
-          path="/profile/:username"
-          component={User}
-        />
+        <PrivateRoute exact path="/profile/:username" component={User} />
         {/* <PrivateRoute exact path="/users/[username]/logs/[exerciseId]" component={DeleteFriend} /> */}
       </div>
     );

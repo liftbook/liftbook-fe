@@ -29,7 +29,7 @@ class LoginForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state.credentials);
+    console.log(this.state.credentials.username);
     this.props.getUser(this.state.credentials.username);
 
     this.props
