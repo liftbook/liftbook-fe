@@ -1,0 +1,40 @@
+h1 {
+    text-align: center;
+}
+
+.signup {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    margin-left: 29%;
+    width: 40%;
+    padding: 10px;
+    box-shadow: 6px 6px 10px lightgrey;
+    border: 2px solid gray;
+    border-radius: 15px;
+    background-color: white;
+}
+
+input {
+    border-radius: 5px;
+    width: 50%;
+    padding: 5px;
+    margin-top: 8px;
+    height: 30px;
+    margin-left: 5px;
+    font-size: 24px;
+}
+
+.signupButton {
+    cursor: pointer;
+    background-color: whitesmoke;
+    padding: 5px;
+    width: 120px;
+    height: 50px;
+    border: 2px solid grey;
+    border-radius: 8px;
+    box-shadow: 3px 3px 5px lightgrey;
+    margin-top: 20px;
+    font-size: 24px;
+}

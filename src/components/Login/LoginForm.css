@@ -1,0 +1,34 @@
+h1 {
+    text-align: center;
+}
+
+.login {
+    background-color: white;
+    box-shadow: 6px 6px 10px lightgrey;
+    text-align: center;
+    margin-left: 29%;
+    width: 40%;
+    padding: 10px;
+    border: 2px solid gray;
+    border-radius: 15px;
+}
+
+input {
+    border-radius: 5px;
+    height: 30px;
+    margin-left: 5px;
+    font-size: 24px;
+}
+
+.loginButton {
+    cursor: pointer;
+    background-color: whitesmoke;
+    padding: 5px;
+    width: 120px;
+    height: 50px;
+    border: 2px solid grey;
+    border-radius: 8px;
+    box-shadow: 3px 3px 5px lightgrey;
+    margin-top: 20px;
+    font-size: 24px;
+}
