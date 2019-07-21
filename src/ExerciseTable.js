@@ -22,7 +22,6 @@ import {
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
 import style from "assets/jss/material-kit-pro-react/views/componentsSections/contentAreas.jsx";
-const exerciseArray = [];
 
 class Tables extends React.Component {
   constructor(props) {
@@ -30,6 +29,8 @@ class Tables extends React.Component {
     this.state = {
       classes: props,
       exercises: [],
+ exerciseArray: [],
+
     };
   }
 
@@ -41,7 +42,7 @@ class Tables extends React.Component {
 
 
     this.props.exercises.map((workout, key) => {
-      exerciseArray.push([
+      this.state.exerciseArray.push([
         workout.created_at,
         workout.name,
         workout.weight_lifted,
@@ -87,7 +88,7 @@ class Tables extends React.Component {
           "Actions"
         ]}
         tableData={
-          exerciseArray
+          this.state.exerciseArray
           //   ["1", "Andrew Mike", "Develop", "2013", "€ 99,225", fillButtons],
           //   ["2", "John Doe", "Design", "2012", "€ 89,241", roundButtons],
           //   ["3", "Alex Mike", "Design", "2010", "€ 92,144", simpleButtons]
