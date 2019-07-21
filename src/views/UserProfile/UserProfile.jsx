@@ -69,39 +69,53 @@ class UserProfile extends React.Component {
     };
   }
   render() {
-  return (
-    <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
-      <div  >
-        <GridItem  xs={12} sm={12} md={4}>
-          <Card profile >
-            <CardAvatar profile>
-              <a href="#pablo" onClick={e => e.preventDefault()}>
-                <img src={avatar} alt="..." />
-              </a>
-            </CardAvatar>
-            <CardBody profile>
-              <h6 className={this.state.classes.cardCategory}>PROFILE</h6>
-              <h4 className={this.state.classes.cardTitle}>{this.props.user}</h4>
-              <p className={this.state.classes.description}>
-                {this.props.currentUser.email}
-                {this.props.currentUser.username}
-
-              </p>
-              <Button color="primary" round onClick={(event) => {this.props.history.push(`/profile/${this.props.currentUser.username}/exercises`)}}>
-                Exercise Logs
-              </Button>
-              <Button color="primary" round onClick={(event) => {this.props.history.push(`/add`)}}>
-                Add New Workout
-              </Button>
-            </CardBody>
-          </Card>
-        </GridItem>
-    </div>
-    </div>
-  );
-}
-
-
+    return (
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center"
+        }}
+      >
+        <div>
+          <GridItem xs={12} sm={12} md={4}>
+            <Card profile>
+              <CardBody profile>
+                <h6 className={this.state.classes.cardCategory}>PROFILE</h6>
+                <h4 className={this.state.classes.cardTitle}>
+                  {this.props.user}
+                </h4>
+                <p className={this.state.classes.description}>
+                  {this.props.currentUser.email}
+                  {this.props.currentUser.username}
+                </p>
+                <Button
+                  color="primary"
+                  round
+                  onClick={event => {
+                    this.props.history.push(
+                      `/users/${this.props.currentUser.username}/exercises`
+                    );
+                  }}
+                >
+                  Exercise Logs
+                </Button>
+                <Button
+                  color="primary"
+                  round
+                  onClick={event => {
+                    this.props.history.push(`/add`);
+                  }}
+                >
+                  Add New Workout
+                </Button>
+              </CardBody>
+            </Card>
+          </GridItem>
+        </div>
+      </div>
+    );
+  }
 }
 const mapState = state => ({
   isLoggedIn: state.isLoggedIn,
