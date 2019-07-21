@@ -24,11 +24,15 @@ export const DELETE_SUCCESS = "DELETE_SUCCESS";
 export const EDIT_SUCCESS = "EDIT_SUCCESS";
 
 export const EXERCISE_SUCCESS = "EXERCISE_SUCCESS";
+export const EXERCISE_USER_SUCCESS = "EXERCISE_USER_SUCCESS";
+
 
 export const ADD_WORKOUT = "ADD_WORKOUT";
 
 export const LOG_POST_SUCCESS = "LOG_POST_SUCCESS";
 export const CLEAR_WORKOUT = "CLEAR_WORKOUT";
+export const CLEAR_USER = "CLEAR_WORKOUT";
+
 
 export const signup = user => dispatch => {
   console.log(user);
@@ -72,14 +76,15 @@ export const login = creds => dispatch => {
 };
 
 export const toLogs = log => dispatch => {
-  dispatch({ type: FETCHING });
+  dispatch({ type: FETCHING})
   return axios
-    .post("https://lift-book.herokuapp.com/api/logs", log)
+    .post("https://lift-book.herokuapp.com/api/logs", log, { timeout: 2000})
+    
     .then(response => {
-      dispatch({ type: LOG_POST_SUCCESS, payload: response.data });
-      setTimeout(() => dispatch({ type: SIGNUP_RESOLVED }), 1500);
+      setTimeout(() => dispatch({ type: LOG_POST_SUCCESS, payload: response.data }), 0);
 
     })
+
     
     .catch(err => {
       if (err.response && err.response.status === 403) {
@@ -88,6 +93,7 @@ export const toLogs = log => dispatch => {
       dispatch({ type: DATA_FAIL });
     });
 };
+
 
 //USER ACTIONS
 
@@ -109,7 +115,10 @@ export const getUsers = () => dispatch => {
     });
 };
 export const clearWorkout = () => dispatch => {
-  dispatch({ type: CLEAR_WORKOUT });
+  setTimeout(() => dispatch({ type: CLEAR_WORKOUT }), 5000)
+};
+export const clearUser = () => dispatch => {
+  setTimeout(() => dispatch({ type: CLEAR_USER }), 100)
 };
 
 // add.js
@@ -142,13 +151,7 @@ export const getUser = username => dispatch => {
 export const getUserLogs = user => dispatch => {
   dispatch({ type: FETCHING });
   axios
-    .get(`https://lift-book.herokuapp.com/api/users/${user}/logs`, {
-      headers: {
-        "content-type": "application/json",
-        username: localStorage.getItem("username"),
-        Authorization: localStorage.getItem("token")
-      }
-    })
+    .get(`https://lift-book.herokuapp.com/api/users/${user}/logs`)
     .then(response => {
       dispatch({ type: LOG_SUCCESS, payload: response.data });
     })
@@ -163,25 +166,19 @@ export const getExercises = () => dispatch => {
   axios
     .get("https://lift-book.herokuapp.com/api/exercises")
     .then(response => {
-      dispatch({ type: EXERCISE_SUCCESS, payload: response.data });
+      dispatch({ type: EXERCISE_SUCCESS, payload: response.data});
     })
     .catch(error => {
       dispatch({ type: DATA_FAIL, payload: error });
     });
 };
 
-export const getExercise = exercise => dispatch => {
+export const getExercise = username => dispatch => {
   dispatch({ type: FETCHING });
   axios
-    .get(`https://lift-book.herokuapp.com/api/exercises/${exercise}`, {
-      headers: {
-        "content-type": "application/json",
-        username: localStorage.getItem("username"),
-        Authorization: localStorage.getItem("token")
-      }
-    })
+    .get(`https://lift-book.herokuapp.com/api/exercises/${username}`)
     .then(response => {
-      dispatch({ type: DATA_SUCCESS, payload: response.data });
+      dispatch({ type: EXERCISE_USER_SUCCESS, payload: response.data });
     })
     .catch(error => {
       dispatch({ type: DATA_FAIL, payload: error });
@@ -285,5 +282,6 @@ export const addWorkout = newWorkout => dispatch => {
       console.log(res);
       dispatch({ type: ADD_WORKOUT, payload: res.data });
     })
+
     .catch(err => dispatch({ type: DATA_FAIL, payload: err }));
 };

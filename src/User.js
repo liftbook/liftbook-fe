@@ -7,7 +7,7 @@ import UserProfile from "./views/UserProfile/UserProfile.jsx";
 // import Fab from '@material-ui/core/Fab';
 // import AddIcon from '@material-ui/icons/Add';
 import Paper from "@material-ui/core/Paper";
-import { getUser } from "./actions";
+import { getUser, getUserLogs } from "./actions";
 import "./App.css";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -47,7 +47,10 @@ class User extends React.Component {
       classes: props
     };
   }
-  componentDidMount() {}
+  componentDidMount() {
+    this.props.getUserLogs(this.props.currentUser.username);
+
+  }
 
   getUser = event => {
     // this.props.getLogs(user);
@@ -91,6 +94,6 @@ const mapState = state => {
 export default withRouter(
   connect(
     mapState,
-    { getUser }
+    { getUser, getUserLogs }
   )(User)
 );
