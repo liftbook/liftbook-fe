@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { signup } from "../../actions";
-import { Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import "./SignupForm.css";
 

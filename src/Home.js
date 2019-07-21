@@ -77,7 +77,6 @@ export default class Home extends React.Component {
         <h1>hi</h1>
         <PersistentDrawerLeft />
 
-
         {/* <PrivateRoute exact path="/users/[username]/logs/[exerciseId]" component={DeleteFriend} /> */}
       </div>
     );
