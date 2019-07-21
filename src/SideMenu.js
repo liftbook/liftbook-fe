@@ -167,7 +167,7 @@ export default function PersistentDrawerLeft() {
             </Link>
           </ListItem>
           <ListItem button>
-            <Link style={{ color: "white" }} to="/">
+            <Link style={{ color: "white" }} to="/login">
               Log out
             </Link>
           </ListItem>
