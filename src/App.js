@@ -77,17 +77,17 @@ export default class App extends React.Component {
       <div className="App">
         <h1>hi</h1>
         <PersistentDrawerLeft />
-        <Route exact path="/" exact component={Home} />
+        <Route exact path="/" component={Home} />
 
-        <Route exact path="/login" exact component={LoginForm} />
-        <Route exact path="/users/register" exact component={SignupForm} />
+        <Route exact path="/login" component={LoginForm} />
+        <Route exact path="/users/register" component={SignupForm} />
 
         {/*this route private after login*/}
-        <PrivateRoute exact path="/add" exact component={Add} />
+        <PrivateRoute exact path="/add" component={Add} />
 
         <PrivateRoute
           exact
-          path="/users/:username/exercises"
+          path="/profile/:username/exercises"
           component={Exercises}
         />
         <PrivateRoute exact path="/profile/:username" component={User} />
