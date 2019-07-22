@@ -18,7 +18,6 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { Link } from "react-router-dom";
 import Icon from "@material-ui/core/Icon";
 import CardBody from "components/Card/CardBody.jsx";
-// import PersistentDrawerLeft from './SideMenu'
 
 const useStyles = makeStyles(theme => ({
   card: {
