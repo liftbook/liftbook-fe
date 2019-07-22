@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
-import { composeWithDevTools } from "redux-devtools-extension";
+// import { composeWithDevTools } from "redux-devtools-extension";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import reducer from "./reducer";
@@ -24,17 +24,17 @@ const persistConfig = {
   storage
 };
 
-const composeEnhancers = composeWithDevTools({
+// const composeEnhancers = composeWithDevTools({
   // Specify name here, actionsBlacklist, actionsCreators and other options if needed
 });
 const persistedReducer = persistReducer(persistConfig, reducer);
 
 const store = createStore(
   persistedReducer,
-  composeEnhancers(applyMiddleware(thunk, logger))
+  applyMiddleware(thunk, logger)
 );
 let persistor = persistStore(store);
-
+// composeEnhancers()
 ReactDOM.render(
   <div>
     <Router>
