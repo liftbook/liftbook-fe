@@ -2,8 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { login } from "../../actions";
 import { Link } from "react-router-dom";
-import { getUser, getExercises } from "../../actions";
-
+import { getUser, getExercises, clearWorkout } from "../../actions";
+import {clearAll} from '../../actions'
 import "./LoginForm.css";
 
 class LoginForm extends React.Component {
@@ -16,6 +16,10 @@ class LoginForm extends React.Component {
         user: ""
       }
     };
+  }
+
+  componentDidMount() {
+    this.props.clearWorkout()
   }
 
   handleChange = e => {
@@ -92,5 +96,5 @@ const mapStateToProps = ({ isLoggedIn }) => ({
 
 export default connect(
   mapStateToProps,
-  { login, getUser, getExercises }
+  { login, getUser, getExercises, clearAll, clearWorkout }
 )(LoginForm);

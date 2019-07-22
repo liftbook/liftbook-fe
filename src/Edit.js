@@ -12,7 +12,7 @@ import Button from "@material-ui/core/Button";
 import NativeSelect from "@material-ui/core/NativeSelect";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import { withRouter } from "react-router";
-class Add extends React.Component {
+class Edit extends React.Component {
 
   constructor(props) {
     super();
@@ -33,7 +33,7 @@ class Add extends React.Component {
 
 componentDidMount() {
 
-  this.props.clearWorkout()
+
 }
   handleSubmit = e => {
     e.preventDefault();
@@ -110,7 +110,7 @@ componentDidMount() {
           <Input
             className="input-style"
             onChange={this.changeHandler}
-            value={this.state.name}
+            value={this.props.currentWorkout.name}
             name="name"
             type="text"
           />
@@ -123,7 +123,7 @@ componentDidMount() {
           <Input
             className="input-style"
             onChange={this.changeHandler}
-            value={this.state.weight_lifted}
+            value={this.props.currentWorkout.weight_lifted}
             name="weight_lifted"
             type="number"
           />
@@ -136,7 +136,7 @@ componentDidMount() {
           <Input
             className="input-style"
             onChange={this.changeHandler}
-            value={this.state.repetitions}
+            value={this.props.currentWorkout.repetitions}
             name="repetitions"
             type="number"
           />
@@ -149,7 +149,7 @@ componentDidMount() {
           <Input
             className="input-style"
             onChange={this.changeHandler}
-            value={this.state.date}
+            value={this.props.currentWorkout.date}
             name="date"
             type="text"
           />
@@ -161,7 +161,7 @@ componentDidMount() {
         {/* Dropdown */}
         <FormControl className="input-group">
           <NativeSelect
-            value={this.state.body_part}
+            value={this.props.currentWorkout.body_part}
             onChange={this.handleChange}
             name="body_part"
           >
@@ -224,5 +224,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     { addWorkout, toLogs, clearWorkout }
-  )(Add)
+  )(Edit)
 );

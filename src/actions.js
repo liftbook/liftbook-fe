@@ -32,7 +32,7 @@ export const ADD_WORKOUT = "ADD_WORKOUT";
 export const LOG_POST_SUCCESS = "LOG_POST_SUCCESS";
 export const CLEAR_WORKOUT = "CLEAR_WORKOUT";
 export const CLEAR_USER = "CLEAR_WORKOUT";
-
+export const CLEAR_ALL = "CLEAR_ALL"
 
 export const signup = user => dispatch => {
   console.log(user);
@@ -115,11 +115,14 @@ export const getUsers = () => dispatch => {
     });
 };
 export const clearWorkout = () => dispatch => {
-  setTimeout(() => dispatch({ type: CLEAR_WORKOUT }), 5000)
+  dispatch({ type: CLEAR_WORKOUT })
 };
 export const clearUser = () => dispatch => {
-  setTimeout(() => dispatch({ type: CLEAR_USER }), 100)
+  dispatch({ type: CLEAR_USER })
 };
+export const clearAll = () => dispatch => {
+  dispatch({ type: CLEAR_ALL })
+}
 
 // add.js
 

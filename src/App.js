@@ -21,6 +21,8 @@ import User from "./User";
 import LoginForm from "./components/Login/LoginForm";
 import SignupForm from "./components/SignUp/SignupForm";
 import Home from "./Home";
+import Edit from "./Edit";
+
 // @material-ui/core components
 // import List from "@material-ui/core/List";
 // import ListItem from "@material-ui/core/ListItem";
@@ -84,6 +86,7 @@ export default class App extends React.Component {
 
         {/*this route private after login*/}
         <PrivateRoute exact path="/add" component={Add} />
+        <PrivateRoute exact path="/edit" component={Edit} />
 
         <PrivateRoute
           exact

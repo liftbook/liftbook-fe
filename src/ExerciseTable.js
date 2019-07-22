@@ -17,12 +17,12 @@ import {
   deleteExercise,
   editExercise,
   getExercises,
-  getUserLogs
+  getUserLogs,
+  clearWorkout
 } from "./actions";
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
 import style from "assets/jss/material-kit-pro-react/views/componentsSections/contentAreas.jsx";
-const exerciseArray = [];
 
 class Tables extends React.Component {
   constructor(props) {
@@ -30,18 +30,28 @@ class Tables extends React.Component {
     this.state = {
       classes: props,
       exercises: [],
+      exerciseArray: [],
+
     };
   }
 
   componentDidMount() {
-  }
+    this.props.getExercises(this.props.currentUser.uid)
 
+  }
+  comonentWillUnmount() {
+    this.clearWorkout()
+    this.setState({exerciseArray: []})
+  }
+  deleteExercise = (workout) => {
+    this.props.deleteExercise(workout)
+  }
   render() {
  
 
 
     this.props.exercises.map((workout, key) => {
-      exerciseArray.push([
+      this.state.exerciseArray.push([
         workout.created_at,
         workout.name,
         workout.weight_lifted,
@@ -60,7 +70,7 @@ class Tables extends React.Component {
           </Button>
           <Button
             onClick={event => {
-              this.props.deleteExercise(workout);
+              this.deleteExercise(workout);
             }}
             justIcon
             size="sm"
@@ -68,7 +78,10 @@ class Tables extends React.Component {
           >
             <Close />
           </Button>
-          <Button justIcon size="sm" color="info">
+          <Button 
+          onClick={(event) => {this.props.history.push("/edit")}}
+          justIcon size="sm" color="info">
+            
             <Edit />
           </Button>
         </div>
@@ -87,7 +100,7 @@ class Tables extends React.Component {
           "Actions"
         ]}
         tableData={
-          exerciseArray
+          this.state.exerciseArray
           //   ["1", "Andrew Mike", "Develop", "2013", "€ 99,225", fillButtons],
           //   ["2", "John Doe", "Design", "2012", "€ 89,241", roundButtons],
           //   ["3", "Alex Mike", "Design", "2010", "€ 92,144", simpleButtons]
@@ -124,7 +137,7 @@ export default withStyles(style)(
   withRouter(
     connect(
       mapState,
-      { getUser, getExercises, deleteExercise, editExercise, getUserLogs }
+      { getUser, clearWorkout, getExercises, deleteExercise, editExercise, getUserLogs }
     )(Tables)
   )
 );

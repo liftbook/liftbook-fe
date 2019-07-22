@@ -7,10 +7,7 @@ import {
   SIGNUP_START,
   SIGNUP_FAILURE,
   FETCHING,
-  // CREATING,
-  // UPDATING,
-  // NOT_UPDATING,
-  // DELETING,
+
   DATA_SUCCESS,
   DATA_FAIL,
   ADD_WORKOUT,
@@ -22,6 +19,7 @@ import {
   LOG_POST_SUCCESS,
   CLEAR_WORKOUT,
   EXERCISE_USER_SUCCESS,
+  CLEAR_ALL,
 } from "./actions";
 
 var moment = require("moment");
@@ -39,6 +37,8 @@ const initialState = {
   currentUser: [],
   currentWorkout: [],
   exercises: [],
+  deleted: false,
+  message: '',
 };
 
 const reducer = (state = initialState, action) => {
@@ -104,6 +104,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         currentWorkout: [],
+        exercises: [],
       };
     }
     case FETCHING: {
@@ -149,18 +150,27 @@ const reducer = (state = initialState, action) => {
     case DELETE_SUCCESS: {
       return {
         ...state,
+        message: action.payload,
       };
     }
     case EDIT_SUCCESS: {
       return {
         ...state,
-        workouts: action.payload
+        exercises: action.payload
       };
     }
     case LOG_POST_SUCCESS: {
       return {
         ...state,
         logs: [action.payload]
+      };
+    }
+    case CLEAR_ALL: {
+      return {
+        ...state,
+        currentUser: [],
+  currentWorkout: [],
+  exercises: [],
       };
     }
     default:
