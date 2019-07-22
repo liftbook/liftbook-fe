@@ -2,7 +2,6 @@ import React from "react";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 // material-ui icons
-// import Person from "@material-ui/icons/Person";
 import Edit from "@material-ui/icons/Edit";
 import Close from "@material-ui/icons/Close";
 import Add from "@material-ui/icons/Add";
@@ -20,7 +19,6 @@ import {
   getUserLogs,
   clearWorkout
 } from "./actions";
-import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
 import style from "assets/jss/material-kit-pro-react/views/componentsSections/contentAreas.jsx";
 
@@ -31,43 +29,36 @@ class Tables extends React.Component {
       classes: props,
       exercises: [],
       exerciseArray: [],
-      deleted: this.props.deleted,
+      deleted: this.props.deleted
     };
   }
 
   componentDidMount() {
-    this.props.getExercises(this.props.currentUser.uid)
-    console.log(this.props.deleted)
-
+    this.props.getExercises(this.props.currentUser.uid);
+    console.log(this.props.deleted);
   }
-  comonentWillUnmount() {
-  }
+  comonentWillUnmount() {}
 
   // componentDidUpdate() {
   //   if (this.state.deleted === true) {
   //     alert('hi')
-      
+
   //     this.props.getExercises(this.props.currentUser.uid)
   //     this.setState({deleted: !this.state.deleted})
 
   //   }
-    
+
   // }
   deleteExercise = (event, workout) => {
-    this.props.deleteExercise(workout)
-    
-    this.setState({exerciseArray: [], deleted: false})
-    console.log(this.state.deleted)
-    console.log(this.props.currentUser.uid)
-    
+    this.props.deleteExercise(workout);
+
+    this.setState({ exerciseArray: [], deleted: false });
+    console.log(this.state.deleted);
+    console.log(this.props.currentUser.uid);
 
     // this.props.history.push(`/profile/${this.props.currentUser.username}/exercises`)
-
-  }
+  };
   render() {
- 
-
-
     this.props.exercises.map((workout, key) => {
       this.state.exerciseArray.push([
         workout.created_at,
@@ -75,7 +66,7 @@ class Tables extends React.Component {
         workout.weight_lifted,
         workout.repetitions,
         workout.body_part,
-        <div>
+        <div key={workout}>
           <Button
             onClick={() => {
               this.props.history.push(`/add`);
@@ -87,7 +78,7 @@ class Tables extends React.Component {
             <Add />
           </Button>
           <Button
-            onClick={(event) => {
+            onClick={event => {
               this.deleteExercise(event, workout);
             }}
             justIcon
@@ -96,10 +87,14 @@ class Tables extends React.Component {
           >
             <Close />
           </Button>
-          <Button 
-          onClick={(event) => {this.props.history.push("/edit")}}
-          justIcon size="sm" color="info">
-            
+          <Button
+            onClick={event => {
+              this.props.history.push("/edit");
+            }}
+            justIcon
+            size="sm"
+            color="info"
+          >
             <Edit />
           </Button>
         </div>
@@ -108,36 +103,31 @@ class Tables extends React.Component {
 
     return (
       <div>
-      <Table
-        tableHead={[
-          "Date",
-          "Name",
-          "Weight Lifted",
-          "Repetitions",
-          "Body Part",
-          "Actions"
-        ]}
-        tableData={
-          this.state.exerciseArray
-          //   ["1", "Andrew Mike", "Develop", "2013", "€ 99,225", fillButtons],
-          //   ["2", "John Doe", "Design", "2012", "€ 89,241", roundButtons],
-          //   ["3", "Alex Mike", "Design", "2010", "€ 92,144", simpleButtons]
-        }
-        customCellClasses={[
-          this.state.classes.textCenter,
-          this.state.classes.textRight,
-          this.state.classes.textRight
-        ]}
-        customClassesForCells={[0, 4, 5]}
-        customHeadCellClasses={[
-          this.state.classes.textCenter,
-          this.state.classes.textRight,
-          this.state.classes.textRight
-        ]}
-        customHeadClassesForCells={[0, 4, 5]}
-      />
-      
-      {/* <Pagination /> */}
+        <Table
+          tableHead={[
+            "Date",
+            "Name",
+            "Weight Lifted",
+            "Repetitions",
+            "Body Part",
+            "Actions"
+          ]}
+          tableData={this.state.exerciseArray}
+          customCellClasses={[
+            this.state.classes.textCenter,
+            this.state.classes.textRight,
+            this.state.classes.textRight
+          ]}
+          customClassesForCells={[0, 4, 5]}
+          customHeadCellClasses={[
+            this.state.classes.textCenter,
+            this.state.classes.textRight,
+            this.state.classes.textRight
+          ]}
+          customHeadClassesForCells={[0, 4, 5]}
+        />
+
+        {/* <Pagination /> */}
       </div>
     );
   }
@@ -148,7 +138,7 @@ const mapState = state => {
     logs: state.logs,
     currentUser: state.currentUser,
     exercises: state.exercises,
-    deleted: state.deleted,
+    deleted: state.deleted
   };
 };
 
@@ -156,7 +146,14 @@ export default withStyles(style)(
   withRouter(
     connect(
       mapState,
-      { getUser, clearWorkout, getExercises, deleteExercise, editExercise, getUserLogs }
+      {
+        getUser,
+        clearWorkout,
+        getExercises,
+        deleteExercise,
+        editExercise,
+        getUserLogs
+      }
     )(Tables)
   )
 );
