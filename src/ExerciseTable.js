@@ -31,20 +31,38 @@ class Tables extends React.Component {
       classes: props,
       exercises: [],
       exerciseArray: [],
-
+      deleted: this.props.deleted,
     };
   }
 
   componentDidMount() {
     this.props.getExercises(this.props.currentUser.uid)
+    console.log(this.props.deleted)
 
   }
   comonentWillUnmount() {
-    this.clearWorkout()
-    this.setState({exerciseArray: []})
   }
-  deleteExercise = (workout) => {
+
+  // componentDidUpdate() {
+  //   if (this.state.deleted === true) {
+  //     alert('hi')
+      
+  //     this.props.getExercises(this.props.currentUser.uid)
+  //     this.setState({deleted: !this.state.deleted})
+
+  //   }
+    
+  // }
+  deleteExercise = (event, workout) => {
     this.props.deleteExercise(workout)
+    
+    this.setState({exerciseArray: [], deleted: false})
+    console.log(this.state.deleted)
+    console.log(this.props.currentUser.uid)
+    
+
+    // this.props.history.push(`/profile/${this.props.currentUser.username}/exercises`)
+
   }
   render() {
  
@@ -69,8 +87,8 @@ class Tables extends React.Component {
             <Add />
           </Button>
           <Button
-            onClick={event => {
-              this.deleteExercise(workout);
+            onClick={(event) => {
+              this.deleteExercise(event, workout);
             }}
             justIcon
             size="sm"
@@ -130,6 +148,7 @@ const mapState = state => {
     logs: state.logs,
     currentUser: state.currentUser,
     exercises: state.exercises,
+    deleted: state.deleted,
   };
 };
 

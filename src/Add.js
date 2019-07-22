@@ -67,9 +67,9 @@ componentDidMount() {
       date: "",
       body_part: ""
     });
-    // this.props.history.push(
-    //   `/profile/${this.props.currentUser.username}/exercises`
-    // );
+    this.props.history.push(
+      `/profile/${this.props.currentUser.username}/exercises`
+    );
 
 
   };
