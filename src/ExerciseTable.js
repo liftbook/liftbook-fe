@@ -36,6 +36,7 @@ class Tables extends React.Component {
   }
 
   componentDidMount() {
+    this.props.getExercises(this.props.currentUser.uid)
 
   }
   comonentWillUnmount() {
@@ -44,7 +45,7 @@ class Tables extends React.Component {
   }
   deleteExercise = (workout) => {
     this.props.deleteExercise(workout)
-
+    
   }
   render() {
  

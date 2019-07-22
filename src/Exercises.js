@@ -48,7 +48,6 @@ class Exercises extends React.Component {
     // this.props.toLogs(this.state.log)
     // this.props.getUserLogs(this.props.currentUser.username)
     // this.setState({exercises: this.props.exercises})
-    this.props.getExercises(this.props.currentUser.uid)
 
   }
 
