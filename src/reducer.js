@@ -38,6 +38,7 @@ const initialState = {
   currentWorkout: [],
   exercises: [],
   deleted: false,
+  message: '',
 };
 
 const reducer = (state = initialState, action) => {
@@ -149,7 +150,7 @@ const reducer = (state = initialState, action) => {
     case DELETE_SUCCESS: {
       return {
         ...state,
-        deleted: !state.deleted,
+        message: action.payload,
       };
     }
     case EDIT_SUCCESS: {

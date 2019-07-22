@@ -45,7 +45,6 @@ class Tables extends React.Component {
   }
   deleteExercise = (workout) => {
     this.props.deleteExercise(workout)
-    
   }
   render() {
  
