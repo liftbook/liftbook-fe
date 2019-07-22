@@ -98,6 +98,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         currentWorkout: action.payload,
+        exercises: [action.payload]
       };
     }
     case CLEAR_WORKOUT: {
@@ -138,7 +139,8 @@ const reducer = (state = initialState, action) => {
     case EXERCISE_SUCCESS: {
       return {
         ...state,
-        exercises: action.payload
+        exercises: action.payload,
+        deleted: !state.deleted,
       };
     }
     case EXERCISE_USER_SUCCESS: {
@@ -150,7 +152,8 @@ const reducer = (state = initialState, action) => {
     case DELETE_SUCCESS: {
       return {
         ...state,
-        message: action.payload,
+        exercises: action.payload,
+        deleted: true, 
       };
     }
     case EDIT_SUCCESS: {
