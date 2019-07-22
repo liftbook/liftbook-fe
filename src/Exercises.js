@@ -46,8 +46,14 @@ class Exercises extends React.Component {
   }
   componentDidMount() {
     // this.props.toLogs(this.state.log)
-    this.props.getExercises(this.props.currentUser.uid)
     // this.props.getUserLogs(this.props.currentUser.username)
+    // this.setState({exercises: this.props.exercises})
+    this.props.getExercises(this.props.currentUser.uid)
+
+  }
+
+  componentWillUnmount() {
+    this.props.clearWorkout() 
   }
 
   render() {

@@ -33,7 +33,7 @@ class Add extends React.Component {
 
 componentDidMount() {
 
-
+  this.props.clearWorkout()
 }
   handleSubmit = e => {
     e.preventDefault();

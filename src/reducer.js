@@ -22,6 +22,7 @@ import {
   LOG_POST_SUCCESS,
   CLEAR_WORKOUT,
   EXERCISE_USER_SUCCESS,
+  CLEAR_ALL,
 } from "./actions";
 
 var moment = require("moment");
@@ -104,6 +105,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         currentWorkout: [],
+        exercises: [],
       };
     }
     case FETCHING: {
@@ -161,6 +163,14 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         logs: [action.payload]
+      };
+    }
+    case CLEAR_ALL: {
+      return {
+        ...state,
+        currentUser: [],
+  currentWorkout: [],
+  exercises: [],
       };
     }
     default:

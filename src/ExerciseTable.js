@@ -17,7 +17,8 @@ import {
   deleteExercise,
   editExercise,
   getExercises,
-  getUserLogs
+  getUserLogs,
+  clearWorkout
 } from "./actions";
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
@@ -29,17 +30,22 @@ class Tables extends React.Component {
     this.state = {
       classes: props,
       exercises: [],
-    exerciseArray: [],
+      exerciseArray: [],
 
     };
   }
 
   componentDidMount() {
+
   }
   comonentWillUnmount() {
+    this.clearWorkout()
     this.setState({exerciseArray: []})
   }
+  deleteExercise = (workout) => {
+    this.props.deleteExercise(workout)
 
+  }
   render() {
  
 
@@ -64,7 +70,7 @@ class Tables extends React.Component {
           </Button>
           <Button
             onClick={event => {
-              this.props.deleteExercise(workout);
+              this.deleteExercise(workout);
             }}
             justIcon
             size="sm"
@@ -131,7 +137,7 @@ export default withStyles(style)(
   withRouter(
     connect(
       mapState,
-      { getUser, getExercises, deleteExercise, editExercise, getUserLogs }
+      { getUser, clearWorkout, getExercises, deleteExercise, editExercise, getUserLogs }
     )(Tables)
   )
 );
