@@ -13,28 +13,25 @@ import NativeSelect from "@material-ui/core/NativeSelect";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import { withRouter } from "react-router";
 class Add extends React.Component {
-
   constructor(props) {
     super();
     this.state = {
-    user: props.currentUser.username,
-    name: "",
-    weight_lifted: "",
-    repetitions: "",
-    date: "",
-    body_part: "",
-    log: {
-      username: props.currentUser.username,
-      exercise: props.currentWorkout.name,
-    }
-  };
-  
-}
+      user: props.currentUser.username,
+      name: "",
+      weight_lifted: "",
+      repetitions: "",
+      date: "",
+      body_part: "",
+      log: {
+        username: props.currentUser.username,
+        exercise: props.currentWorkout.name
+      }
+    };
+  }
 
-componentDidMount() {
-
-  this.props.clearWorkout()
-}
+  componentDidMount() {
+    this.props.clearWorkout();
+  }
   handleSubmit = e => {
     e.preventDefault();
 
@@ -70,8 +67,6 @@ componentDidMount() {
     this.props.history.push(
       `/profile/${this.props.currentUser.username}/exercises`
     );
-
-
   };
 
   // handle input change
@@ -98,7 +93,6 @@ componentDidMount() {
       user
     };
     this.setState({ body_part: e.target.value });
-    
   };
 
   render() {
@@ -216,7 +210,7 @@ const mapStateToProps = state => {
     user: state.user,
     workouts: state.workouts,
     currentUser: state.currentUser,
-    currentWorkout: state.currentWorkout,
+    currentWorkout: state.currentWorkout
   };
 };
 

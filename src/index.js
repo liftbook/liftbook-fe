@@ -24,15 +24,9 @@ const persistConfig = {
   storage
 };
 
-// const composeEnhancers = composeWithDevTools({
-  // Specify name here, actionsBlacklist, actionsCreators and other options if needed
-});
 const persistedReducer = persistReducer(persistConfig, reducer);
 
-const store = createStore(
-  persistedReducer,
-  applyMiddleware(thunk, logger)
-);
+const store = createStore(persistedReducer, applyMiddleware(thunk, logger));
 let persistor = persistStore(store);
 // composeEnhancers()
 ReactDOM.render(
