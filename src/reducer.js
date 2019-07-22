@@ -154,7 +154,7 @@ const reducer = (state = initialState, action) => {
     case EDIT_SUCCESS: {
       return {
         ...state,
-        workouts: action.payload
+        exercises: action.payload
       };
     }
     case LOG_POST_SUCCESS: {

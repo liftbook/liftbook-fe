@@ -29,12 +29,15 @@ class Tables extends React.Component {
     this.state = {
       classes: props,
       exercises: [],
- exerciseArray: [],
+    exerciseArray: [],
 
     };
   }
 
   componentDidMount() {
+  }
+  comonentWillUnmount() {
+    this.setState({exerciseArray: []})
   }
 
   render() {
@@ -69,7 +72,10 @@ class Tables extends React.Component {
           >
             <Close />
           </Button>
-          <Button justIcon size="sm" color="info">
+          <Button 
+          onClick={(event) => {this.props.history.push("/edit")}}
+          justIcon size="sm" color="info">
+            
             <Edit />
           </Button>
         </div>
