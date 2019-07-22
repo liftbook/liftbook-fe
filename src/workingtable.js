@@ -1,8 +1,7 @@
-  //Reactimport React from "react";
+
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 // material-ui icons
-// import Person from "@material-ui/icons/Person";
 import Edit from "@material-ui/icons/Edit";
 import Close from "@material-ui/icons/Close";
 import Add from "@material-ui/icons/Add";
@@ -170,7 +169,6 @@ const exerciseArray = [];
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 // material-ui icons
-// import Person from "@material-ui/icons/Person";
 import Edit from "@material-ui/icons/Edit";
 import Close from "@material-ui/icons/Close";
 import Add from "@material-ui/icons/Add";
@@ -259,9 +257,6 @@ class Tables extends React.Component {
         ]}
         tableData={
           exerciseArray
-          //   ["1", "Andrew Mike", "Develop", "2013", "€ 99,225", fillButtons],
-          //   ["2", "John Doe", "Design", "2012", "€ 89,241", roundButtons],
-          //   ["3", "Alex Mike", "Design", "2010", "€ 92,144", simpleButtons]
         }
         customCellClasses={[
           this.state.classes.textCenter,
