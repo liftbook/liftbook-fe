@@ -1,13 +1,11 @@
 import React from "react";
-// @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
-// material-ui icons
-// import Person from "@material-ui/icons/Person";
 import Edit from "@material-ui/icons/Edit";
 import Close from "@material-ui/icons/Close";
 import Add from "@material-ui/icons/Add";
-// core components
 import Table from "components/Table/Table.jsx";
+import Paper from "@material-ui/core/Paper";
+
 import Button from "components/CustomButtons/Button.jsx";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
@@ -32,42 +30,54 @@ class Tables extends React.Component {
       exercises: [],
       exerciseArray: [],
       deleted: this.props.deleted,
+      // log: {
+      //   username: props.currentUser.username,
+      //   exercise: props.currentWorkout.name,
+      // },
     };
   }
-
   componentDidMount() {
-    this.props.getExercises(this.props.currentUser.uid)
-    console.log(this.props.deleted)
+    setTimeout(() => {
+      console.log('Our data is fetched');
+      this.props.getExercises(this.props.currentUser.uid)
 
+    }, 5000)
+
+    // this.setState({exercises: this.props.exercises})
   }
-  comonentWillUnmount() {
+  componentWillUnmount() {
+    this.props.clearWorkout() 
   }
+  // getDataDelay(){
+  //   setTimeout(() => {
+  //     console.log('Our data is fetched');
+  //     this.props.getExercises(this.props.currentUser.uid)
+
+  //   }, 5000)
+  // }
+  // getData(){
+
+  // }
+
 
   // componentDidUpdate() {
   //   if (this.state.deleted === true) {
   //     alert('hi')
-      
   //     this.props.getExercises(this.props.currentUser.uid)
   //     this.setState({deleted: !this.state.deleted})
-
   //   }
-    
   // }
   deleteExercise = (event, workout) => {
     this.props.deleteExercise(workout)
-    
-    this.setState({exerciseArray: [], deleted: false})
-    console.log(this.state.deleted)
-    console.log(this.props.currentUser.uid)
-    
+    this.props.clearWorkout() 
+    console.log(this.state.exerciseArray)
+    this.setState({exerciseArray: []})
+    this.componentDidMount()
 
-    // this.props.history.push(`/profile/${this.props.currentUser.username}/exercises`)
 
+    // this.getDataDelay()
   }
   render() {
- 
-
-
     this.props.exercises.map((workout, key) => {
       this.state.exerciseArray.push([
         workout.created_at,
@@ -105,9 +115,10 @@ class Tables extends React.Component {
         </div>
       ]);
     });
-
     return (
       <div>
+        <Paper className={this.state.classes.root}>
+
       <Table
         tableHead={[
           "Date",
@@ -136,6 +147,8 @@ class Tables extends React.Component {
         ]}
         customHeadClassesForCells={[0, 4, 5]}
       />
+        </Paper>
+
       
       {/* <Pagination /> */}
       </div>
@@ -148,7 +161,7 @@ const mapState = state => {
     logs: state.logs,
     currentUser: state.currentUser,
     exercises: state.exercises,
-    deleted: state.deleted,
+    deleting: state.deleting,
   };
 };
 

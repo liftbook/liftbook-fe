@@ -94,7 +94,7 @@ class UserProfile extends React.Component {
                   round
                   onClick={event => {
                     this.props.history.push(
-                      `/users/${this.props.currentUser.username}/exercises`
+                      `/profile/${this.props.currentUser.username}/exercises`
                     );
                   }}
                 >

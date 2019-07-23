@@ -3,8 +3,6 @@ import { addWorkout } from "./actions";
 import { connect } from "react-redux";
 import "./Add.css";
 import { toLogs, clearWorkout } from "./actions";
-
-// material-ui imports
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import Input from "@material-ui/core/Input";
@@ -33,7 +31,6 @@ class Add extends React.Component {
 
 componentDidMount() {
 
-  this.props.clearWorkout()
 }
   handleSubmit = e => {
     e.preventDefault();

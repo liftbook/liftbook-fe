@@ -34,6 +34,7 @@ export const CLEAR_WORKOUT = "CLEAR_WORKOUT";
 export const CLEAR_USER = "CLEAR_WORKOUT";
 export const CLEAR_ALL = "CLEAR_ALL"
 
+
 export const signup = user => dispatch => {
   console.log(user);
   dispatch({ type: SIGNUP_START });
@@ -191,7 +192,7 @@ export const getExercise = username => dispatch => {
 };
 
 export const deleteExercise = exercise => dispatch => {
-  dispatch({ type: FETCHING });
+  dispatch({ type: DELETING });
   axios
     .delete(
       `https://lift-book.herokuapp.com/api/exercises/${exercise.eid}`,

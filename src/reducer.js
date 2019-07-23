@@ -7,7 +7,6 @@ import {
   SIGNUP_START,
   SIGNUP_FAILURE,
   FETCHING,
-
   DATA_SUCCESS,
   DATA_FAIL,
   ADD_WORKOUT,
@@ -37,7 +36,7 @@ const initialState = {
   currentUser: [],
   currentWorkout: [],
   exercises: [],
-  deleted: false,
+  deleting: false,
   message: '',
 };
 
@@ -139,8 +138,7 @@ const reducer = (state = initialState, action) => {
     case EXERCISE_SUCCESS: {
       return {
         ...state,
-        exercises: action.payload,
-        deleted: !state.deleted,
+        exercises: action.payload
       };
     }
     case EXERCISE_USER_SUCCESS: {
@@ -152,8 +150,9 @@ const reducer = (state = initialState, action) => {
     case DELETE_SUCCESS: {
       return {
         ...state,
-        exercises: action.payload,
-        deleted: true, 
+        exercises: [...state.exercises, action.payload],
+        deleting: !state.deleting,
+
       };
     }
     case EDIT_SUCCESS: {
@@ -172,10 +171,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         currentUser: [],
-  currentWorkout: [],
-  exercises: [],
+        currentWorkout: [],
+        exercises: [],
       };
     }
+
     default:
       return state;
   }
