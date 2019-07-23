@@ -3,8 +3,6 @@ import { addWorkout } from "./actions";
 import { connect } from "react-redux";
 import "./Add.css";
 import { toLogs, clearWorkout } from "./actions";
-
-// material-ui imports
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import Input from "@material-ui/core/Input";
@@ -30,10 +28,7 @@ class Edit extends React.Component {
   };
   
 }
-
 componentDidMount() {
-
-
 }
   handleSubmit = e => {
     e.preventDefault();
@@ -67,10 +62,6 @@ componentDidMount() {
       date: "",
       body_part: ""
     });
-    // this.props.history.push(
-    //   `/profile/${this.props.currentUser.username}/exercises`
-    // );
-
 
   };
 
