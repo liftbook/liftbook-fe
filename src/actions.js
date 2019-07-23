@@ -33,6 +33,7 @@ export const LOG_POST_SUCCESS = "LOG_POST_SUCCESS";
 export const CLEAR_WORKOUT = "CLEAR_WORKOUT";
 export const CLEAR_USER = "CLEAR_WORKOUT";
 export const CLEAR_ALL = "CLEAR_ALL"
+export const SET_WORKOUT = "SET_WORKOUT"
 
 
 export const signup = user => dispatch => {
@@ -124,6 +125,17 @@ export const clearUser = () => dispatch => {
 export const clearAll = () => dispatch => {
   dispatch({ type: CLEAR_ALL })
 }
+export const setCurrentWorkout = (eid) => dispatch => {
+  dispatch({ type: FETCHING });
+  axios
+    .get(`https://lift-book.herokuapp.com/api/exercises/${eid}`)
+    .then(response => {
+      dispatch({ type: SET_WORKOUT, payload: response.data });
+    })
+    .catch(error => {
+      dispatch({ type: DATA_FAIL, payload: error });
+    });
+  }
 
 // add.js
 
@@ -179,10 +191,10 @@ export const getExercises = (uid) => dispatch => {
     });
 };
 
-export const getExercise = username => dispatch => {
+export const getExercise = eid => dispatch => {
   dispatch({ type: FETCHING });
   axios
-    .get(`https://lift-book.herokuapp.com/api/exercises/${username}`)
+    .get(`https://lift-book.herokuapp.com/api/exercises/${eid}`)
     .then(response => {
       dispatch({ type: EXERCISE_USER_SUCCESS, payload: response.data });
     })
@@ -206,16 +218,15 @@ export const deleteExercise = exercise => dispatch => {
     });
 };
 
-export const editExercise = exercise => dispatch => {
+export const editExercise = eid => dispatch => {
   dispatch({ type: FETCHING });
   axios
     .put(
-      `https://lift-book.herokuapp.com/api/exercises/${exercise.eid}`,
-      exercise
+      `https://lift-book.herokuapp.com/api/exercises/${eid.eid}`,
+      eid
     )
     .then(response => {
-      dispatch({ type: EDIT_SUCCESS, payload: response.data });
-    })
+      dispatch({ type: EDIT_SUCCESS, payload: response. data})})
     .catch(error => {
       dispatch({ type: DATA_FAIL, payload: error });
     });
@@ -286,7 +297,9 @@ export const addWorkout = newWorkout => dispatch => {
 
     .then(res => {
       console.log(res);
-      dispatch({ type: ADD_WORKOUT, payload: res.data });
+      setTimeout(() => dispatch({ type: ADD_WORKOUT, payload: res.data}), 5000);
+      
+      
     })
 
     .catch(err => dispatch({ type: DATA_FAIL, payload: err }));

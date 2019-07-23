@@ -19,6 +19,7 @@ import {
   CLEAR_WORKOUT,
   EXERCISE_USER_SUCCESS,
   CLEAR_ALL,
+  SET_WORKOUT,
 } from "./actions";
 
 var moment = require("moment");
@@ -97,7 +98,6 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         currentWorkout: action.payload,
-        exercises: [action.payload]
       };
     }
     case CLEAR_WORKOUT: {
@@ -107,6 +107,7 @@ const reducer = (state = initialState, action) => {
         exercises: [],
       };
     }
+    
     case FETCHING: {
       return {
         ...state
@@ -144,7 +145,7 @@ const reducer = (state = initialState, action) => {
     case EXERCISE_USER_SUCCESS: {
       return {
         ...state,
-        exercises: action.payload
+        currentWorkout: action.payload
       };
     }
     case DELETE_SUCCESS: {
@@ -158,7 +159,7 @@ const reducer = (state = initialState, action) => {
     case EDIT_SUCCESS: {
       return {
         ...state,
-        exercises: action.payload
+        currentWorkout: action.payload
       };
     }
     case LOG_POST_SUCCESS: {
@@ -170,9 +171,13 @@ const reducer = (state = initialState, action) => {
     case CLEAR_ALL: {
       return {
         ...state,
-        currentUser: [],
-        currentWorkout: [],
         exercises: [],
+      };
+    }
+    case SET_WORKOUT: {
+      return {
+        ...state,
+        currentWorkout: action.payload,
       };
     }
 

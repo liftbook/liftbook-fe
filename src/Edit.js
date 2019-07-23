@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { addWorkout } from "./actions";
 import { connect } from "react-redux";
 import "./Add.css";
-import { toLogs, clearWorkout } from "./actions";
+import { toLogs, clearWorkout, getExercise, editExercise } from "./actions";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import Input from "@material-ui/core/Input";
@@ -28,9 +28,13 @@ class Edit extends React.Component {
   };
   
 }
+
+// console.log(window.location.pathname); //yields: "/js" (where snippets run)
+
 componentDidMount() {
+
 }
-  handleSubmit = e => {
+  handleEdit = e => {
     e.preventDefault();
 
     const {
@@ -50,8 +54,7 @@ componentDidMount() {
       body_part,
       user
     };
-
-    this.props.addWorkout(newWorkout);
+    this.props.editExercise(newWorkout);
 
     this.setState({
       id: "",
@@ -101,7 +104,7 @@ componentDidMount() {
           <Input
             className="input-style"
             onChange={this.changeHandler}
-            value={this.props.currentWorkout.name}
+            value=""
             name="name"
             type="text"
           />
@@ -115,7 +118,7 @@ componentDidMount() {
             className="input-style"
             onChange={this.changeHandler}
             value={this.props.currentWorkout.weight_lifted}
-            name="weight_lifted"
+            name={this.props.currentWorkout.weight_lifted}
             type="number"
           />
         </FormControl>
@@ -152,7 +155,7 @@ componentDidMount() {
         {/* Dropdown */}
         <FormControl className="input-group">
           <NativeSelect
-            value={this.props.currentWorkout.body_part}
+            value={this.props.exercises.body_part}
             onChange={this.handleChange}
             name="body_part"
           >
@@ -192,10 +195,10 @@ componentDidMount() {
 
         <Button
           variant="outlined"
-          onClick={this.handleSubmit}
+          onClick={this.handleEdit}
           className="submit"
         >
-          Submit
+          Edit Exercise
         </Button>
       </form>
     );
@@ -208,12 +211,13 @@ const mapStateToProps = state => {
     workouts: state.workouts,
     currentUser: state.currentUser,
     currentWorkout: state.currentWorkout,
+    exercises: state.exercises,
   };
 };
 
 export default withRouter(
   connect(
     mapStateToProps,
-    { addWorkout, toLogs, clearWorkout }
+    { addWorkout, toLogs, clearWorkout, getExercise, editExercise }
   )(Edit)
 );

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import UserProfile from "./views/UserProfile/UserProfile.jsx";
 import Paper from "@material-ui/core/Paper";
-import { getUser, getUserLogs, getExercises } from "./actions";
+import { getUser, getUserLogs, getExercises, clearWorkout } from "./actions";
 import "./App.css";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -23,6 +23,7 @@ class User extends React.Component {
     };
   }
   componentDidMount() {
+    this.props.clearWorkout()
   }
   getUser = event => {
     // this.props.getLogs(user);
@@ -65,6 +66,6 @@ const mapState = state => {
 export default withRouter(
   connect(
     mapState,
-    { getUser, getUserLogs, getExercises}
+    { getUser, getUserLogs, getExercises, clearWorkout}
   )(User)
 );

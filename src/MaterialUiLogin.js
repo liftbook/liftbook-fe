@@ -14,7 +14,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-class LoginForm extens React.Component() {
+class LoginForm extends React.Component() {
     constructor(props) {
         super(props)
         this.state = {
@@ -25,9 +25,8 @@ class LoginForm extens React.Component() {
             }
           };
         }
-    }
+    
 
-    render() {
 
 
 const useStyles = makeStyles(theme => ({
@@ -54,9 +53,38 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
+componentDidMount() {
+  this.props.clearWorkout()
+}
 
-export default function SignIn() {
-  const classes = useStyles();
+handleChange = e => {
+  this.setState({
+    credentials: {
+      ...this.state.credentials,
+      [e.target.name]: e.target.value
+    }
+  });
+};
+
+handleSubmit = e => {
+  e.preventDefault();
+  console.log(this.state.credentials.username);
+  this.props.getUser(this.state.credentials.username);
+
+  this.props
+    .login(this.state.credentials)
+    .then(() =>
+      this.props.history.push(`/profile/${this.state.credentials.username}`)
+    );
+  this.setState({
+    credentials: {
+      ...this.state.credentials,
+      user: ""
+    }
+  });
+};
+render() {
+
 
   return (
     <Container component="main" maxWidth="xs">
@@ -79,6 +107,8 @@ export default function SignIn() {
             name="email"
             autoComplete="email"
             autoFocus
+            value={this.state.credentials.username}
+                onChange={this.handleChange}
           />
           <TextField
             variant="outlined"
@@ -90,32 +120,28 @@ export default function SignIn() {
             type="password"
             id="password"
             autoComplete="current-password"
+            value={this.state.credentials.password}
+                onChange={this.handleChange}
           />
-          <FormControlLabel
+          {/* <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
-          />
+          /> */}
           <Button
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={this.handleSubmit} 
           >
             Sign In
           </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link to="/users/register" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
-          </Grid>
         </form>
       </div>
       <Box mt={5}>
@@ -124,6 +150,7 @@ export default function SignIn() {
     </Container>
   );
   }}
+}
 
 
 const mapStateToProps = ({ isLoggedIn }) => ({

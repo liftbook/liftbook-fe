@@ -16,7 +16,8 @@ import {
   editExercise,
   getExercises,
   getUserLogs,
-  clearWorkout
+  clearWorkout,
+  setCurrentWorkout,
 } from "./actions";
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
@@ -29,6 +30,7 @@ class Tables extends React.Component {
       classes: props,
       exercises: [],
       exerciseArray: [],
+
       deleted: this.props.deleted,
       // log: {
       //   username: props.currentUser.username,
@@ -37,16 +39,17 @@ class Tables extends React.Component {
     };
   }
   componentDidMount() {
+
     setTimeout(() => {
       console.log('Our data is fetched');
       this.props.getExercises(this.props.currentUser.uid)
 
-    }, 5000)
+    }, 1500)
 
     // this.setState({exercises: this.props.exercises})
   }
   componentWillUnmount() {
-    this.props.clearWorkout() 
+    this.setState({exerciseArray: []})
   }
   // getDataDelay(){
   //   setTimeout(() => {
@@ -56,7 +59,15 @@ class Tables extends React.Component {
   //   }, 5000)
   // }
   // getData(){
+    setWorkout = (workout) => {
+      this.props.setCurrentWorkout(workout)
+         this.props.history.push(`/edit`)
 
+    }
+  // }
+  // handleEdit = (workout) => {
+  //   this.props.setCurrentWorkout(workout)
+  //  this.props.history.push(`/edit/${workout.eid}`)
   // }
 
 
@@ -107,8 +118,10 @@ class Tables extends React.Component {
             <Close />
           </Button>
           <Button 
-          onClick={(event) => {this.props.history.push("/edit")}}
-          justIcon size="sm" color="info">
+            onClick={(event) => {
+              this.setWorkout(workout.eid)
+            }}
+            justIcon size="sm" color="info">
             
             <Edit />
           </Button>
@@ -169,7 +182,7 @@ export default withStyles(style)(
   withRouter(
     connect(
       mapState,
-      { getUser, clearWorkout, getExercises, deleteExercise, editExercise, getUserLogs }
+      { getUser, clearWorkout, getExercises, deleteExercise, editExercise, getUserLogs, setCurrentWorkout }
     )(Tables)
   )
 );

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { addWorkout } from "./actions";
 import { connect } from "react-redux";
 import "./Add.css";
-import { toLogs, clearWorkout } from "./actions";
+import { toLogs, clearWorkout, clearAll } from "./actions";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import Input from "@material-ui/core/Input";
@@ -54,6 +54,7 @@ componentDidMount() {
     };
 
     this.props.addWorkout(newWorkout);
+    this.props.clearAll() 
 
     this.setState({
       id: "",
@@ -220,6 +221,6 @@ const mapStateToProps = state => {
 export default withRouter(
   connect(
     mapStateToProps,
-    { addWorkout, toLogs, clearWorkout }
+    { addWorkout, toLogs, clearWorkout, clearAll }
   )(Add)
 );
